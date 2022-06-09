@@ -21,14 +21,16 @@ class AppHeader extends StatelessWidget {
           if (!ConfigResponsive.isDesktop(context))
             IconButton(
               icon: const Icon(Icons.menu), 
-              onPressed: () {  },
+              onPressed: () {
+                
+              },
               // onPressed: context.read<MenuController>().controlMenu,
             ),
-          if (!ConfigResponsive.isMobile(context))
-            Text(
-              "Dashboard",
-              style: Theme.of(context).textTheme.headline6,
-            ),
+          // if (!ConfigResponsive.isMobile(context))
+          //   Text(
+          //     "Dashboard",
+          //     style: Theme.of(context).textTheme.headline6,
+          //   ),
           if (!ConfigResponsive.isMobile(context))
             Spacer(flex: ConfigResponsive.isDesktop(context) ? 2 : 1),
           const Expanded(

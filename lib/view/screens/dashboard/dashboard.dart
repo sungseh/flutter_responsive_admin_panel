@@ -11,57 +11,91 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        color: Colors.blue,
-      ),
-
-      /*
+    return SafeArea(  
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(defaultPadding),
-        child: Column(
-          children: [
-            // Container(
-            //   height: 400,
-            //   width: 400,
-            //   color: Colors.red,
-            // ),
-            const SizedBox(height: defaultPadding),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    children: [
-                      MyFiles(),
-                      const SizedBox(
-                        height: defaultPadding
+        // padding: EdgeInsets.all(defaultPadding),
+        child: Container( 
+          height: 800,
+          width: 400,
+          color: Colors.red,
+          child: Column(
+            children: [
+              const SizedBox(height: defaultPadding),
+              Row(
+                children: [
+                  MyFiles(),
+
+                  // Expanded(
+                  //   flex: 1,
+                  //   child: Column(
+                  //     children: [
+                  //       // MyFiles(),
+                  //       const SizedBox(
+                  //         height: defaultPadding
+                  //       ),
+                  //       const RecentFiles(),
+                  //       if (ConfigResponsive.isMobile(context))
+                  //         SizedBox(height: defaultPadding),
+                  //         const SizedBox(height: 8),
+                  //       if (ConfigResponsive.isMobile(context)) StorageDetails(),
+                  //     ],
+                  //   ),
+                  // ),
+                  Container(
+                    color: Colors.blue,
+                    height: 100,
+                    width: 100,
+                  ),
+                ],
+              )
+
+            ],
+          )
+          /*
+          child: Column(
+            children: [
+              
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      children: [
+                        MyFiles(),
+                        const SizedBox(
+                          height: defaultPadding
+                        ),
+                        const RecentFiles(),
+                        if (ConfigResponsive.isMobile(context))
+                          SizedBox(height: defaultPadding),
+                          const SizedBox(height: 8),
+                        if (ConfigResponsive.isMobile(context)) StorageDetails(),
+                      ],
+                    ),
+                  ),
+                  if (!ConfigResponsive.isMobile(context))
+                    const SizedBox(
+                      width: defaultPadding,
+                    ),
+                  // On Mobile means if the screen is less than 850 we dont want to show it
+                  if (!ConfigResponsive.isMobile(context))
+                    Expanded(
+                      flex: 2,
+                      // child: StorageDetails(), 
+                      child: Container(
+                        // height: 400,
+                        // width: 400,
+                        color: Colors.red,
                       ),
-                      const RecentFiles(),
-                      if (ConfigResponsive.isMobile(context))
-                        SizedBox(height: defaultPadding),
-                        const SizedBox(height: 8),
-                      if (ConfigResponsive.isMobile(context)) StorageDetails(),
-                    ],
-                  ),
-                ),
-                if (!ConfigResponsive.isMobile(context))
-                  const SizedBox(
-                    width: defaultPadding,
-                  ),
-                // On Mobile means if the screen is less than 850 we dont want to show it
-                if (!ConfigResponsive.isMobile(context))
-                  const Expanded(
-                    flex: 2,
-                    child: StorageDetails(), 
-                  ),
-              ],
-            )
-          ],
+                    ),
+                ],
+              )
+            ],
+          ),
+        */
         ),
       ),
-    */
     );
   }
 }

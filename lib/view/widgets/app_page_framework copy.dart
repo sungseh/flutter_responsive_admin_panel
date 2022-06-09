@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/app_side_menu.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart'; 
 
 enum IndicatorSide { start, end }
 
@@ -8,6 +10,8 @@ class AppVerticalTabs extends StatefulWidget {
   final double indicatorWidth;
   final IndicatorSide? indicatorSide;
   final List<Tab>? tabs;
+  final DrawerHeader? drawerHeader;
+  final List<AppDrawerListTile>? menu;
   final List<Widget>? contents;
   final TextDirection direction;
   final Color indicatorColor;
@@ -31,6 +35,8 @@ class AppVerticalTabs extends StatefulWidget {
     this.indicatorWidth = 3,
     this.indicatorSide, 
     this.tabs, 
+    this.drawerHeader,
+    this.menu,
     this.contents, 
     this.direction = TextDirection.ltr,
     this.indicatorColor = Colors.green,
@@ -149,28 +155,29 @@ class _AppVerticalTabsState extends State<AppVerticalTabs> with TickerProviderSt
                               padding: const EdgeInsets.all(10),
                               child: Row(
                                 children: <Widget>[
-                                  (tab.icon != null)
-                                  ? Row(
-                                      children: <Widget>[
-                                        tab.icon!,
-                                        const SizedBox(
-                                          width: 5,
-                                        )
-                                      ],
-                                    )
-                                  : Container(),
-                                  (tab.text != null)
-                                  ? SizedBox(
-                                      width: widget.tabsWidth - 50,
-                                      child: Text(
-                                        tab.text!,
-                                        softWrap: true,
-                                        style: _selectedIndex == index
-                                            ? widget.selectedTabTextStyle
-                                            : widget.tabTextStyle,
-                                      )
-                                    )
-                                  : Container(),
+                                  
+                                  // (tab.icon != null)
+                                  // ? Row(
+                                  //     children: <Widget>[
+                                  //       tab.icon!,
+                                  //       const SizedBox(
+                                  //         width: 5,
+                                  //       )
+                                  //     ],
+                                  //   )
+                                  // : Container(),
+                                  // (tab.text != null)
+                                  // ? SizedBox(
+                                  //     width: widget.tabsWidth - 50,
+                                  //     child: Text(
+                                  //       tab.text!,
+                                  //       softWrap: true,
+                                  //       style: _selectedIndex == index
+                                  //           ? widget.selectedTabTextStyle
+                                  //           : widget.tabTextStyle,
+                                  //     )
+                                  //   )
+                                  // : Container(),
                                 ],
                               )
                             );
