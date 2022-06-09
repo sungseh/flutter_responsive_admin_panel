@@ -91,8 +91,8 @@ class _AppSideMenuState extends State<AppSideMenu> {
 
   _onClick(){
     print("Yes it is clicked");
-    // BlocProvider.of<SecscreenBloc>(context).add(LoadSecscreenEvent(state.number)),
-    BlocProvider.of<PageBloc>(context).add(ClickTab("state.number"));
+    // BlocProvider.of<PageBloc>(context).add(LoadPageEvent(state.number));
+    // BlocProvider.of<PageBloc>(context).add(const ClickTab("state.number"));
   }
  
  
@@ -102,17 +102,32 @@ class _AppSideMenuState extends State<AppSideMenu> {
       elevation: widget.tabsElevation,
       shadowColor: widget.tabsShadowColor,
       shape: const BeveledRectangleBorder(),
+      
       child: Container(
         color: Colors.yellow,
-        child: Center(
-          child: ElevatedButton(
-            // onPressed: widget.onPressed,
-            onPressed: _onClick,
-            child: const Text(
-              "Click Me"
-            ),  
-          ),
-        ),
+        child: BlocBuilder<PageBloc, PageState>(
+          builder: (context, state){
+            if(state is PageLoadedState){
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Text("Activity: ${state.number}"),
+                    // const SizedBox(height: 30),
+                    ElevatedButton(
+                      onPressed: () => BlocProvider.of<PageBloc>(context)
+                        .add(LoadPageEvent(state.number)), 
+                      child: const Icon(Icons.add),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Container(
+              color: Colors.red,
+            );
+          }
+        ),  
       ),
 
 

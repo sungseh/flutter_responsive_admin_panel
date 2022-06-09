@@ -4,6 +4,7 @@ import 'package:flutter_responsive_admin_panel/blocs/app_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/test_page.dart';
 
 class FlutterResponsiveAdminPanel extends StatefulWidget {
   const FlutterResponsiveAdminPanel({Key? key}) : super(key: key);
@@ -58,10 +59,11 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
               home: Scaffold( 
                 body: BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, auth) { 
-                    // if (auth == UnAuthenticated) {  
-                    //   return const SignIn();  
-                    // } 
+                    if (auth is UnAuthenticated) {  
+                      return const SignIn();  
+                    } 
                     return const PageControllerWidget();
+                    // return const Test(num: 0);
                   }
                 ),
               ) 

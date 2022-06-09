@@ -1,11 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_responsive_admin_panel/blocs/application/cubit.dart';
-import 'package:flutter_responsive_admin_panel/blocs/auth/auth_bloc.dart';
-import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/user/user_cubit.dart';
 import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_repo.dart';
  
 class AppBloc {
+  static final testBloc = TestBloc();
   static final userCubit = UserCubit(); 
   static final applicationCubit = ApplicationCubit(); 
   static final pageBloc = PageBloc();
@@ -14,8 +13,13 @@ class AppBloc {
   );
 
   static final List<BlocProvider> providers = [
+    BlocProvider<TestBloc>(
+      create: (context) => testBloc
+    ),
     BlocProvider<PageBloc>(
-      create: (context) => pageBloc
+      create: (context) => pageBloc..add(LoadPageEvent(1)),
+      // create: (context) => TestBloc()..add(LoadTestEvent(widget.num)),
+
     ),
     BlocProvider<ApplicationCubit>(
       create: (context) => applicationCubit
@@ -30,6 +34,8 @@ class AppBloc {
     pageBloc.close();
     authBloc.close();
     userCubit.close();
+
+    testBloc.close();
   }
 
   static final AppBloc _instance = AppBloc._internal();

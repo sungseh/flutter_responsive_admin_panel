@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';  
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
@@ -113,9 +115,29 @@ class _AppPageFrameState extends State<AppPageFrame> {
           child: Container(
             color: Colors.blue,
             child: Center(
-              child: Text(
-                widget.text ?? "Not set"
-              ),
+              child: BlocBuilder<PageBloc, PageState>(
+                builder: (context, state){
+                  if(state is PageLoadedState){
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Activity: ${state.number}"),
+                          // const SizedBox(height: 30),
+                          // ElevatedButton(
+                          //   onPressed: () => BlocProvider.of<PageBloc>(context)
+                          //     .add(LoadPageEvent(state.number)), 
+                          //   child: const Icon(Icons.add),
+                          // ),
+                        ],
+                      ),
+                    );
+                  }
+                  return Container(
+                    color: Colors.red,
+                  );
+                }
+              ), 
             ),
           ),
         ),
