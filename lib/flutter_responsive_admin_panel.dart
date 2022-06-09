@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/app_bloc.dart';
-import 'package:flutter_responsive_admin_panel/configs/config.dart';
-import 'package:flutter_responsive_admin_panel/screens/screens.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
 
 class FlutterResponsiveAdminPanel extends StatefulWidget {
   const FlutterResponsiveAdminPanel({Key? key}) : super(key: key);
@@ -22,7 +22,8 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
       ),
       home: MultiBlocProvider( 
         providers: AppBloc.providers,
-        child: const Home(title: 'Flutter Demo Home Page'),
+        // child: const Home(title: 'Flutter Demo Home Page'),
+        child: PageControllerWidget(),
       ),
     );
   } 

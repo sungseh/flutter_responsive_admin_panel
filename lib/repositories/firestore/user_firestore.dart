@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_responsive_admin_panel/configs/config.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/models/model_user.dart';
 import 'package:flutter_responsive_admin_panel/repositories/abstract/user_repo.dart';
 import 'package:flutter_responsive_admin_panel/utils/utils.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_responsive_admin_panel/configs/config.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 
 class UtilPreferences {
   static Future<bool> clear() {
