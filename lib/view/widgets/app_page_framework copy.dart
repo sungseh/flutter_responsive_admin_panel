@@ -154,30 +154,29 @@ class _AppVerticalTabsState extends State<AppVerticalTabs> with TickerProviderSt
                             child = Container(
                               padding: const EdgeInsets.all(10),
                               child: Row(
-                                children: <Widget>[
-                                  
-                                  // (tab.icon != null)
-                                  // ? Row(
-                                  //     children: <Widget>[
-                                  //       tab.icon!,
-                                  //       const SizedBox(
-                                  //         width: 5,
-                                  //       )
-                                  //     ],
-                                  //   )
-                                  // : Container(),
-                                  // (tab.text != null)
-                                  // ? SizedBox(
-                                  //     width: widget.tabsWidth - 50,
-                                  //     child: Text(
-                                  //       tab.text!,
-                                  //       softWrap: true,
-                                  //       style: _selectedIndex == index
-                                  //           ? widget.selectedTabTextStyle
-                                  //           : widget.tabTextStyle,
-                                  //     )
-                                  //   )
-                                  // : Container(),
+                                children: <Widget>[ 
+                                  (tab.icon != null)
+                                  ? Row(
+                                      children: <Widget>[
+                                        tab.icon!,
+                                        const SizedBox(
+                                          width: 5,
+                                        )
+                                      ],
+                                    )
+                                  : Container(),
+                                  (tab.text != null)
+                                  ? SizedBox(
+                                      width: widget.tabsWidth - 50,
+                                      child: Text(
+                                        tab.text!,
+                                        softWrap: true,
+                                        style: _selectedIndex == index
+                                            ? widget.selectedTabTextStyle
+                                            : widget.tabTextStyle,
+                                      )
+                                    )
+                                  : Container(),
                                 ],
                               )
                             );

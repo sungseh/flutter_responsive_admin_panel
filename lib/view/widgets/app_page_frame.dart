@@ -132,6 +132,21 @@ class _AppPageFrameState extends State<AppPageFrame> {
                         ],
                       ),
                     );
+                  } else if(state is PageNameLoadedState){
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Page Name: ${state.pageName}"),
+                          // const SizedBox(height: 30),
+                          // ElevatedButton(
+                          //   onPressed: () => BlocProvider.of<PageBloc>(context)
+                          //     .add(LoadPageEvent(state.number)), 
+                          //   child: const Icon(Icons.add),
+                          // ),
+                        ],
+                      ),
+                    );
                   }
                   return Container(
                     color: Colors.red,

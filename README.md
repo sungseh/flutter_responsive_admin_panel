@@ -1,6 +1,6 @@
 # Responsive Flutter Admin Panel - Powered by Flutter Bloc
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+<!-- [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-) -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## [Live Preview](https://abuanwar072.github.io/Flutter-Responsive-Admin-Panel-or-Dashboard/#/)
@@ -14,7 +14,7 @@
 **Fonts**
 - Poppins [link](https://fonts.google.com/specimen/Poppins)
 
-## [Watch it on YouTube](https://youtu.be/_uOgXpEHNbc)
+<!-- ## [Watch it on YouTube](https://youtu.be/_uOgXpEHNbc) -->
 On Flutter V2.* web officially supported on a stable branch. Today I share an Admin panel or you can call it dashboard UI build with flutter.  Now you can build your app dashboard using flutter. This dashboard contains almost everything that you need like a chart, table, nice small card for showing info. 
 It works perfectly on the Web, macOS app, Tablet also on both Android and iOS phones. It's time to code once run everywhere. Yeah, Flutter web is not SEO friendly but we don't need SEO for the admin panel.
 

@@ -1,13 +1,5 @@
 part of 'page_bloc.dart';
  
-
-// abstract class PageEvent extends Equatable {
-//   const PageEvent();
-
-//   @override
-//   List<Object> get props => [];
-// }
-
 abstract class PageEvent extends Equatable {
   const PageEvent();
 }
@@ -17,49 +9,24 @@ class InitPageEvent extends PageEvent {
   List<Object?> get props => [];
 }
 
-
 class LoadPageEvent extends PageEvent{
   final int number;
 
-  LoadPageEvent(this.number);
+  const LoadPageEvent(this.number);
 
   @override
   List<Object?> get props => [number];
 }
 
 
+class LoadPageNameEvent extends PageEvent{
+  final String pageName;
+
+  const LoadPageNameEvent(this.pageName);
+
+  @override
+  List<Object?> get props => [pageName];
+}
 
 
-
-
-// // abstract class PageEvent extends Equatable {
-// //   const PageEvent();
-
-// //   @override
-// //   List<Object> get props => [];
-// // } 
-
-// abstract class PageEvent extends Equatable {
-//   const PageEvent();
-
-//   @override
-//   List<Object> get props => [];
-// }
-  
-// class ClickTab extends PageEvent { 
-//   final String name;
-
-//   const ClickTab(this.name);
-
-//   @override
-//   List<Object> get props => [];
-// }
-
-// // class UpdateAudios extends PageEvent { 
-// //   // final List<AudioModel?>? audios; 
-
-// //   const UpdateAudios(this.audios);
-
-// //   @override
-// //   List<Object> get props => [audios!]; 
-// // }
+ 

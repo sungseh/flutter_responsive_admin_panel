@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/controller/menu_controller.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -114,12 +117,51 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     AppDrawerListTile(
       title: "Dashboard",
       svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
+      press: () {}, 
     ),
     AppDrawerListTile(
       title: "Presenters",
       svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
+      child: AppDrawerListTile(
+        title: "Dashboard",
+        svgSrc: "assets/icons/menu_tran.svg",
+        press: () {},
+      ), 
+      children: [
+        ListTile(
+          // onTap: () => context.read<PageBloc>().add(LoadPageEvent(2)),
+          // onTap: () => BlocProvider.of<PageBloc>(context)
+          //   .add(LoadPageEvent(state.number)), 
+          horizontalTitleGap: 16.0,
+          leading: SvgPicture.asset( 
+            "assets/icons/menu_tran.svg",
+            color: Colors.white54,
+            height: 16, 
+          ),  
+          title: const Text(
+            "title",
+            // style: const TextStyle(
+            //   color: Colors.white54
+            // ),
+          ),
+        ),
+        AppDrawerListTile(
+          title: "List Presenters",
+          svgSrc: "assets/icons/menu_tran.svg",
+          press: () {
+            print("List Presentets");
+          },
+        ),
+        AppDrawerListTile(
+          title: "Add New Presenter",
+          svgSrc: "assets/icons/menu_tran.svg",
+          // press: () {},
+          press: () {
+            print("List Presentets");
+          },
+        ),
+      ] 
     ),
     AppDrawerListTile(
       title: "Audios",
@@ -327,13 +369,13 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       // key: context.read<MenuController>().scaffoldKey,
-      drawer: AppSideMenu(
+      // drawer: AppSideMenu(
 
-      ),
+      // ),
       body: SafeArea( 
         child: Column(
           children: <Widget>[
-            // const AppHeader(),
+            const AppHeader(),
             Expanded(
               child: Container(
                 color: Colors.white,
@@ -352,8 +394,20 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
                   drawerHeader: appDrawerHeader(),
                   // onPressed: _onClick,
                   sideMenu: AppSideMenu(
-                    // onPressed: _onClick,
-                  ),
+                    drawerHeader: appDrawerHeader(),
+                    indicatorColor: Colors.deepPurpleAccent,
+                    drawerTiles: <AppDrawerListTile>[
+                      drawerListTiles[0], 
+                      drawerListTiles[1], 
+                      drawerListTiles[2], 
+                      drawerListTiles[3], 
+                      drawerListTiles[4],
+                      drawerListTiles[5],
+                      drawerListTiles[6],
+                      drawerListTiles[7],
+                      drawerListTiles[8],
+                    ],
+                  ), 
                   drawerTile: <AppDrawerListTile>[
                     drawerListTiles[0], 
                     drawerListTiles[1], 

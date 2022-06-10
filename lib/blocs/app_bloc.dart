@@ -17,9 +17,9 @@ class AppBloc {
       create: (context) => testBloc
     ),
     BlocProvider<PageBloc>(
-      create: (context) => pageBloc..add(LoadPageEvent(1)),
+      create: (context) => pageBloc..add(const LoadPageNameEvent("Dashboard")),
+      // create: (context) => pageBloc..add(LoadPageEvent(1)),
       // create: (context) => TestBloc()..add(LoadTestEvent(widget.num)),
-
     ),
     BlocProvider<ApplicationCubit>(
       create: (context) => applicationCubit
