@@ -179,7 +179,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       press: () {},
     ),
     AppDrawerListTile(
-      title: "Transaction",
+      title: "Settings",
       svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
     ),
@@ -202,17 +202,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       title: "Notification",
       svgSrc: "assets/icons/menu_notification.svg",
       press: () {},
-    ),
-    AppDrawerListTile(
-      title: "Profile",
-      svgSrc: "assets/icons/menu_profile.svg",
-      press: () {},
-    ),
-    AppDrawerListTile(
-      title: "Settings",
-      svgSrc: "assets/icons/menu_setting.svg",
-      press: () {},
-    ),
+    ), 
   ];
 
 

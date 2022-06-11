@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/dashboard/my_files.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/dashboard/recent_files.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/dashboard/storage_details.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/my_files.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/recent_files.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/storage_details.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class DashboardOld extends StatelessWidget {
+  const DashboardOld({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

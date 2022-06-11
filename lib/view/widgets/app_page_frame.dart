@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
-import 'package:flutter_responsive_admin_panel/configs/configs.dart';  
+import 'package:flutter_responsive_admin_panel/configs/configs.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/content_pages/content_pages.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/content_pages/videos/videos_list.dart';
+import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';  
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 class AppPageFrame extends StatefulWidget { 
@@ -112,48 +115,53 @@ class _AppPageFrameState extends State<AppPageFrame> {
           // It takes 5/6 part of the screen
           flex: 5,
           // child: DashboardScreen(),
-          child: Container(
-            color: Colors.blue,
-            child: Center(
-              child: BlocBuilder<PageBloc, PageState>(
-                builder: (context, state){
-                  if(state is PageLoadedState){
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Activity: ${state.number}"),
-                          // const SizedBox(height: 30),
-                          // ElevatedButton(
-                          //   onPressed: () => BlocProvider.of<PageBloc>(context)
-                          //     .add(LoadPageEvent(state.number)), 
-                          //   child: const Icon(Icons.add),
-                          // ),
-                        ],
-                      ),
-                    );
-                  } else if(state is PageNameLoadedState){
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Page Name: ${state.pageName}"),
-                          // const SizedBox(height: 30),
-                          // ElevatedButton(
-                          //   onPressed: () => BlocProvider.of<PageBloc>(context)
-                          //     .add(LoadPageEvent(state.number)), 
-                          //   child: const Icon(Icons.add),
-                          // ),
-                        ],
-                      ),
-                    );
-                  }
-                  return Container(
-                    color: Colors.red,
+          child: Center(
+            child: BlocBuilder<PageBloc, PageState>(
+              builder: (context, state){
+                if(state is PageLoadedState){
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Activity: ${state.number}"),
+                        // const SizedBox(height: 30),
+                        // ElevatedButton(
+                        //   onPressed: () => BlocProvider.of<PageBloc>(context)
+                        //     .add(LoadPageEvent(state.number)), 
+                        //   child: const Icon(Icons.add),
+                        // ),
+                      ],
+                    ),
                   );
+                } else if(state is PageNameLoadedState){
+                  switch (state.pageName) {
+                    case "Dashboard":
+                      return const Dashboard();
+
+                    case "Audios": 
+                      return const AudiosList();
+                       
+                    case "Videos":
+                      return const VideoList(); 
+
+                    case "Categories":
+                      return const CategoriesList(); 
+
+                    case "Presenters":
+                      return const PresentersList(); 
+
+                    case "Settings":
+                      return const Settings(); 
+
+                    default:
+                      return const Page404(); 
+                  } 
                 }
-              ), 
-            ),
+                return Container(
+                  color: Colors.red,
+                );
+              }
+            ), 
           ),
         ),
       ],
