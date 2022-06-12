@@ -22,23 +22,23 @@ dependencies:
   firebase_auth: ^3.3.9
   firebase_core: ^1.15.1
   firebase_crashlytics: ^2.6.3
+  fl_chart: ^0.36.1
   flutter_bloc: ^8.0.1
+  flutter_dotenv: ^5.0.2
   flutter_facebook_auth: ^3.5.6
   flutter_feather_icons: ^2.0.0+1
   flutter_html: ^2.2.1
+  flutter_svg: ^0.22.0
+  google_fonts: ^2.1.0
   google_sign_in: ^5.2.1 
   in_app_purchase: ^3.0.1 
   line_icons: ^2.0.1 
+  provider: ^6.0.0
   shared_preferences: ^2.0.13 
+  shimmer: ^2.0.0
   showcaseview: 1.1.4
   search_page: ^2.0.0+1
   url_launcher: ^6.0.9
-  google_fonts: ^2.1.0
-  flutter_svg: ^0.22.0
-  fl_chart: ^0.36.1
-  provider: ^6.0.0
-  shimmer: ^2.0.0
-  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:

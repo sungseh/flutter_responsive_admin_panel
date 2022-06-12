@@ -47,6 +47,22 @@ class AppDrawerListTile extends StatelessWidget {
       );
     } else {
       return ListTileTheme(
+        // data: const ListTileThemeData(
+        //   selectedTileColor: Colors.red,
+        //   minVerticalPadding: 10,
+        // ),
+        // shape: ,
+        // style: ,
+        // selectedColor: ,
+        // iconColor: ,
+        // textColor: ,
+        // contentPadding: ,
+        // tileColor: ,
+        // selectedTileColor: ,
+        // enableFeedback: ,
+        // mouseCursor: ,
+        // minLeadingWidth: ,
+        // contentPadding: , 
         // contentPadding: EdgeInsets.all(0),
         dense: true,
         horizontalTitleGap: 0.0,
