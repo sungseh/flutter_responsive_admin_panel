@@ -3,3 +3,4 @@ export 'config_preferences.dart';
 export 'config_constants.dart';
 export 'config_colors.dart';
 export 'config_responsive.dart';
+export 'config_environment.dart';

@@ -4,6 +4,10 @@ enum ValidateType {
   password,
   phone,
 }
+enum IndicatorSide { 
+  start,
+  end 
+}
 
 enum PresenterViewType {
   horizontalSlide,

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
+import 'package:flutter_responsive_admin_panel/controller/menu_controller.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PageControllerWidget extends StatefulWidget {
@@ -42,6 +47,162 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     LineIcons.users,
     LineIcons.userSecret,
     LineIcons.key
+  ];
+
+  final List<Widget> pages = [
+    Container(
+      color: Colors.blue,
+      child: const Center(
+        child: Text(
+          "Dashboard"
+        ),
+      )
+    ),
+    Container(
+      color: Colors.red,
+      child: const Center(
+        child: Text(
+          "Presenters"
+        ),
+      )
+    ),
+    Container(
+      color: Colors.green,
+      child: const Center(
+        child: Text(
+          "Audios"
+        ),
+      )
+    ),
+    Container(
+      color: Colors.blue,
+      child: const Center(
+        child: Text(
+          "Videos"
+        ),
+      )
+    ),
+    Container(
+      color: Colors.purple,
+      child: const Center(
+        child: Text(
+          "Transactions"
+        ),
+      )
+    ),
+    Container(
+      color: Colors.yellow,
+      child: const Center(
+        child: Text(
+          "Dashboard"
+        ),
+      )
+    ),
+    // DataInfoPage(),
+    // CoverWidget(
+    //   widget: PlacesPage()
+    // ),
+    // CoverWidget(widget: FeaturedPlaces()),
+    // CoverWidget(widget: UploadPlace()),
+    // CoverWidget(widget: BlogPage()),
+    // CoverWidget(widget: UploadBlog()),
+    // CoverWidget(widget: States()),
+    // CoverWidget(widget: Notifications()),
+    // CoverWidget(widget: UsersPage()),
+    // CoverWidget(widget: AdminPage()),
+    // CoverWidget(widget: Settings())
+  ];
+
+  final List drawerListTiles = [
+    AppDrawerListTile(
+      title: "Dashboard",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {}, 
+    ),
+    AppDrawerListTile(
+      title: "Presenters",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+      child: AppDrawerListTile(
+        title: "Dashboard",
+        svgSrc: "assets/icons/menu_tran.svg",
+        press: () {},
+      ), 
+      children: [
+        ListTile(
+          // onTap: () => context.read<PageBloc>().add(LoadPageEvent(2)),
+          // onTap: () => BlocProvider.of<PageBloc>(context)
+          //   .add(LoadPageEvent(state.number)), 
+          horizontalTitleGap: 16.0,
+          leading: SvgPicture.asset( 
+            "assets/icons/menu_tran.svg",
+            color: Colors.white54,
+            height: 16, 
+          ),  
+          title: const Text(
+            "title",
+            // style: const TextStyle(
+            //   color: Colors.white54
+            // ),
+          ),
+        ),
+        AppDrawerListTile(
+          title: "List Presenters",
+          svgSrc: "assets/icons/menu_tran.svg",
+          press: () {
+            print("List Presentets");
+          },
+        ),
+        AppDrawerListTile(
+          title: "Add New Presenter",
+          svgSrc: "assets/icons/menu_tran.svg",
+          // press: () {},
+          press: () {
+            print("List Presentets");
+          },
+        ),
+      ] 
+    ),
+    AppDrawerListTile(
+      title: "Audios",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Videos",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Categories",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Settings",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Task",
+      svgSrc: "assets/icons/menu_task.svg",
+      press: () {},
+    ),
+    // DrawerListTile(
+    //   title: "Documents",
+    //   svgSrc: "assets/icons/menu_dashboard.svg",
+    //   press: () {},
+    // ),
+    AppDrawerListTile(
+      title: "Store",
+      svgSrc: "assets/icons/menu_store.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Notification",
+      svgSrc: "assets/icons/menu_notification.svg",
+      press: () {},
+    ), 
   ];
 
 
@@ -180,19 +341,35 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     );
   }
  
+  AppDrawerListTile appHeaderListTile(String title, String icon){
+    return AppDrawerListTile(
+      title: title, 
+      svgSrc: icon, 
+      press: (){}
+    );
+  }
+
+  DrawerHeader appDrawerHeader(){
+    return DrawerHeader(
+      child: Image.asset("assets/images/logo.png"),
+    );
+  }
+
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
       // key: context.read<MenuController>().scaffoldKey,
-      drawer: const AppSideMenu(),
-      body: SafeArea(
+      // drawer: AppSideMenu(
+
+      // ),
+      body: SafeArea( 
         child: Column(
           children: <Widget>[
             const AppHeader(),
             Expanded(
               child: Container(
                 color: Colors.white,
-                child: AppVerticalTabs(
+                child: AppPageFrame(
                   tabBackgroundColor: Colors.white,
                   backgroundColor: Colors.grey[200],
                   tabsElevation: 0.5,
@@ -203,7 +380,35 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
                   indicatorWidth: 5,
                   disabledChangePageFromContentView: true,
                   changePageDuration: const Duration(microseconds: 1),
-                  initialIndex: _pageIndex, 
+                  initialIndex: _pageIndex,
+                  drawerHeader: appDrawerHeader(),
+                  // onPressed: _onClick,
+                  sideMenu: AppSideMenu(
+                    drawerHeader: appDrawerHeader(),
+                    indicatorColor: Colors.deepPurpleAccent,
+                    drawerTiles: <AppDrawerListTile>[
+                      drawerListTiles[0], 
+                      drawerListTiles[1], 
+                      drawerListTiles[2], 
+                      drawerListTiles[3], 
+                      drawerListTiles[4],
+                      drawerListTiles[5],
+                      drawerListTiles[6],
+                      drawerListTiles[7],
+                      drawerListTiles[8],
+                    ],
+                  ), 
+                  drawerTile: <AppDrawerListTile>[
+                    drawerListTiles[0], 
+                    drawerListTiles[1], 
+                    drawerListTiles[2], 
+                    drawerListTiles[3], 
+                    drawerListTiles[4],
+                    drawerListTiles[5],
+                    drawerListTiles[6],
+                    drawerListTiles[7],
+                    drawerListTiles[8],
+                  ],
                   tabs: <Tab>[
                     tab(titles[0], icons[0]),
                     tab(titles[1], icons[1]),
@@ -216,45 +421,13 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
                     tab(titles[8], icons[8]),
                     tab(titles[9], icons[9]),
                     tab(titles[10], icons[10])
-                  ],
-                  contents: <Widget>[
-                    const Dashboard(),
-                    Container(
-                      color: Colors.red,
-                    ),
-                    Container(
-                      color: Colors.green,
-                    ),
-                    Container(
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      color: Colors.purple,
-                    ),
-                    Container(
-                      color: Colors.yellow,
-                    ),
-                    // DataInfoPage(),
-                    // CoverWidget(
-                    //   widget: PlacesPage()
-                    // ),
-                    // CoverWidget(widget: FeaturedPlaces()),
-                    // CoverWidget(widget: UploadPlace()),
-                    // CoverWidget(widget: BlogPage()),
-                    // CoverWidget(widget: UploadBlog()),
-                    // CoverWidget(widget: States()),
-                    // CoverWidget(widget: Notifications()),
-                    // CoverWidget(widget: UsersPage()),
-                    // CoverWidget(widget: AdminPage()),
-                    // CoverWidget(widget: Settings())
                   ], 
+                  contents: pages
                 ), 
               ),
             ),
           ],
-        ),
-
-
+        ), 
 
 
 
