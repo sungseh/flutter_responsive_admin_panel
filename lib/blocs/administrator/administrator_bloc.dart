@@ -11,7 +11,9 @@ class AdministratorBloc extends ChangeNotifier {
   bool _testing = false;
 
   List _states = [];
+  List _categories = [];
   List get states => _states;
+  List get categories => _categories;
    
   AdminBloc() {
     checkSignIn();
@@ -104,6 +106,16 @@ class AdministratorBloc extends ChangeNotifier {
       });
   }
  
+  Future getCategories() async {
+    QuerySnapshot snap = await firestore.collection('categories').get();
+    List d = snap.docs;
+    _categories.clear();
+    for (var element in d) {
+      _categories.add(element['name']);
+    }
+    notifyListeners(); 
+  }
+
   Future getStates() async {
     QuerySnapshot snap = await firestore.collection('states').get();
     List d = snap.docs;

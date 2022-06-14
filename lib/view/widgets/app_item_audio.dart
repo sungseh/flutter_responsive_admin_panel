@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_responsive_admin_panel/models/model_audio.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:line_icons/line_icons.dart';
 
 class AppAudioItem extends StatelessWidget {
-  final AudioModel item;
+  final AudioModel? item;
 
   const AppAudioItem({
     Key? key, 
@@ -30,12 +29,10 @@ class AppAudioItem extends StatelessWidget {
               color: Colors.grey[300],
               borderRadius: BorderRadius.circular(10)
             ),
-            // TODO: Change this
-            // child: CustomCacheImage(
-            //   imageUrl: d.imageUrl1, 
-            //   radius: 10
-            // ),
-            child: Container(),
+            child: AppCustomImage(
+              image: item!.image!,
+              radius: 0,
+            ), 
           ),
           Flexible(
             child: Padding(
@@ -50,7 +47,7 @@ class AppAudioItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        item.title!,
+                        item?.title ?? "",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -76,7 +73,7 @@ class AppAudioItem extends StatelessWidget {
                       ),
                       Text(
                         // d.location!,
-                        item.presenter!,
+                        item?.presenter ?? "",
                         style: const TextStyle(fontSize: 12),
                       ),
                       const SizedBox(width: 10),
@@ -90,7 +87,7 @@ class AppAudioItem extends StatelessWidget {
                       ),
                       Text(
                         // d.date!,
-                        item.category!,
+                        item?.category ?? "",
                         style: const TextStyle(fontSize: 12),
                       ),
                     ],
@@ -117,7 +114,7 @@ class AppAudioItem extends StatelessWidget {
                             ),
                             Text(
                               // d.loves.toString(),
-                              item.duration.toString(),
+                              item?.duration.toString() ?? "",
                               style: const TextStyle(
                                 color: Colors.grey, 
                                 fontSize: 13
@@ -144,7 +141,7 @@ class AppAudioItem extends StatelessWidget {
                               color: Colors.grey[800],
                             ),
                             Text(
-                            item.duration.toString(),
+                            item?.duration.toString() ?? "",
                               style: const TextStyle(
                                 color: Colors.grey, 
                                 fontSize: 13

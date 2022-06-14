@@ -568,7 +568,7 @@ class _CategoriesListState extends State<CategoriesList> {
   @override
   Widget build(BuildContext context) { 
     return AppSectionFrame(
-      child: Expanded(
+      listSection: Expanded(
         child: _hasData == false 
         ? const AppEmptyPage(
             icon: Icons.content_paste, 
@@ -601,6 +601,7 @@ class _CategoriesListState extends State<CategoriesList> {
             ),
         ),
       ),
+      addSection: Container(),
     ); 
   } 
 }  

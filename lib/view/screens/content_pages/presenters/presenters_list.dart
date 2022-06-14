@@ -365,7 +365,7 @@ class _PresentersListState extends State<PresentersList> {
   @override
   Widget build(BuildContext context) { 
     return AppSectionFrame(
-      child: Expanded(
+      listSection: Expanded(
         child: _hasData == false 
         ? const AppEmptyPage(
             icon: Icons.content_paste, 
@@ -393,6 +393,7 @@ class _PresentersListState extends State<PresentersList> {
             ),
         ),
       ),
+      addSection: Container(),
     ); 
   } 
 }  
