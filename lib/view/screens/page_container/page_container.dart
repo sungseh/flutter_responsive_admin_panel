@@ -70,7 +70,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       color: Colors.green,
       child: const Center(
         child: Text(
-          "Audios"
+          "Audio"
         ),
       )
     ),
@@ -123,6 +123,12 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       title: "Presenters",
       svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
+    ),
+    /*
+    AppDrawerListTile(
+      title: "List Presenters",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
       child: AppDrawerListTile(
         title: "Dashboard",
         svgSrc: "assets/icons/menu_tran.svg",
@@ -163,8 +169,9 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
         ),
       ] 
     ),
+    */
     AppDrawerListTile(
-      title: "Audios",
+      title: "Audio",
       svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
     ),
@@ -232,7 +239,9 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
             RichText(
               text: TextSpan(
                 style: GoogleFonts.poppins(
-                  fontSize: 20, fontWeight: FontWeight.w700, color: Colors.deepPurpleAccent
+                  fontSize: 20, 
+                  fontWeight: FontWeight.w700, 
+                  color: Colors.deepPurpleAccent
                 ),
                 text: ConfigApplication.name,
                 children: <TextSpan>[
@@ -353,6 +362,15 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     return DrawerHeader(
       child: Image.asset("assets/images/logo.png"),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 0)).then((value){
+      context.read<AdministratorBloc>().getStates();
+      context.read<AdministratorBloc>().getAdsData();
+    }); 
   }
 
   @override 

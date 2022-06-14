@@ -5,6 +5,7 @@ import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/test_page.dart';
+import 'package:provider/provider.dart';
 
 class FlutterResponsiveAdminPanel extends StatefulWidget {
   const FlutterResponsiveAdminPanel({Key? key}) : super(key: key);
@@ -36,39 +37,53 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
       ),
       home: MultiBlocProvider( 
         providers: AppBloc.providers, 
-        child: BlocBuilder<ApplicationCubit, ApplicationState>(
-          builder: (context, lang) {
-            return MaterialApp(
-              // supportedLocales: AppLanguage.supportLanguage,
-              // onGenerateRoute: Routes.generateRoute,
-              // debugShowCheckedModeBanner: Application.debug,
-              // locale: lang,
-              builder:  (BuildContext context, Widget? child) {
-                return MediaQuery( 
-                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), 
-                  child: child!,
-                );
-              }, 
-              // theme: theme(),
-              // localizationsDelegates: const [
-              //   Translate.delegate,
-              //   GlobalMaterialLocalizations.delegate,
-              //   GlobalWidgetsLocalizations.delegate,
-              //   GlobalCupertinoLocalizations.delegate,  
-              // ],
-              home: Scaffold( 
-                body: BlocBuilder<AuthBloc, AuthState>(
-                  builder: (context, auth) { 
-                    if (auth is UnAuthenticated) {  
-                      return const SignIn();  
-                    } 
-                    return const PageControllerWidget();
-                  }
-                ),
-              ) 
-            );
-          },
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider<AdministratorBloc>(create: (context) => AdministratorBloc()),
+          ],
+          child: BlocBuilder<ApplicationCubit, ApplicationState>(
+            builder: (context, lang) {
+              return MaterialApp(
+                // supportedLocales: AppLanguage.supportLanguage,
+                // onGenerateRoute: Routes.generateRoute,
+                // debugShowCheckedModeBanner: Application.debug,
+                // locale: lang,
+                builder:  (BuildContext context, Widget? child) {
+                  return MediaQuery( 
+                    data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), 
+                    child: child!,
+                  );
+                }, 
+                // theme: theme(),
+                // localizationsDelegates: const [
+                //   Translate.delegate,
+                //   GlobalMaterialLocalizations.delegate,
+                //   GlobalWidgetsLocalizations.delegate,
+                //   GlobalCupertinoLocalizations.delegate,  
+                // ],
+                home: Scaffold( 
+                  body: BlocBuilder<AuthBloc, AuthState>(
+                    builder: (context, auth) { 
+                      // final ab = context.watch<AdminBloc>();
+                      // return ab.isSignedIn == false ? SignIn() : PageControllerWidget();
+
+
+                      if (auth is UnAuthenticated) {  
+                        return const SignIn();  
+                      } 
+                      return const PageControllerWidget();
+                    }
+                  ),
+                ) 
+              );
+            },
+          ),
         ),
+
+
+        /*
+      
+        */
       
 
       /*

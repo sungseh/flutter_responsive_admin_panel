@@ -36,7 +36,7 @@ class AppSideMenu extends StatefulWidget {
 
 
  
-  AppSideMenu({
+  const AppSideMenu({
     Key? key,  
     this.initialIndex = 0,
     this.tabsWidth = 200, 
@@ -79,9 +79,7 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
   AnimationController? animationController;
   Animation<double>? animation;
   Animation<RelativeRect>? rectAnimation;
-
-
-
+ 
   @override
   void initState() {
     _selectedIndex = widget.initialIndex;
@@ -212,7 +210,7 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
                         (drawerListTile.icon != null)
                         ? Row(
                             children: <Widget>[
-                              drawerListTile.icon ?? Icon(Icons.close),
+                              drawerListTile.icon ?? const Icon(Icons.close),
                               const SizedBox(
                                 width: 5,
                               )

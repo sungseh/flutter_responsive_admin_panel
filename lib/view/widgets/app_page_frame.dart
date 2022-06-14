@@ -138,11 +138,11 @@ class _AppPageFrameState extends State<AppPageFrame> {
                     case "Dashboard":
                       return const Dashboard();
 
-                    case "Audios": 
+                    case "Audio": 
                       return const AudiosList();
                        
                     case "Videos":
-                      return const VideoList(); 
+                      return const VideosList(); 
 
                     case "Categories":
                       return const CategoriesList(); 

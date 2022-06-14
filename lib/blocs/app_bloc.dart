@@ -1,9 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/audios/audios_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/user/user_cubit.dart';
-import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_repo.dart';
+import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_repo.dart'; 
  
 class AppBloc {
+  static final adminBloc = AdminBloc();
+  static final audiosBloc = AudiosBloc(
+    audiosRepo: AudioFirestore()
+  );
   static final testBloc = TestBloc();
   static final userCubit = UserCubit(); 
   static final applicationCubit = ApplicationCubit(); 
@@ -12,7 +17,7 @@ class AppBloc {
     authRepository: AuthFirestore() 
   );
 
-  static final List<BlocProvider> providers = [
+  static final List<BlocProvider> providers = [ 
     BlocProvider<TestBloc>(
       create: (context) => testBloc
     ),
@@ -26,15 +31,18 @@ class AppBloc {
     ),
     BlocProvider<AuthBloc>( 
       create: (context) => authBloc..add(InitAuth())
-    )
+    ),
+    BlocProvider<AudiosBloc>(
+      create: (context) => audiosBloc
+    ) 
   ];
 
   static void dispose(){
     applicationCubit.close();
     pageBloc.close();
     authBloc.close();
-    userCubit.close();
-
+    audiosBloc.close();
+    userCubit.close(); 
     testBloc.close();
   }
 
