@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/misc/misc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
-import 'package:flutter_responsive_admin_panel/utils/utils.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -80,7 +79,7 @@ class _AddAudioState extends State<AddAudio> {
     } else {
       if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
-        if(paths!.length == 0){
+        if(paths!.isEmpty){
           // openSnacbar(scaffoldKey, 'Paths List can not be empty');
         } else {
           if (ab.userType == 'tester') {
@@ -101,7 +100,7 @@ class _AddAudioState extends State<AddAudio> {
     // final DocumentReference ref = firestore.collection(collectionName).doc(widget.audioData.timestamp);
     // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp);
      
-    var _audioData = {
+    var audioData = {
       'state' : stateSelection,
       'place name' : nameCtrl.text,
       'location' : locationCtrl.text,
@@ -113,7 +112,7 @@ class _AddAudioState extends State<AddAudio> {
       'image-3' : image3Ctrl.text,
     };
 
-    var _guideData  = {
+    var guideData  = {
       'startpoint name' : startpointNameCtrl.text,
       'endpoint name' : endpointNameCtrl.text,
       'startpoint lat' : double.parse(startpointLatCtrl.text),
@@ -218,8 +217,8 @@ class _AddAudioState extends State<AddAudio> {
         hint: const Text('Select State'),
         items: ab.categories.map((f) {
           return DropdownMenuItem(
-            child: Text(f),
             value: f,
+            child: Text(f),
           );
         }).toList()
       )
@@ -229,6 +228,7 @@ class _AddAudioState extends State<AddAudio> {
   @override
   Widget build(BuildContext context) {
     final AdministratorBloc ab = Provider.of(context, listen: false);
+    bool toggleValue = false;
 
     return AppCoverWidget(
       widget: Form( 
@@ -241,11 +241,12 @@ class _AddAudioState extends State<AddAudio> {
               child: Text(
                 "Add Audio", 
                 style: TextStyle(
-                  fontSize: 30, 
-                  fontWeight: FontWeight.w800
-                )
+                  fontSize: 25, 
+                  fontWeight: FontWeight.w700
+                ), 
               ),
             ),
+            // AppFileUploadButton(),
             AppTextFormField(
               placeholder: 'Enter Audio Title',
               title: 'Audio Title',
@@ -255,6 +256,15 @@ class _AddAudioState extends State<AddAudio> {
               },
             ),   
             AppDropDown(
+              placeholder: 'Select Presenter',
+              items: ab.presenters.map((f) {
+                return DropdownMenuItem(
+                  value: f,
+                  child: Text(f),
+                );
+              }).toList()
+            ),
+            AppDropDown(
               placeholder: 'Select Category',
               items: ab.categories.map((f) {
                 return DropdownMenuItem(
@@ -262,89 +272,51 @@ class _AddAudioState extends State<AddAudio> {
                   child: Text(f),
                 );
               }).toList()
-            ),
-            AppTextFormField(
-              placeholder: 'Enter location name',
-              title: 'Location name',
-              controller: locationCtrl,
-               validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
-              }, 
-            ),  
-            AppTextFormField(
-              placeholder: 'Enter image url (thumbnail)',
-              title: 'Image1(Thumbnail)',
-              controller: image1Ctrl,
-               validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
-              }, 
-            ),   
-            AppTextFormField(
-              placeholder: 'Enter image url',
-              title: 'Image2',
-              controller: image2Ctrl,
-               validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
+            ), 
+            AppToggleButton(
+              label: "Premium", 
+              onChanged: (bool value) { 
+                setState(() {
+                  toggleValue = value; 
+                }); 
+              },
+              onTap: () { 
+                setState(() { 
+                  toggleValue = !toggleValue; 
+                }); 
               }, 
             ),
+            AppToggleButton(
+              label: "Active", 
+              onChanged: (bool value) { 
+                setState(() {
+                  toggleValue = value; 
+                }); 
+              },
+              onTap: () { 
+                setState(() { 
+                  toggleValue = !toggleValue; 
+                }); 
+              }, 
+            ), 
+            AppRichTextField(),
             AppTextFormArea(
-              placeholder: 'Enter place details (Html or Normal Text)',
-              label: 'Place details',
+              placeholder: 'Enter description',
+              label: 'Audio Description',
               controller: descriptionCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;
               }, 
-            ),  
+            ),
             Container(
-              child: paths!.length == 0 ? 
-              const Center(child: Text('No path list were added')) :
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: paths!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    leading: CircleAvatar(
-                      child: Text(index.toString()),
-                    ),
-                    title: Text(paths![index]),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete_outline), 
-                      onPressed: (){
-                        setState(() {
-                          paths!.remove(paths![index]);
-                          _helperText = 'Added ${paths!.length} items';
-                        });
-                      }),
-                  );
-                },
-              ), 
-            ), 
-            const SizedBox(height: 100), 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                TextButton.icon(
-                  icon: const Icon(Icons.remove_red_eye, size: 25, color: Colors.blueAccent,),
-                  label: const Text('Preview', style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black
-                  ),),
-                  onPressed: (){
-                    handlePreview();
-                  }
-                )
-              ],
-            ), 
-            Container(
-              color: Colors.deepPurpleAccent,
+              color: Theme.of(context).primaryColor,
               height: 45,
               child: uploadStarted == true ?
-              Center(
-                child: Container(
+              const Center(
+                child: SizedBox(
                   height: 30, 
                   width: 30,
-                  child: const CircularProgressIndicator()
+                  child: CircularProgressIndicator()
                 )
               ) :
               TextButton(

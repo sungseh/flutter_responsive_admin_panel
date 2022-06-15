@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../audios/audios_bloc.dart';
 
 part 'page_event.dart';
 part 'page_state.dart';

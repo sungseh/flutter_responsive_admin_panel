@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
-import 'package:flutter_responsive_admin_panel/controller/menu_controller.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +16,7 @@ class PageControllerWidget extends StatefulWidget {
 }
 
 class _PageControllerWidgetState extends State<PageControllerWidget> {
-  int _pageIndex = 0;
+  final int _pageIndex = 0;
 
   final List<String> titles = [
     'Dashboard',
@@ -367,7 +364,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 0)).then((value){
+    Future.delayed(const Duration(milliseconds: 0)).then((value){
       context.read<AdministratorBloc>().getStates();
       context.read<AdministratorBloc>().getAdsData();
     }); 

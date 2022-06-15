@@ -10,10 +10,13 @@ class AdministratorBloc extends ChangeNotifier {
   bool _isSignedIn = false;
   bool _testing = false;
 
-  List _states = [];
-  List _categories = [];
+  final List _states = [];
+  final List _categories = [];
+  final List _presenters = [];
+
   List get states => _states;
   List get categories => _categories;
+  List get presenters => _presenters;
    
   AdminBloc() {
     checkSignIn();
@@ -62,8 +65,8 @@ class AdministratorBloc extends ChangeNotifier {
       .doc('user type')
       .get()
       .then((DocumentSnapshot snap) {
-        String? _aPass = snap['admin password'];
-      _adminPass = _aPass;
+        String? aPass = snap['admin password'];
+      _adminPass = aPass;
         notifyListeners();
       });
   }
@@ -116,15 +119,26 @@ class AdministratorBloc extends ChangeNotifier {
     notifyListeners(); 
   }
 
+  Future getPresenters() async {
+    QuerySnapshot snap = await firestore.collection('teachers').get();
+    List d = snap.docs;
+    _presenters.clear();
+    for (var element in d) {
+      _presenters.add(element['name']);
+    }
+    notifyListeners(); 
+  }
+
   Future getStates() async {
     QuerySnapshot snap = await firestore.collection('states').get();
     List d = snap.docs;
     _states.clear();
-    d.forEach((element) {
+    for (var element in d) {
       _states.add(element['name']);
-    });
+    }
     notifyListeners(); 
   }
+
  
   Future<List> getFeaturedList ()async{
     final DocumentReference ref = firestore.collection('featured').doc('featured_list');

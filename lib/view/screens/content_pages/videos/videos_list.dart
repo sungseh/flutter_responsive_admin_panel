@@ -86,7 +86,7 @@ class _VideosListState extends State<VideosList>{
         openToast(context, 'No more content available');
       }
     }
-    return null;
+    return;
   }
  
   refreshData () {
@@ -372,8 +372,8 @@ class _VideosListState extends State<VideosList>{
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Icon(
+                          children: const <Widget>[
+                            Icon(
                               Icons.star,
                               size: 16,
                               color: Colors.grey,

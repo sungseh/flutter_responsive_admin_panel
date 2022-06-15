@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/content_pages/content_pages.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/content_pages/videos/videos_list.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';  
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 class AppPageFrame extends StatefulWidget { 

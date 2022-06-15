@@ -80,7 +80,7 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
     } else {
       if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
-        if(paths!.length == 0){
+        if(paths!.isEmpty){
           // openSnacbar(scaffoldKey, 'Paths List can not be empty');
         } else {
           if (ab.userType == 'tester') {
@@ -101,7 +101,7 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
     // final DocumentReference ref = firestore.collection(collectionName).doc(widget.audioData.timestamp);
     // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp);
      
-    var _audioData = {
+    var audioData = {
       'state' : stateSelection,
       'place name' : nameCtrl.text,
       'location' : locationCtrl.text,
@@ -113,7 +113,7 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
       'image-3' : image3Ctrl.text,
     };
 
-    var _guideData  = {
+    var guideData  = {
       'startpoint name' : startpointNameCtrl.text,
       'endpoint name' : endpointNameCtrl.text,
       'startpoint lat' : double.parse(startpointLatCtrl.text),
@@ -218,8 +218,8 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
         hint: const Text('Select State'),
         items: ab.categories.map((f) {
           return DropdownMenuItem(
-            child: Text(f),
             value: f,
+            child: Text(f),
           );
         }).toList()
       )
@@ -456,7 +456,7 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
               ),
               controller: pathsCtrl,
               onFieldSubmitted: (String value) {
-                if(value.length == 0){
+                if(value.isEmpty){
                   setState(() {
                   _helperText = "You can't put empty item is the list";
                     
@@ -472,7 +472,7 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
             ),
             const SizedBox(height: 20,),
             Container(
-              child: paths!.length == 0 ? 
+              child: paths!.isEmpty ? 
               const Center(child: Text('No path list were added')) :
               ListView.builder(
                 shrinkWrap: true,
@@ -519,11 +519,11 @@ class _AddAudioCopyState extends State<AddAudioCopy> {
               color: Colors.deepPurpleAccent,
               height: 45,
               child: uploadStarted == true ?
-              Center(
-                child: Container(
+              const Center(
+                child: SizedBox(
                   height: 30, 
                   width: 30,
-                  child: const CircularProgressIndicator()
+                  child: CircularProgressIndicator()
                 )
               ) :
               TextButton(

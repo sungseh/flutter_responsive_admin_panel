@@ -19,6 +19,7 @@ dependencies:
   data_table_2: ^2.2.2
   email_validator: ^2.0.1
   equatable: ^2.0.3
+  file_picker: ^4.6.1
   firebase_auth: ^3.3.9
   firebase_core: ^1.15.1
   firebase_crashlytics: ^2.6.3
@@ -32,6 +33,7 @@ dependencies:
   fluttertoast: ^8.0.8
   google_fonts: ^2.1.0
   google_sign_in: ^5.2.1 
+  html_editor_enhanced: ^2.5.0
   in_app_purchase: ^3.0.1 
   line_icons: ^2.0.1 
   provider: ^6.0.0
@@ -39,7 +41,6 @@ dependencies:
   shimmer: ^2.0.0
   showcaseview: 1.1.4
   search_page: ^2.0.0+1
-  url_launcher: ^6.0.9
 
 dev_dependencies:
   flutter_test:

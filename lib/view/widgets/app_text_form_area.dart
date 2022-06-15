@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/utils/utils.dart'; 
 
 class AppTextFormArea extends StatelessWidget {
   final TextEditingController controller;
@@ -21,41 +22,38 @@ class AppTextFormArea extends StatelessWidget {
         vertical: 8
       ),
       child: TextFormField(
-        decoration: InputDecoration(
-          hintText: placeholder,
-          border: const OutlineInputBorder(),
-          labelText: label,
+        decoration: inputDecoration(
+          placeholder,
+          label,
+          controller, 
           contentPadding: const EdgeInsets.only(right: 0, left: 10, top: 15, bottom: 5),
-          suffixIcon: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              radius: 15,
-              backgroundColor: Colors.grey[300],
-              child: IconButton(
-                icon: const Icon(Icons.close, size: 15), 
-                onPressed: (){
-                  controller.clear();
-                }
-              ),
-            ),
-          )
         ),
+        // decoration: InputDecoration(
+        //   hintText: placeholder,
+        //   border: const OutlineInputBorder(),
+        //   labelText: label,
+        //   contentPadding: const EdgeInsets.only(right: 0, left: 10, top: 15, bottom: 5),
+        //   suffixIcon: Padding(
+        //     padding: const EdgeInsets.all(8.0),
+        //     child: CircleAvatar(
+        //       radius: 15,
+        //       backgroundColor: Colors.grey[300],
+        //       child: IconButton(
+        //         icon: const Icon(Icons.close, size: 15), 
+        //         onPressed: (){
+        //           controller.clear();
+        //         }
+        //       ),
+        //     ),
+        //   )
+        // ),
         textAlignVertical: TextAlignVertical.top,
         minLines: 5,
         maxLines: null,
         keyboardType: TextInputType.multiline,
         controller: controller,
         validator: validator
-      ), 
-      // child: TextFormField(
-      //   decoration: inputDecoration(
-      //     placeholder,
-      //     title,
-      //     controller
-      //   ),
-      //   controller: controller,
-      //   validator: validator
-      // ),
+      ),  
     );
   }
 }

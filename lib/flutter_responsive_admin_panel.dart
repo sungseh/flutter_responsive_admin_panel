@@ -4,7 +4,6 @@ import 'package:flutter_responsive_admin_panel/blocs/app_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/screens.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/test_page.dart';
 import 'package:provider/provider.dart';
 
 class FlutterResponsiveAdminPanel extends StatefulWidget {

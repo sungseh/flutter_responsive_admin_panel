@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,8 +52,8 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
                     return Text(
                       state.pageName,
                       style: const TextStyle(
-                        fontSize: 25, 
-                        fontWeight: FontWeight.w700
+                        fontSize: 30, 
+                        fontWeight: FontWeight.w800
                       ),
                     ); 
                   }

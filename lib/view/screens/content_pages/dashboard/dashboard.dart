@@ -15,7 +15,7 @@ class _DashboardState extends State<Dashboard> {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text("Page Name: Dashboard"),
             // const SizedBox(height: 30),
             // ElevatedButton(

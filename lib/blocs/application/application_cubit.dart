@@ -1,6 +1,5 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/application/cubit.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';

@@ -20,7 +20,7 @@ class InitTestEvent extends TestEvent {
 class LoadTestEvent extends TestEvent{
   final int number;
 
-  LoadTestEvent(this.number);
+  const LoadTestEvent(this.number);
 
   @override
   List<Object?> get props => [number];

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 class AppSideMenu extends StatefulWidget {

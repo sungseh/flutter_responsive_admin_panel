@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
-InputDecoration inputDecoration(hint, label, controller) {
+InputDecoration inputDecoration(hint, label, controller, {EdgeInsetsGeometry? contentPadding}) {
   return InputDecoration(
     hintText: hint,
     border: const OutlineInputBorder(),
     labelText: label,
-    contentPadding: const EdgeInsets.only(right: 0, left: 10),
+    contentPadding: contentPadding ?? const EdgeInsets.only(right: 0, left: 10),
     suffixIcon: Padding(
       padding: const EdgeInsets.all(8.0),
       child: CircleAvatar(
         radius: 15,
-        backgroundColor: Colors.grey[300],
+        // backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.white,
         child: IconButton(
-          icon: const Icon(Icons.close, size: 15),
+          icon: const Icon(
+            Icons.close, size: 15
+          ),
           onPressed: () {
             controller.clear();
           }

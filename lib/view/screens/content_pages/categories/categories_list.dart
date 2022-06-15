@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../../../blocs/bloc.dart';
 import '../../../../models/models.dart';
-import '../../../widgets/app_loading_screen.dart';
 import '../../../widgets/widgets.dart';
 
 class CategoriesList extends StatefulWidget {
@@ -88,7 +87,7 @@ class _CategoriesListState extends State<CategoriesList> {
         openToast(context, 'No more content available');
       }
     }
-    return null;
+    return;
   }
  
   refreshData () {
@@ -374,8 +373,8 @@ class _CategoriesListState extends State<CategoriesList> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Icon(
+                          children: const <Widget>[
+                            Icon(
                               Icons.star,
                               size: 16,
                               color: Colors.grey,

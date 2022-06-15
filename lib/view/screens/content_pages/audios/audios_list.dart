@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/content_pages/audios/audios_add%20copy.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 import '../../../../blocs/audios/audios_bloc.dart';
@@ -138,7 +137,7 @@ class _AudiosListState extends State<AudiosList> {
   Widget build(BuildContext context) {
     return AppSectionFrame(
       listSection: _buildAudios(),
-      addSection: AddAudio()
+      addSection: const AddAudio()
       // addSection: Container(
       //   height: 200,
       //   width: 200,
