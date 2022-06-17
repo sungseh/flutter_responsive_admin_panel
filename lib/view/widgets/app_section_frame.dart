@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart'; 
+import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/app_empty_content.dart'; 
 
 class AppSectionFrame extends StatefulWidget {
   // final String pageName;
   final void Function()? onPressed;
-  final Widget listSection;
-  final Widget addSection;
+  final Widget? listSection;
+  final Widget? addSection;
  
   const AppSectionFrame({
     Key? key, 
@@ -29,10 +30,7 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
       _showAddSection = !_showAddSection;
     });
   }
-
-
-
-
+ 
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -86,33 +84,13 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
             children: [
               Expanded(
                 flex: 2,
-                child: Container(
-                  // height: 200,
-                  // width: 200,
-                  color: Colors.blue,
-                  // child: widget.listSection
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.only(top: 30, bottom: 20),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: 10,
-                    itemBuilder: (_, int index) {
-                      return Container(
-                        margin: const EdgeInsets.all(2),
-                        color: Colors.green,
-                        height: 60,
-                        width: 60,
-                      );
-                      
-                    }
-                  ),
-                ),
+                child: widget.listSection ?? const AppEmptyContent(title: "This has not been given")
               ),
               Visibility(
                 visible: _showAddSection,
                 child: Expanded(
                   flex: 1,
-                  child: widget.addSection
+                  child: widget.addSection ?? const AppEmptyContent(title: "This has not been given")
                 )
               )
             ],

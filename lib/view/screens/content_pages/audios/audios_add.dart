@@ -23,6 +23,8 @@ class AddAudio extends StatefulWidget {
 }
 
 class _AddAudioState extends State<AddAudio> { 
+  FileModel? file;
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   var formKey = GlobalKey<FormState>();
@@ -247,6 +249,11 @@ class _AddAudioState extends State<AddAudio> {
               ),
             ),
             // AppFileUploadButton(),
+            AppDropZone(
+              // onDroppedFile: (FileModel value) {  },
+              // onDroppedFile: file,
+              onDroppedFile: (file) => setState(() => this.file = file) ,
+            ),
             AppTextFormField(
               placeholder: 'Enter Audio Title',
               title: 'Audio Title',

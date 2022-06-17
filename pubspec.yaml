@@ -42,6 +42,9 @@ dependencies:
   showcaseview: 1.1.4
   search_page: ^2.0.0+1
 
+  flutter_dropzone: ^3.0.5
+  dotted_border: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter 

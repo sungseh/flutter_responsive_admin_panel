@@ -34,13 +34,52 @@ class _AudiosListState extends State<AudiosList> {
     // );
   }
 
-  Widget _buildAudios(){ 
+  Widget _buildAudios(){
     return BlocBuilder<AudiosBloc, AudiosState>(
       builder: (context, state) { 
         if (state is AudiosLoaded) {
           List<AudioModel?>? audios = state.audios;  
 
-           if(audios!.isEmpty){
+          if(audios!.isEmpty){
+            return const AppEmptyContent(
+              title: "No Audios",
+              subtitle: "No data available. Upload first!"
+            );
+          } else {
+            return ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(top: 30, bottom: 20),
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (_, int index) {
+                return AppAudioItem( 
+                  // onPressed: _onTapAudio, 
+                  item: audios[index]!,
+                  // type: AudioViewType.category,
+                );
+                // return Container(
+                //   margin: const EdgeInsets.all(2),
+                //   color: Colors.red,
+                //   height: 60,
+                //   width: 60,
+                // );
+              }
+            );
+          }
+        }
+
+        return Container();
+      }
+    ); 
+  }
+ 
+  Widget _buildAudioss(){ 
+    return BlocBuilder<AudiosBloc, AudiosState>(
+      builder: (context, state) { 
+        if (state is AudiosLoaded) {
+          List<AudioModel?>? audios = state.audios;  
+
+          if(audios!.isEmpty){
             return const AppEmptyContent(
               title: "No Audios",
               subtitle: "No data available. Upload first!"

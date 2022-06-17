@@ -20,3 +20,4 @@ export 'app_file_upload_button.dart';
 export 'app_toggle_button.dart';
 export 'app_rich_text_field.dart';
 export 'app_tag_field.dart';
+export 'app_drop_zone.dart';

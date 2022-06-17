@@ -365,35 +365,38 @@ class _PresentersListState extends State<PresentersList> {
   @override
   Widget build(BuildContext context) { 
     return AppSectionFrame(
-      listSection: Expanded(
-        child: _hasData == false 
-        ? const AppEmptyPage(
-            icon: Icons.content_paste, 
-            message: 'No data available.\nUpload first!'
-        )
-        : RefreshIndicator(
-            onRefresh: () async { 
-              refreshData();
-            },
-            child: ListView.builder(
-              padding: const EdgeInsets.only(top: 30, bottom: 20),
-              controller: controller,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: _data.length + 1,
-              itemBuilder: (_, int index) {
-                if (index < _data.length) { 
-                  return AppPresenterItem(
-                    item: _data[index]
-                  );
-                }
-                return AppLoadingScreen(
-                  isLoading: _isLoading
-                );
-              },
-            ),
-        ),
-      ),
+      listSection: Container(),
       addSection: Container(),
+
+      // listSection: Expanded(
+      //   child: _hasData == false 
+      //   ? const AppEmptyPage(
+      //       icon: Icons.content_paste, 
+      //       message: 'No data available.\nUpload first!'
+      //   )
+      //   : RefreshIndicator(
+      //       onRefresh: () async { 
+      //         refreshData();
+      //       },
+      //       child: ListView.builder(
+      //         padding: const EdgeInsets.only(top: 30, bottom: 20),
+      //         controller: controller,
+      //         physics: const AlwaysScrollableScrollPhysics(),
+      //         itemCount: _data.length + 1,
+      //         itemBuilder: (_, int index) {
+      //           if (index < _data.length) { 
+      //             return AppPresenterItem(
+      //               item: _data[index]
+      //             );
+      //           }
+      //           return AppLoadingScreen(
+      //             isLoading: _isLoading
+      //           );
+      //         },
+      //       ),
+      //   ),
+      // ),
+      // addSection: Container(),
     ); 
   } 
 }  

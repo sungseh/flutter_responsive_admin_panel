@@ -566,39 +566,40 @@ class _VideosListState extends State<VideosList>{
   @override
   Widget build(BuildContext context) { 
     return AppSectionFrame(
-      listSection: Expanded(
-        child: _hasData == false 
-        ? const AppEmptyPage(
-            icon: Icons.content_paste, 
-            message: 'No data available.\nUpload first!'
-        )
-        : RefreshIndicator(
-            onRefresh: () async { 
-              refreshData();
-            },
-            child: ListView.builder(
-              padding: const EdgeInsets.only(top: 30, bottom: 20),
-              controller: controller,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: _data.length + 1,
-              itemBuilder: (_, int index) {
-                if (index < _data.length) {
-                  return dataList(_data[index]);
-                }
-                return Center(
-                  child: Opacity(
-                    opacity: _isLoading ? 1.0 : 0.0,
-                    child: const SizedBox(
-                      width: 32.0,
-                      height: 32.0,
-                      child: CircularProgressIndicator()
-                    ),
-                  ),
-                );
-              },
-            ),
-        ),
-      ),
+      listSection: Container(),
+      // listSection: Expanded(
+      //   child: _hasData == false 
+      //   ? const AppEmptyPage(
+      //       icon: Icons.content_paste, 
+      //       message: 'No data available.\nUpload first!'
+      //   )
+      //   : RefreshIndicator(
+      //       onRefresh: () async { 
+      //         refreshData();
+      //       },
+      //       child: ListView.builder(
+      //         padding: const EdgeInsets.only(top: 30, bottom: 20),
+      //         controller: controller,
+      //         physics: const AlwaysScrollableScrollPhysics(),
+      //         itemCount: _data.length + 1,
+      //         itemBuilder: (_, int index) {
+      //           if (index < _data.length) {
+      //             return dataList(_data[index]);
+      //           }
+      //           return Center(
+      //             child: Opacity(
+      //               opacity: _isLoading ? 1.0 : 0.0,
+      //               child: const SizedBox(
+      //                 width: 32.0,
+      //                 height: 32.0,
+      //                 child: CircularProgressIndicator()
+      //               ),
+      //             ),
+      //           );
+      //         },
+      //       ),
+      //   ),
+      // ),
       addSection: Container(),
     ); 
   } 

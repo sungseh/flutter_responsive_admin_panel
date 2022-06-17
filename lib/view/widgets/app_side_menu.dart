@@ -1,68 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
+import 'package:flutter/material.dart'; 
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 
 class AppSideMenu extends StatefulWidget {
   final int initialIndex;
-  final double tabsWidth;
-  // final double indicatorWidth;
-  // final IndicatorSide? indicatorSide;
-  // final List<Tab>? tabs;
+  final double tabsWidth; 
   final DrawerHeader? drawerHeader;
   final List<AppDrawerListTile>? drawerTiles;
-  // final List<Widget>? contents;
   final TextDirection direction;
   final Color indicatorColor;
   final bool disabledChangePageFromContentView;
-  // final Axis contentScrollAxis;
   final Color selectedTabBackgroundColor;
   final Color tabBackgroundColor;
   final TextStyle selectedTabTextStyle;
   final TextStyle tabTextStyle;
   final Duration changePageDuration;
-  final Curve changePageCurve;
-  // final Color? tabsShadowColor;
-  // final double tabsElevation;
-  final Function(int? tabIndex)? onSelect;
-  // final Color? backgroundColor;
-  // bool? changePageByTapView;
-  // PageController? pageController; 
-
-
-  // final void Function()? onPressed;
-
+  final Curve changePageCurve; 
+  final Function(int? tabIndex)? onSelect; 
 
  
   const AppSideMenu({
     Key? key,  
     this.initialIndex = 0,
-    this.tabsWidth = 200, 
-    // this.indicatorWidth = 3,
-    // this.indicatorSide, 
-    // this.tabs, 
+    this.tabsWidth = 200,  
     this.drawerHeader,
     this.drawerTiles,
-    // this.contents, 
     this.direction = TextDirection.ltr,
     this.indicatorColor = Colors.green,
     this.disabledChangePageFromContentView = false,
-    // this.contentScrollAxis = Axis.horizontal,
     this.selectedTabBackgroundColor = const Color(0x1100ff00),
     this.tabBackgroundColor = const Color(0xfff8f8f8),
     this.selectedTabTextStyle = const TextStyle(color: Colors.black),
     this.tabTextStyle = const TextStyle(color: Colors.black38), 
     this.changePageDuration = const Duration(milliseconds: 300), 
-    this.changePageCurve = Curves.easeInOut, 
-    // this.tabsShadowColor = Colors.black54,
-    // this.tabsElevation = 2.0, 
-    this.onSelect, 
-    // this.backgroundColor,
-    // this.changePageByTapView,
-    // this.pageController,
-
-    // this.onPressed
+    this.changePageCurve = Curves.easeInOut,  
+    this.onSelect,  
   }) : super(key: key);
 
   @override
@@ -121,67 +93,7 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
       shape: const BeveledRectangleBorder(),
       child: Column(
         children: [
-          widget.drawerHeader as Widget,
-          Container(
-            color: Colors.yellow,
-            child: BlocBuilder<PageBloc, PageState>(
-              builder: (context, state){
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Text("Activity: ${state.number}"),
-                      // const SizedBox(height: 30),  
-                      ElevatedButton(
-                        onPressed: () => BlocProvider.of<PageBloc>(context)
-                          .add(const LoadPageNameEvent("Page Name Here")), 
-                        child: const Icon(Icons.add),
-                      ),
-                    ],
-                  ),
-                );
-
-
-
-                /*
-                if(state is PageLoadedState){
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Text("Activity: ${state.number}"),
-                        // const SizedBox(height: 30),
-                        ElevatedButton(
-                          onPressed: () => BlocProvider.of<PageBloc>(context)
-                            .add(const LoadPageEvent(2)), 
-                          child: const Icon(Icons.add),
-                        ),
-                      ],
-                    ),
-                  );
-                } else if(state is PageNameLoadedState){
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // Text("Activity: ${state.number}"),
-                        // const SizedBox(height: 30),  
-                        ElevatedButton(
-                          onPressed: () => BlocProvider.of<PageBloc>(context)
-                            .add(const LoadPageNameEvent("Page Name Here")), 
-                          child: const Icon(Icons.add),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                */
-                return Container(
-                  color: Colors.red,
-                );
-              }
-            ),  
-          ),
+          widget.drawerHeader as Widget, 
           SizedBox(
             child: ListView.builder(
               shrinkWrap: true,
@@ -232,60 +144,7 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
                     )
                   );
                 }
-
                 return drawerListTile;
-        
-
-                // return Stack(
-                //   children: [
-                //     Positioned( 
-                //       child: ScaleTransition(
-                //         scale: Tween(
-                //           begin: 0.0,
-                //           end: 1.0
-                //         ).animate(
-                //           CurvedAnimation(
-                //             parent: animationControllers[index], 
-                //             curve: Curves.elasticOut
-                //           )
-                //         ),
-                //         child: Container(
-                //           color: widget.indicatorColor,
-                //         ),
-                //       )
-                //     ), 
-                //     GestureDetector(
-                //       onTap: () {
-                //         _changePageByTapView = true;
-                //         setState(() {
-                //           _selectTab(index);
-                //         });
-
-                //         pageController.animateToPage(
-                //           index,
-                //           duration: widget.changePageDuration,
-                //           curve: widget.changePageCurve
-                //         );
-                //       },
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //           color: itemBGColor,
-                //         ),
-                //         alignment: alignment,
-                //         padding: const EdgeInsets.all(5),
-                //         child: child,
-                //       ),
-                //     ),
-                //     // Text(drawerListTile.title)
-                    
-                //   ],
-                // );
-                // return Container(
-                //   color: Colors.red,
-                //   width: 20,
-                //   height: 30,
-                //   margin: const EdgeInsets.only(top: 2),
-                // );
               }
             ),
           ) 

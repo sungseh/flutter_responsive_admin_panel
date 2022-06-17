@@ -17,21 +17,7 @@ class PageControllerWidget extends StatefulWidget {
 
 class _PageControllerWidgetState extends State<PageControllerWidget> {
   final int _pageIndex = 0;
-
-  final List<String> titles = [
-    'Dashboard',
-    'Places',
-    'Featured Places',
-    'Upload Place',
-    'Blogs',
-    'Upload Blog',
-    'States',
-    'Notifications',
-    'Users',
-    'Admin',
-    'Settings'
-  ];
-  
+ 
   final List icons = [
     LineIcons.pieChart,
     LineIcons.mapMarker,
@@ -45,71 +31,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     LineIcons.userSecret,
     LineIcons.key
   ];
-
-  final List<Widget> pages = [
-    Container(
-      color: Colors.blue,
-      child: const Center(
-        child: Text(
-          "Dashboard"
-        ),
-      )
-    ),
-    Container(
-      color: Colors.red,
-      child: const Center(
-        child: Text(
-          "Presenters"
-        ),
-      )
-    ),
-    Container(
-      color: Colors.green,
-      child: const Center(
-        child: Text(
-          "Audio"
-        ),
-      )
-    ),
-    Container(
-      color: Colors.blue,
-      child: const Center(
-        child: Text(
-          "Videos"
-        ),
-      )
-    ),
-    Container(
-      color: Colors.purple,
-      child: const Center(
-        child: Text(
-          "Transactions"
-        ),
-      )
-    ),
-    Container(
-      color: Colors.yellow,
-      child: const Center(
-        child: Text(
-          "Dashboard"
-        ),
-      )
-    ),
-    // DataInfoPage(),
-    // CoverWidget(
-    //   widget: PlacesPage()
-    // ),
-    // CoverWidget(widget: FeaturedPlaces()),
-    // CoverWidget(widget: UploadPlace()),
-    // CoverWidget(widget: BlogPage()),
-    // CoverWidget(widget: UploadBlog()),
-    // CoverWidget(widget: States()),
-    // CoverWidget(widget: Notifications()),
-    // CoverWidget(widget: UsersPage()),
-    // CoverWidget(widget: AdminPage()),
-    // CoverWidget(widget: Settings())
-  ];
-
+  
   final List drawerListTiles = [
     AppDrawerListTile(
       title: "Dashboard",
@@ -120,53 +42,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       title: "Presenters",
       svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
-    ),
-    /*
-    AppDrawerListTile(
-      title: "List Presenters",
-      svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
-      child: AppDrawerListTile(
-        title: "Dashboard",
-        svgSrc: "assets/icons/menu_tran.svg",
-        press: () {},
-      ), 
-      children: [
-        ListTile(
-          // onTap: () => context.read<PageBloc>().add(LoadPageEvent(2)),
-          // onTap: () => BlocProvider.of<PageBloc>(context)
-          //   .add(LoadPageEvent(state.number)), 
-          horizontalTitleGap: 16.0,
-          leading: SvgPicture.asset( 
-            "assets/icons/menu_tran.svg",
-            color: Colors.white54,
-            height: 16, 
-          ),  
-          title: const Text(
-            "title",
-            // style: const TextStyle(
-            //   color: Colors.white54
-            // ),
-          ),
-        ),
-        AppDrawerListTile(
-          title: "List Presenters",
-          svgSrc: "assets/icons/menu_tran.svg",
-          press: () {
-            print("List Presentets");
-          },
-        ),
-        AppDrawerListTile(
-          title: "Add New Presenter",
-          svgSrc: "assets/icons/menu_tran.svg",
-          // press: () {},
-          press: () {
-            print("List Presentets");
-          },
-        ),
-      ] 
-    ),
-    */
+    ), 
     AppDrawerListTile(
       title: "Audio",
       svgSrc: "assets/icons/menu_tran.svg",
@@ -188,23 +64,18 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       press: () {},
     ),
     AppDrawerListTile(
-      title: "Task",
-      svgSrc: "assets/icons/menu_task.svg",
-      press: () {},
-    ),
-    // DrawerListTile(
-    //   title: "Documents",
-    //   svgSrc: "assets/icons/menu_dashboard.svg",
-    //   press: () {},
-    // ),
-    AppDrawerListTile(
-      title: "Store",
-      svgSrc: "assets/icons/menu_store.svg",
+      title: "Settings",
+      svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
     ),
     AppDrawerListTile(
-      title: "Notification",
-      svgSrc: "assets/icons/menu_notification.svg",
+      title: "Settings",
+      svgSrc: "assets/icons/menu_tran.svg",
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Settings",
+      svgSrc: "assets/icons/menu_tran.svg",
       press: () {},
     ), 
   ];
@@ -374,9 +245,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       // key: context.read<MenuController>().scaffoldKey,
-      // drawer: AppSideMenu(
-
-      // ),
+      drawer: const AppSideMenu(),
       body: SafeArea( 
         child: Column(
           children: <Widget>[
@@ -384,20 +253,7 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
             Expanded(
               child: Container(
                 color: Colors.white,
-                child: AppPageFrame(
-                  tabBackgroundColor: Colors.white,
-                  backgroundColor: Colors.grey[200],
-                  tabsElevation: 0.5,
-                  tabsShadowColor: Colors.grey[500],
-                  tabsWidth: 200,
-                  indicatorColor: Colors.deepPurpleAccent,
-                  selectedTabBackgroundColor: Colors.deepPurpleAccent.withOpacity(0.1),
-                  indicatorWidth: 5,
-                  disabledChangePageFromContentView: true,
-                  changePageDuration: const Duration(microseconds: 1),
-                  initialIndex: _pageIndex,
-                  drawerHeader: appDrawerHeader(),
-                  // onPressed: _onClick,
+                child: AppPageFrame( 
                   sideMenu: AppSideMenu(
                     drawerHeader: appDrawerHeader(),
                     indicatorColor: Colors.deepPurpleAccent,
@@ -412,60 +268,12 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
                       drawerListTiles[7],
                       drawerListTiles[8],
                     ],
-                  ), 
-                  drawerTile: <AppDrawerListTile>[
-                    drawerListTiles[0], 
-                    drawerListTiles[1], 
-                    drawerListTiles[2], 
-                    drawerListTiles[3], 
-                    drawerListTiles[4],
-                    drawerListTiles[5],
-                    drawerListTiles[6],
-                    drawerListTiles[7],
-                    drawerListTiles[8],
-                  ],
-                  tabs: <Tab>[
-                    tab(titles[0], icons[0]),
-                    tab(titles[1], icons[1]),
-                    tab(titles[2], icons[2]),
-                    tab(titles[3], icons[3]),
-                    tab(titles[4], icons[4]),
-                    tab(titles[5], icons[5]),
-                    tab(titles[6], icons[6]),
-                    tab(titles[7], icons[7]),
-                    tab(titles[8], icons[8]),
-                    tab(titles[9], icons[9]),
-                    tab(titles[10], icons[10])
-                  ], 
-                  contents: pages
+                  ),   
                 ), 
               ),
             ),
           ],
         ), 
-
-
-
-        // child: Row(
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     // We want this side menu only for large screen
-        //     if (ConfigResponsive.isDesktop(context)) 
-        //       const Expanded(
-        //         // default flex = 1
-        //         // and it takes 1/6 part of the screen
-        //         child: AppSideMenu(),
-        //       ),
-        //     Expanded(
-        //       // It takes 5/6 part of the screen
-        //       flex: 5,
-        //       // child: DashboardScreen(),
-        //       child: Container(
-        //         color: Colors.blue,
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }

@@ -124,7 +124,7 @@ class AdministratorBloc extends ChangeNotifier {
     List d = snap.docs;
     _presenters.clear();
     for (var element in d) {
-      _presenters.add(element['name']);
+      _presenters.add("${element['firstname']} ${element['lastname']}");
     }
     notifyListeners(); 
   }
