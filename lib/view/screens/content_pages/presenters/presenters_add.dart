@@ -8,21 +8,21 @@ import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 
-class AddAudio extends StatefulWidget {
-  // final Place audioData;
-  final AudioModel? audioData;
+class AddPresenter extends StatefulWidget {
+  // final Place presenterData;
+  final PresenterModel? presenterData;
 
 
-  const AddAudio({
+  const AddPresenter({
     Key? key, 
-    this.audioData
+    this.presenterData
   }) : super(key: key);
 
   @override
-  State<AddAudio> createState() => _AddAudioState();
+  State<AddPresenter> createState() => _AddPresenterState();
 }
 
-class _AddAudioState extends State<AddAudio> { 
+class _AddPresenterState extends State<AddPresenter> { 
   FileModel? file;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -99,10 +99,10 @@ class _AddAudioState extends State<AddAudio> {
   }
  
   Future saveToDatabase() async {
-    // final DocumentReference ref = firestore.collection(collectionName).doc(widget.audioData.timestamp);
-    // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp);
+    // final DocumentReference ref = firestore.collection(collectionName).doc(widget.presenterData.timestamp);
+    // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.presenterData.timestamp).collection('travel guide').doc(widget.presenterData.timestamp);
      
-    var audioData = {
+    var presenterData = {
       'state' : stateSelection,
       'place name' : nameCtrl.text,
       'location' : locationCtrl.text,
@@ -125,12 +125,12 @@ class _AddAudioState extends State<AddAudio> {
       'paths' : paths
     };
 
-    // await ref.update(_audioData)
+    // await ref.update(_presenterData)
     // .then((value) => ref1.update(_guideData));
   }
  
   Future getGuideData () async {
-    // firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp).get().then((DocumentSnapshot snap){
+    // firestore.collection(collectionName).doc(widget.presenterData.timestamp).collection('travel guide').doc(widget.presenterData.timestamp).get().then((DocumentSnapshot snap){
     //   Map x = snap.data() as Map<dynamic, dynamic>;
     //   startpointNameCtrl.text = x['startpoint name'];
     //   endpointNameCtrl.text = x['endpoint name'];
@@ -146,15 +146,15 @@ class _AddAudioState extends State<AddAudio> {
   }
  
   initData (){
-    // stateSelection = widget.audioData.state;
-    nameCtrl.text = widget.audioData?.title ?? "";
-    // locationCtrl.text = widget.audioData.location!;
-    // descriptionCtrl.text = widget.audioData.description!;
-    // image1Ctrl.text = widget.audioData.imageUrl1!;
-    // image2Ctrl.text = widget.audioData.imageUrl2!;
-    // image3Ctrl.text = widget.audioData.imageUrl3!;
-    // latCtrl.text = widget.audioData.latitude.toString();
-    // lngCtrl.text = widget.audioData.longitude.toString();
+    // stateSelection = widget.presenterData.state;
+    nameCtrl.text = widget.presenterData?.firstname ?? "";
+    // locationCtrl.text = widget.presenterData.location!;
+    // descriptionCtrl.text = widget.presenterData.description!;
+    // image1Ctrl.text = widget.presenterData.imageUrl1!;
+    // image2Ctrl.text = widget.presenterData.imageUrl2!;
+    // image3Ctrl.text = widget.presenterData.imageUrl3!;
+    // latCtrl.text = widget.presenterData.latitude.toString();
+    // lngCtrl.text = widget.presenterData.longitude.toString();
     getGuideData();
   }
  
@@ -241,7 +241,7 @@ class _AddAudioState extends State<AddAudio> {
             const Padding(
               padding: EdgeInsets.only(top: 16),
               child: Text(
-                "Add Audio", 
+                "Add Presenter", 
                 style: TextStyle(
                   fontSize: 25, 
                   fontWeight: FontWeight.w700
@@ -255,8 +255,8 @@ class _AddAudioState extends State<AddAudio> {
               file: file, 
             ),
             AppTextFormField(
-              placeholder: 'Enter Audio Title',
-              title: 'Audio Title',
+              placeholder: 'Enter Presenter Title',
+              title: 'Presenter Title',
               controller: nameCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;
@@ -301,7 +301,7 @@ class _AddAudioState extends State<AddAudio> {
             AppRichTextField(),
             AppTextFormArea(
               placeholder: 'Enter description',
-              label: 'Audio Description',
+              label: 'Presenter Description',
               controller: descriptionCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;

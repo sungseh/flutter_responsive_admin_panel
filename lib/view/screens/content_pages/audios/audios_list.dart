@@ -50,19 +50,13 @@ class _AudiosListState extends State<AudiosList> {
               shrinkWrap: true,
               padding: const EdgeInsets.only(top: 30, bottom: 20),
               physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: 10,
+              itemCount: audios.length, 
               itemBuilder: (_, int index) {
                 return AppAudioItem( 
                   // onPressed: _onTapAudio, 
                   item: audios[index]!,
                   // type: AudioViewType.category,
-                );
-                // return Container(
-                //   margin: const EdgeInsets.all(2),
-                //   color: Colors.red,
-                //   height: 60,
-                //   width: 60,
-                // );
+                ); 
               }
             );
           }

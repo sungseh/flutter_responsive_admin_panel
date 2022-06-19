@@ -44,22 +44,22 @@ class _AppDropZoneState extends State<AppDropZone> {
     });
   }
 
-  Widget buildDecoration({required Widget child}){
-    final colorBackground =  highlight? Colors.blue: Colors.green;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        color: colorBackground,
-        child: DottedBorder(
-          borderType: BorderType.RRect,
-          color: Colors.white,
-          strokeWidth: 3,
-          dashPattern: const [8,4],
-          radius: const Radius.circular(10),
-          padding: EdgeInsets.zero,
-          child: child
-        ),
+  Widget buildDecoration({ required Widget child }){
+    final colorBackground =  highlight? Colors.red: Theme.of(context).primaryColor.withOpacity(0.8);
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 8
+      ),
+      padding: const EdgeInsets.all(8),
+      color: colorBackground,
+      child: DottedBorder(
+        borderType: BorderType.RRect,
+        color: Colors.white,
+        strokeWidth: 2,
+        dashPattern: const [8, 8],
+        // radius: const Radius.circular(10),
+        padding: EdgeInsets.zero,
+        child: child
       ),
     );
   }
@@ -73,51 +73,61 @@ class _AppDropZoneState extends State<AppDropZone> {
           DropzoneView(
             onCreated: (controller) => this.controller = controller,
             onDrop: uploadedFile,
-            onHover:() => setState(()=> highlight = true),
-            onLeave: ()=> setState(()=>highlight = false),
+            onHover: () => setState(() => highlight = true),
+            onLeave: () => setState(() => highlight = false),
           ),
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.cloud_upload_outlined,
-                  size: 80,
-                  color: Colors.white,
-                ),
-                const Text(
-                  'Drop Files Here',
-                  style: TextStyle(
-                    color: Colors.white, 
-                    fontSize: 24
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 4
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Icon(
+                    Icons.cloud_upload_outlined,
+                    size: 64,
+                    color: Colors.white,
                   ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                ElevatedButton.icon(
-                  onPressed: () async {
-                    final events = await controller.pickFiles();
-                    if(events.isEmpty) return;
-                    uploadedFile(events.first);
-                  },
-                  icon: const Icon(Icons.search),
-                  label: const Text(
-                    'Choose File',
+                  const Text(
+                    'Drop Files Here',
                     style: TextStyle(
                       color: Colors.white, 
-                      fontSize: 15
+                      fontSize: 16
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20
-                    ),
-                    primary: highlight? Colors.blue : Colors.green.shade300,
-                    shape: const RoundedRectangleBorder()
+                  const SizedBox(
+                    height: 8,
                   ),
-                )
-              ],
+                  Container(
+                    padding: const EdgeInsets.only(
+                      bottom: 16
+                    ),
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        final events = await controller.pickFiles();
+                        if(events.isEmpty) return;
+                        uploadedFile(events.first);
+                      },
+                      icon: const Icon(Icons.search),
+                      label: const Text(
+                        'Choose File',
+                        style: TextStyle(
+                          color: Colors.white, 
+                          fontSize: 16
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        primary: highlight? Colors.blue : Theme.of(context).primaryColor,
+                        shape: const RoundedRectangleBorder()
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

@@ -8,21 +8,21 @@ import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 
-class AddAudio extends StatefulWidget {
-  // final Place audioData;
-  final AudioModel? audioData;
+class AddVideo extends StatefulWidget {
+  // final Place videoData;
+  final VideoModel? videoData;
 
 
-  const AddAudio({
+  const AddVideo({
     Key? key, 
-    this.audioData
+    this.videoData
   }) : super(key: key);
 
   @override
-  State<AddAudio> createState() => _AddAudioState();
+  State<AddVideo> createState() => _AddVideoState();
 }
 
-class _AddAudioState extends State<AddAudio> { 
+class _AddVideoState extends State<AddVideo> { 
   FileModel? file;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -31,7 +31,6 @@ class _AddAudioState extends State<AddAudio> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   final String collectionName = 'categories';
   List? paths = [];
-  String _helperText = 'Enter paths list to help users to go to the desired destination like : Dhaka to Sylhet by Bus - 200Tk.....';
   bool uploadStarted = false;
   var stateSelection;
   
@@ -99,10 +98,10 @@ class _AddAudioState extends State<AddAudio> {
   }
  
   Future saveToDatabase() async {
-    // final DocumentReference ref = firestore.collection(collectionName).doc(widget.audioData.timestamp);
-    // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp);
+    // final DocumentReference ref = firestore.collection(collectionName).doc(widget.videoData.timestamp);
+    // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.videoData.timestamp).collection('travel guide').doc(widget.videoData.timestamp);
      
-    var audioData = {
+    var videoData = {
       'state' : stateSelection,
       'place name' : nameCtrl.text,
       'location' : locationCtrl.text,
@@ -125,12 +124,12 @@ class _AddAudioState extends State<AddAudio> {
       'paths' : paths
     };
 
-    // await ref.update(_audioData)
+    // await ref.update(_videoData)
     // .then((value) => ref1.update(_guideData));
   }
  
   Future getGuideData () async {
-    // firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp).get().then((DocumentSnapshot snap){
+    // firestore.collection(collectionName).doc(widget.videoData.timestamp).collection('travel guide').doc(widget.videoData.timestamp).get().then((DocumentSnapshot snap){
     //   Map x = snap.data() as Map<dynamic, dynamic>;
     //   startpointNameCtrl.text = x['startpoint name'];
     //   endpointNameCtrl.text = x['endpoint name'];
@@ -146,15 +145,15 @@ class _AddAudioState extends State<AddAudio> {
   }
  
   initData (){
-    // stateSelection = widget.audioData.state;
-    nameCtrl.text = widget.audioData?.title ?? "";
-    // locationCtrl.text = widget.audioData.location!;
-    // descriptionCtrl.text = widget.audioData.description!;
-    // image1Ctrl.text = widget.audioData.imageUrl1!;
-    // image2Ctrl.text = widget.audioData.imageUrl2!;
-    // image3Ctrl.text = widget.audioData.imageUrl3!;
-    // latCtrl.text = widget.audioData.latitude.toString();
-    // lngCtrl.text = widget.audioData.longitude.toString();
+    // stateSelection = widget.videoData.state;
+    nameCtrl.text = widget.videoData?.title ?? "";
+    // locationCtrl.text = widget.videoData.location!;
+    // descriptionCtrl.text = widget.videoData.description!;
+    // image1Ctrl.text = widget.videoData.imageUrl1!;
+    // image2Ctrl.text = widget.videoData.imageUrl2!;
+    // image3Ctrl.text = widget.videoData.imageUrl3!;
+    // latCtrl.text = widget.videoData.latitude.toString();
+    // lngCtrl.text = widget.videoData.longitude.toString();
     getGuideData();
   }
  
@@ -241,22 +240,25 @@ class _AddAudioState extends State<AddAudio> {
             const Padding(
               padding: EdgeInsets.only(top: 16),
               child: Text(
-                "Add Audio", 
+                "Add Video", 
                 style: TextStyle(
                   fontSize: 25, 
                   fontWeight: FontWeight.w700
                 ), 
               ),
             ),
-            AppDropZone( 
+            // AppFileUploadButton(),
+            AppDropZone(
+              // onDroppedFile: (FileModel value) {  },
+              // onDroppedFile: file,
               onDroppedFile: (file) => setState(() => this.file = file) ,
             ),
             AppDroppedFile(
               file: file, 
             ),
             AppTextFormField(
-              placeholder: 'Enter Audio Title',
-              title: 'Audio Title',
+              placeholder: 'Enter Video Title',
+              title: 'Video Title',
               controller: nameCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;
@@ -291,7 +293,7 @@ class _AddAudioState extends State<AddAudio> {
             ),
             AppToggleButton(
               label: "Active", 
-              value: false,
+              value: false, 
               onChanged: (bool value) { 
                 setState(() {
                   toggleValue = value; 
@@ -301,7 +303,7 @@ class _AddAudioState extends State<AddAudio> {
             AppRichTextField(),
             AppTextFormArea(
               placeholder: 'Enter description',
-              label: 'Audio Description',
+              label: 'Video Description',
               controller: descriptionCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;

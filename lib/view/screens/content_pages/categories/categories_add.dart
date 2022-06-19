@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
@@ -6,23 +5,20 @@ import 'package:flutter_responsive_admin_panel/misc/misc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:provider/provider.dart';
-
-
-class AddAudio extends StatefulWidget {
-  // final Place audioData;
+ 
+class AddCategory extends StatefulWidget {
   final AudioModel? audioData;
 
-
-  const AddAudio({
+  const AddCategory({
     Key? key, 
     this.audioData
   }) : super(key: key);
 
   @override
-  State<AddAudio> createState() => _AddAudioState();
+  State<AddCategory> createState() => _AddCategoryState();
 }
 
-class _AddAudioState extends State<AddAudio> { 
+class _AddCategoryState extends State<AddCategory> {
   FileModel? file;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -241,54 +237,27 @@ class _AddAudioState extends State<AddAudio> {
             const Padding(
               padding: EdgeInsets.only(top: 16),
               child: Text(
-                "Add Audio", 
+                "Add Category", 
                 style: TextStyle(
                   fontSize: 25, 
                   fontWeight: FontWeight.w700
                 ), 
               ),
             ),
-            AppDropZone( 
+            AppDropZone(
               onDroppedFile: (file) => setState(() => this.file = file) ,
             ),
             AppDroppedFile(
               file: file, 
             ),
             AppTextFormField(
-              placeholder: 'Enter Audio Title',
-              title: 'Audio Title',
+              placeholder: 'Enter Category Name',
+              title: 'Category Name',
               controller: nameCtrl,
               validator: (value){
                 if(value!.isEmpty) return 'Value is empty'; return null;
               },
-            ),   
-            AppDropDown(
-              placeholder: 'Select Presenter',
-              items: ab.presenters.map((f) {
-                return DropdownMenuItem(
-                  value: f,
-                  child: Text(f),
-                );
-              }).toList()
-            ),
-            AppDropDown(
-              placeholder: 'Select Category',
-              items: ab.categories.map((f) {
-                return DropdownMenuItem(
-                  value: f,
-                  child: Text(f),
-                );
-              }).toList()
-            ), 
-            AppToggleButton(
-              label: "Premium", 
-              value: false,
-              onChanged: (bool value) { 
-                setState(() {
-                  toggleValue = value; 
-                }); 
-              }, 
-            ),
+            ),  
             AppToggleButton(
               label: "Active", 
               value: false,
@@ -298,40 +267,13 @@ class _AddAudioState extends State<AddAudio> {
                 }); 
               }, 
             ), 
-            AppRichTextField(),
-            AppTextFormArea(
-              placeholder: 'Enter description',
-              label: 'Audio Description',
-              controller: descriptionCtrl,
-              validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
+            AppSubmitButton(
+              title: "Add Category",
+              uploadStarted: uploadStarted,
+              onPressed: () async{
+                handleSubmit();
               }, 
             ),
-            Container(
-              color: Theme.of(context).primaryColor,
-              height: 45,
-              child: uploadStarted == true ?
-              const Center(
-                child: SizedBox(
-                  height: 30, 
-                  width: 30,
-                  child: CircularProgressIndicator()
-                )
-              ) :
-              TextButton(
-                child: const Text(
-                  'Update Place Data',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600
-                  ),
-                ),
-                onPressed: () async{
-                  handleSubmit();
-                }
-              )
-            ), 
           ],
         )
       ),

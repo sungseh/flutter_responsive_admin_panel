@@ -3,7 +3,7 @@ import 'package:flutter_responsive_admin_panel/models/models.dart';
 import 'package:line_icons/line_icons.dart';
 
 class AppVideoItem extends StatelessWidget {
-  final VideoModel item;
+  final VideoModel? item;
 
   const AppVideoItem({
     Key? key, 
@@ -48,7 +48,7 @@ class AppVideoItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        item.title!,
+                        item?.title ?? "",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -74,7 +74,7 @@ class AppVideoItem extends StatelessWidget {
                       ),
                       Text(
                         // d.location!,
-                        item.presenter!,
+                        item?.presenter ?? "",
                         style: const TextStyle(fontSize: 12),
                       ),
                       const SizedBox(width: 10),
@@ -88,7 +88,7 @@ class AppVideoItem extends StatelessWidget {
                       ),
                       Text(
                         // d.date!, 
-                        item.title!, 
+                        item?.title ?? "", 
                         style: const TextStyle(fontSize: 12),
                       ),
                     ],
@@ -115,7 +115,7 @@ class AppVideoItem extends StatelessWidget {
                             ),
                             Text(
                               // d.loves.toString(), 
-                              item.category!, 
+                              item?.category ?? "", 
                               style: const TextStyle(
                                 color: Colors.grey, 
                                 fontSize: 13
@@ -142,7 +142,7 @@ class AppVideoItem extends StatelessWidget {
                               color: Colors.grey[800],
                             ),
                             Text(
-                              item.videoId!,
+                              item?.videoId ?? "",
                               style: const TextStyle(
                                 color: Colors.grey, 
                                 fontSize: 13

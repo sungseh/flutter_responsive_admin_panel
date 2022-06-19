@@ -3,19 +3,14 @@ import 'package:flutter/material.dart';
 
 class AppToggleButton extends StatefulWidget {
   final String label;
-  // final List<bool> isSelecteds;
-  // final bool isSelected;
-  // final void Function(int)? onTap;
-  final void Function()? onTap;
+  final bool value; 
   final void Function(bool)? onChanged;
 
   const AppToggleButton({
-    Key? key, 
-    // required this.isSelecteds, 
-    // required this.isSelected, 
-    this.onTap, 
+    Key? key,  
     this.onChanged, 
-    required this.label
+    required this.value, 
+    required this.label, 
   }) : super(key: key);
 
   @override
@@ -23,26 +18,34 @@ class AppToggleButton extends StatefulWidget {
 }
 
 class _AppToggleButtonState extends State<AppToggleButton> {
-  bool toggleValue = false;
+  bool isSwitch = false;
+  bool? dynamicSwitch;
 
-  toggleButton(){
-    setState(() {
-      toggleValue = !toggleValue;
-    });
-  }
- 
   @override
   Widget build(BuildContext context) {
-    return MergeSemantics(
-      child: ListTile(
-        title: Text(widget.label),
-        trailing: CupertinoSwitch(
-          value: toggleValue,
-          onChanged: (bool value) { setState(() { toggleValue = value; }); },
-          // onChanged: widget.onChanged
-        ),
-        // onTap: () { setState(() { toggleValue = !toggleValue; }); },
-        onTap: widget.onTap
+    handleSwitch(bool value) {
+      setState(() {
+        isSwitch = value;
+        dynamicSwitch = value;
+      });
+    }
+
+    dynamicSwitch = widget.value;
+
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(widget.label),
+          CupertinoSwitch(
+            activeColor: Theme.of(context).primaryColor,
+            value: dynamicSwitch != true ? isSwitch : dynamicSwitch!,
+            onChanged: (val) {
+              handleSwitch(val);
+            }, 
+          ), 
+        ],
       ),
     ); 
   }

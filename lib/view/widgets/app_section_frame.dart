@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/app_button.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/app_empty_content.dart'; 
 
 class AppSectionFrame extends StatefulWidget {
@@ -34,78 +35,64 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(32.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ), 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BlocBuilder<PageBloc, PageState>(
-                builder: (context, state) { 
-                  if (state is PageNameLoadedState) {
-                    return Text(
-                      state.pageName,
-                      style: const TextStyle(
-                        fontSize: 30, 
-                        fontWeight: FontWeight.w800
-                      ),
-                    ); 
+      padding: const EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * 0.05,
+            // ), 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BlocBuilder<PageBloc, PageState>(
+                  builder: (context, state) { 
+                    if (state is PageNameLoadedState) {
+                      return Text(
+                        state.pageName,
+                        style: const TextStyle(
+                          fontSize: 30, 
+                          fontWeight: FontWeight.w800
+                        ),
+                      ); 
+                    }
+                    return Container();
                   }
-                  return Container();
-                }
-              ),
-              ElevatedButton(
-                // onPressed: widget.onPressed,
-                onPressed: _onPressedAdd,
-                child: Row(
-                  children: const [
-                    Icon(Icons.add),
-                    Text(
-                      "Add"
-                    ),
-                  ],
+                ), 
+                AppButton(
+                  title: "Add",
+                  onPressed: _onPressedAdd,
+                ), 
+                // sortingPopup()
+              ],
+            ),
+            Divider(
+              thickness: 2,  
+              color: Theme.of(context).primaryColor,
+              height: 24,  
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: widget.listSection ?? const AppEmptyContent(title: "This has not been given")
+                ),
+                Visibility(
+                  visible: _showAddSection,
+                  child: Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 32),
+                      child: widget.addSection ?? const AppEmptyContent(title: "This has not been given")
+                    )
+                  )
                 )
-              ),
-              // sortingPopup()
-            ],
-          ),
-          const Divider(
-            thickness: 2,  
-            color: Colors.indigoAccent,
-            height: 25,  
-          ),
-          
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 2,
-                child: widget.listSection ?? const AppEmptyContent(title: "This has not been given")
-              ),
-              Visibility(
-                visible: _showAddSection,
-                child: Expanded(
-                  flex: 1,
-                  child: widget.addSection ?? const AppEmptyContent(title: "This has not been given")
-                )
-              )
-            ],
-          )
-          
-          
-          // widget.listSection,
- 
-          // Visibility(
-          //   visible: _showAddSection,
-          //   child: widget.addSection
-          // )
-
-          
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

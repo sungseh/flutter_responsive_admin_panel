@@ -10,15 +10,13 @@ class AppCoverWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
     return Container(
-      margin: const EdgeInsets.only(
-        left: 16, 
-        right: 16,
-      ),
+      margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.only(
         left: 16,
-        right: 16
+        right: 16,
+        top: 0,
+        bottom: 16
       ),
       decoration: BoxDecoration(
         color: Colors.white,

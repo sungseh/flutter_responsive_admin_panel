@@ -33,7 +33,7 @@ class _AppPageFrameState extends State<AppPageFrame> {
           child: Center(
             child: BlocBuilder<PageBloc, PageState>(
               builder: (context, state){
-                if(state is PageLoadedState){
+                if (state is PageLoadedState) {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -42,7 +42,7 @@ class _AppPageFrameState extends State<AppPageFrame> {
                       ],
                     ),
                   );
-                } else if(state is PageNameLoadedState){
+                } else if (state is PageNameLoadedState){
                   switch (state.pageName) {
                     case "Dashboard":
                       return const Dashboard();

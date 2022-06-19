@@ -9,6 +9,15 @@ class AppBloc {
   static final audiosBloc = AudiosBloc(
     audiosRepo: AudioFirestore()
   );
+  static final videosBloc = VideosBloc(
+    videosRepo: VideoFirestore()
+  );
+  static final categoriesBloc = CategoriesBloc(
+    categoriesRepo: CategoryFirestore()
+  );
+  static final presentersBloc = PresentersBloc(
+    presentersRepo: PresenterFirestore()
+  );
   static final testBloc = TestBloc();
   static final userCubit = UserCubit(); 
   static final applicationCubit = ApplicationCubit(); 
@@ -34,7 +43,16 @@ class AppBloc {
     ),
     BlocProvider<AudiosBloc>(
       create: (context) => audiosBloc
-    ) 
+    ),
+    BlocProvider<VideosBloc>(
+      create: (context) => videosBloc
+    ),
+    BlocProvider<CategoriesBloc>(
+      create: (context) => categoriesBloc
+    ),
+    BlocProvider<PresentersBloc>(
+      create: (context) => presentersBloc
+    ),
   ];
 
   static void dispose(){
@@ -42,6 +60,9 @@ class AppBloc {
     pageBloc.close();
     authBloc.close();
     audiosBloc.close();
+    videosBloc.close();
+    categoriesBloc.close();
+    presentersBloc.close();
     userCubit.close(); 
     testBloc.close();
   }
