@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; 
 import 'package:flutter_responsive_admin_panel/utils/utils.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
@@ -17,15 +18,18 @@ class AppTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AppTextFieldContainer(
       padding: const EdgeInsets.symmetric(
         vertical: 8
       ),
-      child: TextFormField(
+      decoration: BoxDecoration(
+        color: Colors.red
+      ),
+      child: TextFormField( 
         decoration: inputDecoration(
-          placeholder,
-          title,
-          controller
+          hint: placeholder,
+          label: title,
+          controller: controller, 
         ),
         controller: controller,
         validator: validator

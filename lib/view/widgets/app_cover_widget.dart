@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/configs/config_colors.dart';
 
 class AppCoverWidget extends StatelessWidget {
   final Widget widget;
@@ -11,7 +12,12 @@ class AppCoverWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 3,
+        bottom: 16
+      ),
       padding: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -19,15 +25,8 @@ class AppCoverWidget extends StatelessWidget {
         bottom: 16
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(0),
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.grey[300]!, 
-            blurRadius: 10, 
-            offset: const Offset(3, 3)
-          )
-        ],
+        color: ConfigColors.secondaryColor,
+        borderRadius: BorderRadius.circular(10), 
       ),
       child: widget 
     );

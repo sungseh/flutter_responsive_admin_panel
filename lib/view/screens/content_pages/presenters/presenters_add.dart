@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
+import 'package:flutter_responsive_admin_panel/configs/config_colors.dart';
 import 'package:flutter_responsive_admin_panel/misc/misc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
@@ -238,13 +239,14 @@ class _AddPresenterState extends State<AddPresenter> {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 16),
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
               child: Text(
                 "Add Presenter", 
                 style: TextStyle(
                   fontSize: 25, 
-                  fontWeight: FontWeight.w700
+                  fontWeight: FontWeight.w700,
+                  color: ConfigColors.textColor
                 ), 
               ),
             ),
@@ -298,7 +300,7 @@ class _AddPresenterState extends State<AddPresenter> {
                 }); 
               }, 
             ), 
-            AppRichTextField(),
+            const AppRichTextField(),
             AppTextFormArea(
               placeholder: 'Enter description',
               label: 'Presenter Description',

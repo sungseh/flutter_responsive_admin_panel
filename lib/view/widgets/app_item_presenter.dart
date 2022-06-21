@@ -52,7 +52,7 @@ class AppPresenterItem extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.only(top: 5, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
+        color: ConfigColors.itemColor, 
         borderRadius: BorderRadius.circular(10)
       ),
       child: Row(

@@ -1,13 +1,16 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart'; 
 
 class AppBodyFont extends StatelessWidget {
   final String? title;
   final int? maxLines;
+  final Color? color;
   
   const AppBodyFont({
     Key? key, 
     this.title, 
-    this.maxLines
+    this.maxLines, 
+    this.color
   }) : super(key: key);
 
   @override
@@ -20,9 +23,10 @@ class AppBodyFont extends StatelessWidget {
         title ?? "",
         maxLines: maxLines ?? 1,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 12,
-          fontStyle: FontStyle.italic
+          fontStyle: FontStyle.italic,
+          color: color ?? ConfigColors.textColor
         ), 
       ),
     ); 

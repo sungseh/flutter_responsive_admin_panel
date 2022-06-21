@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/configs/config_colors.dart'; 
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 
@@ -51,44 +52,44 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
   Animation<double>? animation;
   Animation<RelativeRect>? rectAnimation;
  
-  @override
-  void initState() {
-    _selectedIndex = widget.initialIndex;
-    for (int i = 0; i < widget.drawerTiles!.length; i++) {
-      animationControllers.add(AnimationController(
-        duration: const Duration(milliseconds: 400),
-        vsync: this,
-      ));
-    }
-    _selectTab(widget.initialIndex);
+  // @override
+  // void initState() {
+  //   _selectedIndex = widget.initialIndex;
+  //   for (int i = 0; i < widget.drawerTiles!.length; i++) {
+  //     animationControllers.add(AnimationController(
+  //       duration: const Duration(milliseconds: 400),
+  //       vsync: this,
+  //     ));
+  //   }
+  //   _selectTab(widget.initialIndex);
 
-    if (widget.disabledChangePageFromContentView == true) {
-      pageScrollPhysics = const NeverScrollableScrollPhysics();
-    }
+  //   if (widget.disabledChangePageFromContentView == true) {
+  //     pageScrollPhysics = const NeverScrollableScrollPhysics();
+  //   }
 
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      pageController.jumpToPage(widget.initialIndex);
-      setState(() {});
-    });
-  }
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     pageController.jumpToPage(widget.initialIndex);
+  //     setState(() {});
+  //   });
+  // }
 
-  void _selectTab(index) {
-    _selectedIndex = index;
-    for (AnimationController animationController in animationControllers) {
-      animationController.reset();
-    }
-    animationControllers[index].forward();
+  // void _selectTab(index) {
+  //   _selectedIndex = index;
+  //   for (AnimationController animationController in animationControllers) {
+  //     animationController.reset();
+  //   }
+  //   animationControllers[index].forward();
 
-    if (widget.onSelect != null) {
-      widget.onSelect!(_selectedIndex);
-    }
-  }
+  //   if (widget.onSelect != null) {
+  //     widget.onSelect!(_selectedIndex);
+  //   }
+  // }
 
   @override 
   Widget build(BuildContext context) {  
     return Material(
-      color: Colors.yellow,
+      color: ConfigColors.secondaryColor,
       shadowColor: Colors.purple,
       shape: const BeveledRectangleBorder(),
       child: Column(
@@ -98,52 +99,8 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: widget.drawerTiles?.length,
-              // itemCount: 2,
               itemBuilder: (context, index){
-                AppDrawerListTile drawerListTile = widget.drawerTiles![index];
-                Color itemBGColor = widget.tabBackgroundColor;
-                if (_selectedIndex == index) {
-                  itemBGColor = widget.selectedTabBackgroundColor;
-                }
-                Alignment alignment = Alignment.centerLeft;
-                if (widget.direction == TextDirection.rtl) {
-                  alignment = Alignment.centerRight;
-                }
-
-                Widget? child;
-                if (drawerListTile.child != null) {
-                  child = drawerListTile.child;
-                } else {
-                  child = Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      children: <Widget>[ 
-                        (drawerListTile.icon != null)
-                        ? Row(
-                            children: <Widget>[
-                              drawerListTile.icon ?? const Icon(Icons.close),
-                              const SizedBox(
-                                width: 5,
-                              )
-                            ],
-                          )
-                        : Container(),
-                        (drawerListTile.title != null)
-                        ? SizedBox(
-                            width: widget.tabsWidth - 50,
-                            child: Text(
-                              drawerListTile.title,
-                              softWrap: true,
-                              style: _selectedIndex == index
-                                  ? widget.selectedTabTextStyle
-                                  : widget.tabTextStyle,
-                            )
-                          )
-                        : Container(),
-                      ],
-                    )
-                  );
-                }
+                AppDrawerListTile drawerListTile = widget.drawerTiles![index];  
                 return drawerListTile;
               }
             ),

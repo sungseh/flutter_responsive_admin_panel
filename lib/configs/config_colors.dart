@@ -15,6 +15,10 @@ class ConfigColors {
   static Color sourceWhite = const Color.fromARGB(223, 255, 255, 255);
   static Color sourceTransBlack = const Color.fromARGB(52, 255, 255, 255);  
 
+  // static Color itemColor = const Color.fromARGB(52, 255, 255, 255);
+  static Color itemColor = secondaryColor;
+  static Color textColor = const Color(0xDDFFFFFF);
+ 
   static Color primaryColor = const Color(0xFF2697FF);
   static Color secondaryColor = const Color(0xFF2A2D3E);
   static Color bgColor = const Color(0xFF212332);

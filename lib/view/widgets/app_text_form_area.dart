@@ -23,9 +23,10 @@ class AppTextFormArea extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: inputDecoration(
-          placeholder,
-          label,
-          controller, 
+          hint: placeholder,
+          label: label,
+          controller: controller, 
+          bgColor: Colors.red,
           contentPadding: const EdgeInsets.only(right: 0, left: 10, top: 15, bottom: 5),
         ),
         // decoration: InputDecoration(

@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart'; 
 import 'package:flutter_responsive_admin_panel/models/model_audio.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 import 'package:line_icons/line_icons.dart';
@@ -17,7 +18,7 @@ class AppAudioItem extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.only(top: 5, bottom: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
+        color: ConfigColors.secondaryColor, 
         borderRadius: BorderRadius.circular(10)
       ),
       child: Row(
@@ -26,7 +27,7 @@ class AppAudioItem extends StatelessWidget {
             height: 110,
             width: 110,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: ConfigColors.secondaryColor,
               borderRadius: BorderRadius.circular(10)
             ), 
             child: AppCustomImage(

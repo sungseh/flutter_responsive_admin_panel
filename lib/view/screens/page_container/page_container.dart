@@ -32,52 +32,37 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     LineIcons.key
   ];
   
-  final List drawerListTiles = [
+  final List<AppDrawerListTile> drawerListTiles = [
     AppDrawerListTile(
       title: "Dashboard",
       svgSrc: "assets/icons/menu_tran.svg",
+      icon: Icons.dashboard,
       press: () {}, 
     ),
     AppDrawerListTile(
       title: "Presenters",
       svgSrc: "assets/icons/menu_tran.svg",
+      icon: Icons.person,
       press: () {},
     ), 
     AppDrawerListTile(
       title: "Audio",
       svgSrc: "assets/icons/menu_tran.svg",
+      icon: Icons.audio_file,
       press: () {},
     ),
     AppDrawerListTile(
       title: "Videos",
       svgSrc: "assets/icons/menu_tran.svg",
+      icon: Icons.video_file,
       press: () {},
     ),
     AppDrawerListTile(
       title: "Categories",
       svgSrc: "assets/icons/menu_tran.svg",
+      icon: Icons.category,
       press: () {},
     ),
-    AppDrawerListTile(
-      title: "Settings",
-      svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
-    ),
-    AppDrawerListTile(
-      title: "Settings",
-      svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
-    ),
-    AppDrawerListTile(
-      title: "Settings",
-      svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
-    ),
-    AppDrawerListTile(
-      title: "Settings",
-      svgSrc: "assets/icons/menu_tran.svg",
-      press: () {},
-    ), 
   ];
 
 
@@ -178,12 +163,25 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
                     borderRadius: BorderRadius.circular(20)
                   ))
                 ),
-                icon: Icon(LineIcons.user, color: Colors.grey[800], size: 20,),
-                label: Text('Signed as ${ab.userType}', style: const TextStyle(fontWeight: FontWeight.w400, color: Colors.deepPurpleAccent, fontSize: 16),),
+                icon: Icon(
+                  LineIcons.user, 
+                  color: Colors.grey[800], 
+                  size: 20
+                ),
+                label: Text(
+                  'Signed as ${ab.userType}', 
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400, 
+                    color: Colors.deepPurpleAccent, 
+                    fontSize: 16
+                  )
+                ),
                 onPressed: () => null, 
               ),
             ),
-            const SizedBox(width: 20)
+            const SizedBox(
+              width: 20
+            )
           ],
         ),
       )   
@@ -193,13 +191,14 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
   Tab tab(title, icon) {
     return Tab(
       child: Container(
-        padding: const EdgeInsets.only(left: 10,),
+        padding: const EdgeInsets.only(left: 10),
         height: 45,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Icon(
-              icon, size: 20, color: Colors.grey[800],
+              icon, size: 20, 
+              color: Colors.grey[800],
             ),
             const SizedBox(
               width: 5,
@@ -252,22 +251,15 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
             const AppHeader(),
             Expanded(
               child: Container(
-                color: Colors.white,
+                // color: Colors.white,
+                color: ConfigColors.bgColor,
                 child: AppPageFrame( 
                   sideMenu: AppSideMenu(
                     drawerHeader: appDrawerHeader(),
                     indicatorColor: Colors.deepPurpleAccent,
-                    drawerTiles: <AppDrawerListTile>[
-                      drawerListTiles[0], 
-                      drawerListTiles[1], 
-                      drawerListTiles[2], 
-                      drawerListTiles[3], 
-                      drawerListTiles[4],
-                      drawerListTiles[5],
-                      drawerListTiles[6],
-                      drawerListTiles[7],
-                      drawerListTiles[8],
-                    ],
+                    drawerTiles: drawerListTiles.map((item){
+                      return item;
+                    }).toList() 
                   ),   
                 ), 
               ),

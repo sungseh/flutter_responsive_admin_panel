@@ -18,8 +18,10 @@ class _PresentersListState extends State<PresentersList> {
 
   @override
   void initState() {
-    _presentersBloc = BlocProvider.of<PresentersBloc>(context);
-    _presentersBloc.add(const LoadPresenters()); 
+    _presentersBloc = BlocProvider.of<PresentersBloc>(context); 
+
+
+    // _presentersBloc.add(const LoadPresenters()); 
     super.initState();
   }
 
@@ -35,6 +37,31 @@ class _PresentersListState extends State<PresentersList> {
   }
 
   Widget _buildPresenters(){
+    return BlocBuilder<PresentersBloc, PresentersState>(
+      builder: (context, state) { 
+        if (state is! PresentersLoaded) {
+          _presentersBloc.add(const LoadPresenters());
+          return Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
+          );
+        } else {
+          List<PresenterModel?>? presenters = state.presenters;  
+
+          return Container(
+            height: 200,
+            width: 200,
+            color: Colors.blue,
+          );
+        }
+      }
+    ); 
+  }
+
+  Widget _buildPresenter(){
+    _presentersBloc.add(const LoadPresenters()); 
+
     return BlocBuilder<PresentersBloc, PresentersState>(
       builder: (context, state) { 
         if (state is PresentersLoaded) {
@@ -63,7 +90,17 @@ class _PresentersListState extends State<PresentersList> {
         return ListView.builder(
           itemCount: 20,
           itemBuilder: (_, int index){
-            return const AppPresenterItem(item: null); 
+            // return const AppPresenterItem(item: null);
+            return Container(
+              height: 50,
+              width: 50,
+              padding: const EdgeInsets.all(16),
+              color: Colors.yellow,
+              child: const CircularProgressIndicator(
+                strokeWidth: 8,
+                color: Colors.red,
+              ),
+            );
           }
         );
 

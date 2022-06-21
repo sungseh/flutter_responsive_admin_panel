@@ -1,13 +1,16 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/configs/config_colors.dart'; 
 
 class AppTitleFont extends StatelessWidget {
   final String? title;
   final int? maxLines;
+  final Color? color;
   
   const AppTitleFont({
     Key? key, 
     this.title, 
-    this.maxLines
+    this.maxLines, 
+    this.color
   }) : super(key: key);
 
   @override
@@ -20,9 +23,10 @@ class AppTitleFont extends StatelessWidget {
         title ?? "",
         maxLines: maxLines ?? 1,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16, 
-          fontWeight: FontWeight.w600
+          fontWeight: FontWeight.w600,
+          color: color ?? ConfigColors.textColor
         ),
       ),
     );

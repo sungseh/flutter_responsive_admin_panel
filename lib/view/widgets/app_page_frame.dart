@@ -75,6 +75,5 @@ class _AppPageFrameState extends State<AppPageFrame> {
         ),
       ],
     );
-    
   }
 }

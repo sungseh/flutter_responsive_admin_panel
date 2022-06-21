@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/page/page_bloc.dart';
+import 'package:flutter_responsive_admin_panel/configs/config_colors.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/app_button.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/app_empty_content.dart'; 
 
@@ -51,9 +52,10 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
                     if (state is PageNameLoadedState) {
                       return Text(
                         state.pageName,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 30, 
-                          fontWeight: FontWeight.w800
+                          fontWeight: FontWeight.w800,
+                          color: ConfigColors.textColor
                         ),
                       ); 
                     }
