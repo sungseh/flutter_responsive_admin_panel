@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="admin">
-  <link rel="apple-touch-icon" href="/icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="admin">
+    <link rel="apple-touch-icon" href="/icons/Icon-192.png">
 
-  <title>Source Admin</title>
-  <link rel="manifest" href="/manifest.json">
-</head>
-<body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/flutter_service_worker.js');
-      });
-    }
-  </script>
-  
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <title>Source Admin</title>
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body> 
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/flutter_service_worker.js');
+        });
+      }
+    </script>
+    <script type="text/javascript">
+      window.flutterWebRenderer  = "html";
+    </script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+    <script src="js/firebase-app.js" type="application/javascript"></script>
+    <script src="js/firebase-firestore.js" type="application/javascript"></script>
+    <script> 
+      const firebaseConfig = {
+        apiKey: "AIzaSyDSgq1FAhoncyjtuyZG9NQcsChQ5PZCRiY",
+        authDomain: "source-15e63.firebaseapp.com",
+        projectId: "source-15e63",
+        storageBucket: "source-15e63.appspot.com",
+        messagingSenderId: "346039384259",
+        appId: "1:346039384259:web:097af39340c53d9c77ca76",
+        measurementId: "G-4T8WMW4XBN"
+      };
 
-  <script> 
-    const firebaseConfig = { 
-      apiKey: "AIzaSyDSgq1FAhoncyjtuyZG9NQcsChQ5PZCRiY",
-      authDomain: "source-15e63.firebaseapp.com",
-      projectId: "source-15e63",
-      storageBucket: "source-15e63.appspot.com",
-      messagingSenderId: "346039384259",
-      appId: "1:346039384259:web:097af39340c53d9c77ca76",
-      measurementId: "G-4T8WMW4XBN"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- <script src="main.dart.js" type="application/javascript"></script>  -->
+    <script src="js/main.dart.js" type="application/javascript"></script>
     
-  </script>  
-  <script src="main.dart.js" type="application/javascript"></script>
-</body>
+    
+  </body>
 </html>

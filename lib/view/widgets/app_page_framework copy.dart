@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_admin_panel/view/widgets/app_side_menu.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart'; 
 
 enum IndicatorSide { start, end }

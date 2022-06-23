@@ -11,7 +11,7 @@ class TestInitial extends TestState {
 
 class TestLoadedState extends TestState{
   final int number;
-  TestLoadedState(this.number);
+  const TestLoadedState(this.number);
 
   @override
   List<Object?> get props => [number];

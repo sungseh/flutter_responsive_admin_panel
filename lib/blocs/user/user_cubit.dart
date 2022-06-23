@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
-import 'package:flutter_responsive_admin_panel/repositories/abstract/abstract_repo.dart';
 import 'package:flutter_responsive_admin_panel/repositories/firestore/user_firestore.dart';
 
 class UserCubit extends Cubit<UserModel?> {

@@ -15,7 +15,7 @@ class _Page404State extends State<Page404> {
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text("Page Name: Page not Found"),
             // const SizedBox(height: 30),
             // ElevatedButton(

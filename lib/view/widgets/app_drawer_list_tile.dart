@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
+import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppDrawerListTile extends StatelessWidget {
   final String title;
   final String? svgSrc;
-  final Widget? icon;
+  final IconData? icon;
   final VoidCallback press;
   final List<Widget> children;
+  final Color? color;
   final Widget? child;
 
   const AppDrawerListTile({
@@ -19,111 +20,56 @@ class AppDrawerListTile extends StatelessWidget {
     this.svgSrc,
     required this.press,
     this.children = const [], 
+    this.icon,
+    this.color,
     this.child, 
-    this.icon
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     if (children.isEmpty) { 
       return ListTile(
-        // onTap: press,
-        onTap: () => BlocProvider.of<PageBloc>(context)
-          .add(LoadPageNameEvent(title)), 
+        onTap: () => BlocProvider.of<PageBloc>(context).add(LoadPageNameEvent(title)), 
         horizontalTitleGap: 0.0,
-        leading: icon ?? (svgSrc != null ?
-          SvgPicture.asset(
-            svgSrc!,
-            // color: Colors.white54,
-            height: 16,
-          ) : Container()
-        ),  
+        leading: icon != null ? Icon(
+          icon ?? Icons.close, 
+          color: color ?? ConfigColors.textColor,
+        ) : svgSrc != null ?
+        SvgPicture.asset(
+          svgSrc!,
+          color: color ?? ConfigColors.textColor,
+          height: 16,
+        ) : Container(), 
         title: Text(
           title,
-          // style: const TextStyle(
-          //   color: Colors.white54
-          // ),
+          style: TextStyle(
+            color: color ?? ConfigColors.textColor, 
+          ),
         ),
       );
     } else {
       return ListTileTheme(
-        // data: const ListTileThemeData(
-        //   selectedTileColor: Colors.red,
-        //   minVerticalPadding: 10,
-        // ),
-        // shape: ,
-        // style: ,
-        // selectedColor: ,
-        // iconColor: ,
-        // textColor: ,
-        // contentPadding: ,
-        // tileColor: ,
-        // selectedTileColor: ,
-        // enableFeedback: ,
-        // mouseCursor: ,
-        // minLeadingWidth: ,
-        // contentPadding: , 
-        // contentPadding: EdgeInsets.all(0),
         dense: true,
         horizontalTitleGap: 0.0,
-        // minLeadingWidth: 0,
         child: ExpansionTile(
-          title: Text(title), 
-          // tilePadding: EdgeInsets.zero,
-
-          // leading: Container(
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: AssetImage(svgSrc)
-          //     )
-          //   ),
-          // ),
-          leading: icon ?? (svgSrc != null ?
-            SvgPicture.asset(
-              svgSrc!,
-              // color: Colors.white54,
-              height: 16,
-            ) : Container()
-          ), 
-          children: children
-          // children: [
-          //   ListTile(
-          //     onTap: press,
-          //     horizontalTitleGap: 0.0,
-          //     leading: SvgPicture.asset(
-          //       svgSrc!,
-          //       // color: Colors.white54,
-          //       height: 16,
-          //     ),
-          //     title: Text(
-          //       title,
-          //       // style: const TextStyle(
-          //       //   color: Colors.white54
-          //       // ),
-          //     ),
-          //   ),
-          // ],
+          title: Text(
+            title,
+            style: TextStyle(
+              color: color ?? ConfigColors.textColor, 
+            )
+          ),
+          leading: icon != null ? Icon(
+            icon ?? Icons.close, 
+            color: color ?? ConfigColors.textColor,
+          ) : svgSrc != null ?
+          SvgPicture.asset(
+            svgSrc!,
+            color: color ?? ConfigColors.textColor,
+            height: 16,
+          ) : Container(),
+          children: children 
         )
-      );
- 
-      // return ListTile(
-      //   onTap: press,
-      //   horizontalTitleGap: 0.0,
-      //   leading: SvgPicture.asset(
-      //     svgSrc,
-      //     // color: Colors.white54,
-      //     height: 16,
-      //   ),
-      //   title: Text(
-      //     title,
-      //     // style: const TextStyle(
-      //     //   color: Colors.white54
-      //     // ),
-      //   ),
-      // );
-
-    }
-
-    
+      ); 
+    } 
   }
 }

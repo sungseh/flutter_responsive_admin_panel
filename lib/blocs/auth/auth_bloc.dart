@@ -14,32 +14,32 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required this.authRepository
   }) :
-  super(UnAuthenticated()) {
-    on<InitAuth>(_onInitAuth); 
-    on<LoadAuth>(_onLoadAuth); 
-    on<SignInRequested>(_onSignInRequested); 
-    on<SignUpRequested>(_onSignUpRequested); 
-    on<GoogleSignInRequested>(_onGoogleSignInRequested);
-    on<SignOutRequested>(_onSignOutRequested);
+  super(UnAuthenticatedState()) {
+    on<InitAuthEvent>(_onInitAuth); 
+    on<LoadAuthEvent>(_onLoadAuth); 
+    on<SignInRequestedEvent>(_onSignInRequested); 
+    on<SignUpRequestedEvent>(_onSignUpRequested); 
+    on<GoogleSignInRequestedEvent>(_onGoogleSignInRequested);
+    on<SignOutRequestedEvent>(_onSignOutRequested);
   }
 
-  void _onInitAuth(InitAuth event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
+  void _onInitAuth(InitAuthEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
     UserModel? user = await AppBloc.userCubit.onLoadUser();
     if (user != null) {
       await AppBloc.userCubit.onSaveUser(user);
       await AppBloc.userCubit.onFetchUser();
-      emit(Authenticated());
+      emit(AuthenticatedState());
     } else {
-      emit(UnAuthenticated());
+      emit(UnAuthenticatedState());
     }
   } 
  
-  void _onLoadAuth(LoadAuth event, Emitter<AuthState> emit) async {
+  void _onLoadAuth(LoadAuthEvent event, Emitter<AuthState> emit) async {
   }
  
-  void _onSignInRequested(SignInRequested event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
+  void _onSignInRequested(SignInRequestedEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
     try {
       final result = await authRepository.signIn(
         email: event.email, 
@@ -48,16 +48,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if(result != null){ 
         UserModel? user = await UserFirestore.getUser(result.user!.uid);
         await AppBloc.userCubit.onSaveUser(user!); 
-        emit(Authenticated());
+        emit(AuthenticatedState());
       }
     } catch (e) {
-      emit(AuthError(e.toString()));
-      emit(UnAuthenticated());
+      emit(AuthErrorState(e.toString()));
+      emit(UnAuthenticatedState());
     }
   }
  
-  void _onSignUpRequested(SignUpRequested event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
+  void _onSignUpRequested(SignUpRequestedEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
     try {
       await authRepository.signUp(email: event.email, password: event.password);
       // UserRepository.createUser(
@@ -68,15 +68,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           email: event.email,  
         )
       );
-      emit(Authenticated());
+      emit(AuthenticatedState());
     } catch (e) {
-      emit(AuthError(e.toString()));
-      emit(UnAuthenticated());
+      emit(AuthErrorState(e.toString()));
+      emit(UnAuthenticatedState());
     }
   }
  
-  void _onGoogleSignInRequested(GoogleSignInRequested event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
+  void _onGoogleSignInRequested(GoogleSignInRequestedEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
     try {
       await authRepository.signInWithGoogle();
       // UserRepository.createUser(
@@ -86,17 +86,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       //     email: event.email,  
       //   )
       // );
-      emit(Authenticated());
+      emit(AuthenticatedState());
     } catch (e) {
-      emit(AuthError(e.toString()));
-      emit(UnAuthenticated());
+      emit(AuthErrorState(e.toString()));
+      emit(UnAuthenticatedState());
     }
   }
  
-  void _onSignOutRequested(SignOutRequested event, Emitter<AuthState> emit) async {
-    emit(AuthLoading());
+  void _onSignOutRequested(SignOutRequestedEvent event, Emitter<AuthState> emit) async {
+    emit(AuthLoadingState());
     await authRepository.signOut();
     AppBloc.userCubit.onDeleteUser();
-    emit(UnAuthenticated()); 
+    emit(UnAuthenticatedState()); 
   } 
 }

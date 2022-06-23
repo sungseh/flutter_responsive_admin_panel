@@ -1,9 +1,25 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/audios/audios_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
+import 'package:flutter_responsive_admin_panel/blocs/dashboard/dashboard_bloc.dart';
 import 'package:flutter_responsive_admin_panel/blocs/user/user_cubit.dart';
-import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_repo.dart';
+import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_repo.dart'; 
  
 class AppBloc {
+  static final adminBloc = AdminBloc();
+  static final dashboardBloc = DashboardBloc();
+  static final audiosBloc = AudiosBloc(
+    audiosRepo: AudioFirestore()
+  );
+  static final videosBloc = VideosBloc(
+    videosRepo: VideoFirestore()
+  );
+  static final categoriesBloc = CategoriesBloc(
+    categoriesRepo: CategoryFirestore()
+  );
+  static final presentersBloc = PresentersBloc(
+    presentersRepo: PresenterFirestore()
+  );
   static final testBloc = TestBloc();
   static final userCubit = UserCubit(); 
   static final applicationCubit = ApplicationCubit(); 
@@ -12,7 +28,10 @@ class AppBloc {
     authRepository: AuthFirestore() 
   );
 
-  static final List<BlocProvider> providers = [
+  static final List<BlocProvider> providers = [ 
+    BlocProvider<DashboardBloc>(
+      create: (context) => dashboardBloc
+    ),
     BlocProvider<TestBloc>(
       create: (context) => testBloc
     ),
@@ -25,16 +44,32 @@ class AppBloc {
       create: (context) => applicationCubit
     ),
     BlocProvider<AuthBloc>( 
-      create: (context) => authBloc..add(InitAuth())
-    )
+      create: (context) => authBloc..add(InitAuthEvent())
+    ),
+    BlocProvider<AudiosBloc>(
+      create: (context) => audiosBloc
+    ),
+    BlocProvider<VideosBloc>(
+      create: (context) => videosBloc
+    ),
+    BlocProvider<CategoriesBloc>(
+      create: (context) => categoriesBloc
+    ),
+    BlocProvider<PresentersBloc>(
+      create: (context) => presentersBloc
+    ),
   ];
 
   static void dispose(){
+    dashboardBloc.close();
     applicationCubit.close();
     pageBloc.close();
     authBloc.close();
-    userCubit.close();
-
+    audiosBloc.close();
+    videosBloc.close();
+    categoriesBloc.close();
+    presentersBloc.close();
+    userCubit.close(); 
     testBloc.close();
   }
 

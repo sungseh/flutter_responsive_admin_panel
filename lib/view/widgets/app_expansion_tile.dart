@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_responsive_admin_panel/configs/config_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppExpansionTile extends StatelessWidget {

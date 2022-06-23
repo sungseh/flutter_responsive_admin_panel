@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
-import 'package:flutter_responsive_admin_panel/controller/menu_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppHeader extends StatelessWidget {

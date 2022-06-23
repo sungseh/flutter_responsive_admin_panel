@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/my_files.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/recent_files.dart';
-import 'package:flutter_responsive_admin_panel/view/screens/Dashboard/storage_details.dart';
 
 class DashboardOld extends StatelessWidget {
   const DashboardOld({Key? key}) : super(key: key);
@@ -23,7 +21,7 @@ class DashboardOld extends StatelessWidget {
               const SizedBox(height: defaultPadding),
               Row(
                 children: [
-                  MyFiles(),
+                  const MyFiles(),
 
                   // Expanded(
                   //   flex: 1,

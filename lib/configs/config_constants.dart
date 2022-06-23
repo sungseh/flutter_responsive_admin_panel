@@ -70,7 +70,7 @@ const double kDefaultPadding = 16.0;
 
 /// Shimmer Settings
 const bool shimmerEnabled = true;
-const ShimmerDirection shimmerDirection = ShimmerDirection.ltr;
+// const ShimmerDirection kShimmerDirection = ShimmerDirection.ltr;
 const Duration shimmerPeriod = Duration(seconds: 10);
 Gradient shimmerGradient = LinearGradient(
   tileMode: TileMode.decal,
