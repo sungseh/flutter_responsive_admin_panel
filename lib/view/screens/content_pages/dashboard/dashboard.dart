@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -7,29 +8,38 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
-  @override
-  Widget build(BuildContext context) {
+class _DashboardState extends State<Dashboard> {   
+  Widget _buildDashboard(){
     return Container(
+      height: MediaQuery.of(context).size.height,
       color: Colors.red, 
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            Text("Page Name: Dashboard"),
-            // const SizedBox(height: 30),
-            // ElevatedButton(
-            //   onPressed: () => BlocProvider.of<PageBloc>(context)
-            //     .add(LoadPageEvent(state.number)), 
-            //   child: const Icon(Icons.add),
-            // ),
+            Text("Page Name: Dashboard")
           ],
         ),
       ),
     );
+  }
     
+  @override
+  Widget build(BuildContext context) {
+    return AppSectionFrame(
+      hasAddSection: false,
+      listSection: _buildDashboard(),
+      addSection: Container() 
+    );
   }
 }
+
+
+
+
+
+
+
 
 /*
 import 'package:cloud_firestore/cloud_firestore.dart';

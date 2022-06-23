@@ -25,9 +25,9 @@ class _AppPageFrameState extends State<AppPageFrame> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (ConfigResponsive.isDesktop(context)) 
-          Expanded( 
-            child: widget.sideMenu, 
-          ),
+        Expanded( 
+          child: widget.sideMenu, 
+        ),
         Expanded(
           flex: 5,
           child: Center(

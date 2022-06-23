@@ -11,6 +11,7 @@ class AppSectionFrame extends StatefulWidget {
   final void Function()? onPressed;
   final Widget? listSection;
   final Widget? addSection;
+  final bool hasAddSection;
  
   const AppSectionFrame({
     Key? key, 
@@ -18,6 +19,7 @@ class AppSectionFrame extends StatefulWidget {
     this.onPressed,
     required this.listSection, 
     required this.addSection, 
+    this.hasAddSection = true
   }) : super(key: key);
 
   @override
@@ -62,7 +64,7 @@ class _AppSectionFrameState extends State<AppSectionFrame> {
                     return Container();
                   }
                 ), 
-                AppButton(
+                if(widget.hasAddSection) AppButton(
                   title: "Add",
                   onPressed: _onPressedAdd,
                 ), 

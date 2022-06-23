@@ -70,65 +70,7 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
               );
             },
           ),
-        ),
-
-
-        /*
-      
-        */
-      
-
-      /*
-      home: MultiBlocProvider( 
-        providers: AppBloc.providers,
-        child: PageControllerWidget(),
-
-        // child: BlocBuilder<AuthBloc, AuthState>(
-        //   builder: (context, authentication) {
-        //     final authenticated = authentication is! UnAuthenticated;  
-        //     return Scaffold( 
-        //       body: Container(
-        //         color: Colors.red,
-        //       )
-        //     ); 
-        //   },
-        // )
-
-        // child: BlocBuilder<AuthBloc, AuthState>(
-        //   builder: (context, auth){
-        //     return PageControllerWidget(); 
-        //     // if (auth  is UnAuthenticated){
-        //     //   // return const SignIn();
-        //     //   return Container(
-        //     //     height: 200,
-        //     //     width: 300,
-        //     //     color: Colors.red,
-        //     //   );
-        //     // }
-        //     // // return const PageControllerWidget();
-        //     // return Container(
-        //     //   height: 200,
-        //     //   width: 300,
-        //     //   color: Colors.blue,
-        //     // );
-        //   }
-        // )
-
-
-
-        // body: BlocBuilder<ApplicationCubit, ApplicationState>(
-        //   builder: (context, application) { 
-        //     if (application == ApplicationState.completed) {  
-        //       return const Navigation();  
-        //     }
-        //     if (application == ApplicationState.intro) {
-        //       return const Welcome(); 
-        //     }
-        //     return const SplashScreen();
-        //   }
-        // ),
-      ),
-      */
+        )
       )
     );
   } 
