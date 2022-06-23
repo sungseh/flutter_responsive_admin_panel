@@ -19,7 +19,7 @@ class _CategoriesListState extends State<CategoriesList> {
   @override
   void initState() {
     _categoriesBloc = BlocProvider.of<CategoriesBloc>(context);
-    _categoriesBloc.add(const LoadCategories()); 
+    // _categoriesBloc.add(const LoadCategories()); 
     super.initState();
   }
 
@@ -36,13 +36,22 @@ class _CategoriesListState extends State<CategoriesList> {
 
   Widget _buildCategories(){
     return BlocBuilder<CategoriesBloc, CategoriesState>(
-      builder: (context, state) { 
-        if (state is CategoriesLoaded) {
-          List<CategoryModel?>? categories = state.categories;  
+      builder: (context, state) {
+        if (state is! CategoriesLoadedState) {
+          _categoriesBloc.add(const LoadCategoriesEvent());
+        
+          return ListView.builder(
+            itemCount: 20,
+            itemBuilder: (_, int index){
+              return const AppVideoItem(item: null);
+            }
+          );
+        } else {
+          List<CategoryModel?>? categories = state.categories; 
 
           if(categories!.isEmpty){
             return const AppEmptyContent(
-              title: "No Categories",
+              title: "No Category",
               subtitle: "No data available. Upload first!"
             );
           } else {
@@ -59,122 +68,16 @@ class _CategoriesListState extends State<CategoriesList> {
             );
           }
         }
-
-        return Container();
       }
     ); 
-  }
- 
-  Widget _buildCategoriess(){ 
-    return BlocBuilder<CategoriesBloc, CategoriesState>(
-      builder: (context, state) { 
-        if (state is CategoriesLoaded) {
-          List<CategoryModel?>? categories = state.categories;  
-
-          if(categories!.isEmpty){
-            return const AppEmptyContent(
-              title: "No Categories",
-              subtitle: "No data available. Upload first!"
-            );
-          }
-        }
-
-        return Container();
-      }
-    );
-  }
-
-  Widget _buildCategory(){
-    return BlocBuilder<CategoriesBloc, CategoriesState>(
-      builder: (context, state) { 
-        if (state is CategoriesLoaded) { 
-          List<CategoryModel?>? categories = state.categories; 
-
-          if(categories!.isEmpty){
-            return const AppEmptyContent(
-              title: "No Categories",
-              subtitle: "No data available.\nUpload first!"
-            );
-          }
-  
-          return Column(
-            children: categories.map((item) {
-              return Container( 
-                color: const Color.fromARGB(83, 196, 196, 196),
-                padding: const EdgeInsets.only(top: 2), 
-                // child: Container(
-                //   height: 30,
-                //   width: 30,
-                //   color: Colors.red,
-                //   margin: EdgeInsets.all(4),
-                // ),
-                child: AppCategoryItem( 
-                  // onPressed: _onTapCategory, 
-                  item: item!,
-                  // type: CategoryViewType.category,
-                ),
-              );
-            }).toList(),
-          );
- 
-          // return GridView.count(
-          //   padding: const EdgeInsets.only(
-          //     left: 8, 
-          //     right: 8, 
-          //     top: 8
-          //   ), 
-          //   mainAxisSpacing: 8,
-          //   crossAxisSpacing: 8,
-          //   crossAxisCount: 2,
-          //   // childAspectRatio: ratio,
-          //   shrinkWrap: true, 
-          //   children: categories.map((item) { 
-          //     return AppCategoryItem(
-          //       onPressed: _onTapCategory,   
-          //       item: item,
-          //       type: CategoryViewType.recent,
-          //     );
-          //   }).toList(),
-          // ); 
-        }
-
-        return GridView.builder(
-          padding: const EdgeInsets.only(
-            left: 8, 
-            right: 8, 
-            top: 8
-          ), 
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true, 
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-          ),
-          itemCount: 8,
-          itemBuilder: (context, index) { 
-            // return const AppVideoItem(
-            return const AppCategoryItem(
-              item: null,
-              // type: VideoViewType.grid,
-            ); 
-          },
-        ); 
-      },
-    ); 
-  }
+  }  
+   
 
   @override
   Widget build(BuildContext context) {
     return AppSectionFrame(
       listSection: _buildCategories(),
-      addSection: const AddCategory()
-      // addSection: Container(
-      //   height: 200,
-      //   width: 200,
-      //   margin: EdgeInsets.symmetric(horizontal: 8),
-      //   color: Colors.red,
-      // ),
+      addSection: const AddCategory() 
     );
   }
 }

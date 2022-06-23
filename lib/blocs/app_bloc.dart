@@ -39,7 +39,7 @@ class AppBloc {
       create: (context) => applicationCubit
     ),
     BlocProvider<AuthBloc>( 
-      create: (context) => authBloc..add(InitAuth())
+      create: (context) => authBloc..add(InitAuthEvent())
     ),
     BlocProvider<AudiosBloc>(
       create: (context) => audiosBloc

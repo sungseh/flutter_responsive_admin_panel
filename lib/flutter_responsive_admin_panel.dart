@@ -53,13 +53,6 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
                     child: child!,
                   );
                 }, 
-                // theme: theme(),
-                // localizationsDelegates: const [
-                //   Translate.delegate,
-                //   GlobalMaterialLocalizations.delegate,
-                //   GlobalWidgetsLocalizations.delegate,
-                //   GlobalCupertinoLocalizations.delegate,  
-                // ],
                 home: Scaffold( 
                   body: BlocBuilder<AuthBloc, AuthState>(
                     builder: (context, auth) { 
@@ -67,7 +60,7 @@ class _FlutterResponsiveAdminPanelState extends State<FlutterResponsiveAdminPane
                       // return ab.isSignedIn == false ? SignIn() : PageControllerWidget();
 
 
-                      if (auth is UnAuthenticated) {  
+                      if (auth is UnAuthenticatedState) {  
                         return const SignIn();  
                       } 
                       return const PageControllerWidget();

@@ -7,17 +7,17 @@ abstract class AudiosEvent extends Equatable {
   List<Object> get props => [];
 }
   
-class LoadAudios extends AudiosEvent { 
-  const LoadAudios();
+class LoadAudiosEvent extends AudiosEvent { 
+  const LoadAudiosEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class UpdateAudios extends AudiosEvent { 
+class UpdateAudiosEvent extends AudiosEvent { 
   final List<AudioModel?>? audios; 
 
-  const UpdateAudios(this.audios);
+  const UpdateAudiosEvent(this.audios);
 
   @override
   List<Object> get props => [audios!]; 

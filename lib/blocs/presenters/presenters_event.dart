@@ -6,18 +6,25 @@ abstract class PresentersEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class RefreshPresentersEvent extends PresentersEvent {
+  const RefreshPresentersEvent();
+
+  @override
+  List<Object> get props => [];
+}
   
-class LoadPresenters extends PresentersEvent { 
-  const LoadPresenters();
+class LoadPresentersEvent extends PresentersEvent { 
+  const LoadPresentersEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class UpdatePresenters extends PresentersEvent { 
+class UpdatePresentersEvent extends PresentersEvent { 
   final List<PresenterModel?>? presenters; 
 
-  const UpdatePresenters(this.presenters);
+  const UpdatePresentersEvent(this.presenters);
 
   @override
   List<Object> get props => [presenters!]; 

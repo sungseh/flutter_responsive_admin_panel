@@ -1,37 +1,50 @@
 part of 'presenters_bloc.dart';
 
 abstract class PresentersState extends Equatable {
+  // final bool? hasReachedLimit;
+  // const PresentersState({
+  //   this.hasReachedLimit
+  // });
+  // @override
+  // List<Object> get props => [hasReachedLimit!];
+
+
   const PresentersState();
   
   @override
   List<Object> get props => [];
 }
 
-class PresentersInitial extends PresentersState {}
+class PresentersInitialState extends PresentersState {}
 
-class PresentersLoading extends PresentersState {
+class PresentersLoadingState extends PresentersState {
   @override
   List<Object> get props => [];
 }
 
-class PresentersLoaded extends PresentersState {  
+class PresentersLoadedState extends PresentersState {  
   final List<PresenterModel?>? presenters; 
+  final bool? hasReachedLimit;
 
-  const PresentersLoaded({this.presenters});
+  const PresentersLoadedState({
+    this.hasReachedLimit = false, 
+    this.presenters
+  });
 
   @override
-  List<Object> get props => [presenters!];
+  List<Object> get props => [presenters!, hasReachedLimit!];
 
   @override
-  String toString() => 'PresentersLoaded  {presenters: $presenters}';
+  // String toString() => 'PresentersLoadedState  {presenters: $presenters} HasReachedLiimit {limit: $hasReachedLimit}';
+  String toString() => 'PresentersLoadedState';
 }
  
-class PresentersNotLoaded extends PresentersState {
+class PresentersNotLoadedState extends PresentersState {
   @override
   List<Object> get props => [];
 }
 
-class PresentersIsEmpty extends PresentersState {
+class PresentersIsEmptyState extends PresentersState {
   @override
   List<Object> get props => [];
 }

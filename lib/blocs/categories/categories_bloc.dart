@@ -16,20 +16,20 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   }) : 
   assert(categoriesRepo != null),
   _categoriesRepo = categoriesRepo,
-  super(CategoriesLoading()) {
-    on<LoadCategories>(_onLoadCategories);
-    on<UpdateCategories>(_onUpdateCategories);
+  super(CategoriesLoadingState()) {
+    on<LoadCategoriesEvent>(_onLoadCategories);
+    on<UpdateCategoriesEvent>(_onUpdateCategories);
   }
 
-  void _onLoadCategories(LoadCategories event, Emitter<CategoriesState> emit) async {
-    emit(CategoriesLoading());
+  void _onLoadCategories(LoadCategoriesEvent event, Emitter<CategoriesState> emit) async {
+    emit(CategoriesLoadingState());
     _categoriesSub?.cancel();
     _categoriesSub = _categoriesRepo?.categories()
-      .listen((categories) => add(UpdateCategories(categories))); 
+      .listen((categories) => add(UpdateCategoriesEvent(categories))); 
   }
 
-  void _onUpdateCategories(UpdateCategories event, Emitter<CategoriesState> emit) async {
-    emit(CategoriesLoaded( 
+  void _onUpdateCategories(UpdateCategoriesEvent event, Emitter<CategoriesState> emit) async {
+    emit(CategoriesLoadedState( 
       categories: event.categories, 
     ));
   }

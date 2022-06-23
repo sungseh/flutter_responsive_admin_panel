@@ -6,7 +6,7 @@ part 'page_event.dart';
 part 'page_state.dart';
  
 class PageBloc extends Bloc<PageEvent, PageState> {
-  PageBloc() : super(PageInitial()) {
+  PageBloc() : super(PageInitialState()) {
     on<LoadPageEvent>(_onLoadedPageEvent);
     on<LoadPageNameEvent>(_onLoadedPageName);
     // on<LoadPageEvent>((event, emit) {

@@ -15,20 +15,20 @@ class AudiosBloc extends Bloc<AudiosEvent, AudiosState> {
   }) : 
   assert(audiosRepo != null),
   _audiosRepo = audiosRepo,
-  super(AudiosLoading()) {
-    on<LoadAudios>(_onLoadAudios);
-    on<UpdateAudios>(_onUpdateAudios);
+  super(AudiosLoadingState()) {
+    on<LoadAudiosEvent>(_onLoadAudios);
+    on<UpdateAudiosEvent>(_onUpdateAudios);
   }
 
-  void _onLoadAudios(LoadAudios event, Emitter<AudiosState> emit) async {
-    emit(AudiosLoading());
+  void _onLoadAudios(LoadAudiosEvent event, Emitter<AudiosState> emit) async {
+    emit(AudiosLoadingState());
     _audiosSub?.cancel();
     _audiosSub = _audiosRepo?.audios()
-      .listen((audios) => add(UpdateAudios(audios))); 
+      .listen((audios) => add(UpdateAudiosEvent(audios))); 
   }
 
-  void _onUpdateAudios(UpdateAudios event, Emitter<AudiosState> emit) async {
-    emit(AudiosLoaded( 
+  void _onUpdateAudios(UpdateAudiosEvent event, Emitter<AudiosState> emit) async {
+    emit(AudiosLoadedState( 
       audios: event.audios, 
     ));
   }

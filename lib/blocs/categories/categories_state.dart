@@ -7,17 +7,17 @@ abstract class CategoriesState extends Equatable {
   List<Object> get props => [];
 }
 
-class CategoriesInitial extends CategoriesState {}
+class CategoriesInitialState extends CategoriesState {}
 
-class CategoriesLoading extends CategoriesState {
+class CategoriesLoadingState extends CategoriesState {
   @override
   List<Object> get props => [];
 }
 
-class CategoriesLoaded extends CategoriesState {  
+class CategoriesLoadedState extends CategoriesState {  
   final List<CategoryModel?>? categories; 
 
-  const CategoriesLoaded({this.categories});
+  const CategoriesLoadedState({this.categories});
 
   @override
   List<Object> get props => [categories!];
@@ -26,12 +26,12 @@ class CategoriesLoaded extends CategoriesState {
   String toString() => 'CategoriesLoaded  {categories: $categories}';
 }
  
-class CategoriesNotLoaded extends CategoriesState {
+class CategoriesNotLoadedState extends CategoriesState {
   @override
   List<Object> get props => [];
 }
 
-class CategoriesIsEmpty extends CategoriesState {
+class CategoriesIsEmptyState extends CategoriesState {
   @override
   List<Object> get props => [];
 }

@@ -7,17 +7,17 @@ abstract class CategoriesEvent extends Equatable {
   List<Object> get props => [];
 }
   
-class LoadCategories extends CategoriesEvent { 
-  const LoadCategories();
+class LoadCategoriesEvent extends CategoriesEvent { 
+  const LoadCategoriesEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class UpdateCategories extends CategoriesEvent { 
+class UpdateCategoriesEvent extends CategoriesEvent { 
   final List<CategoryModel?>? categories; 
 
-  const UpdateCategories(this.categories);
+  const UpdateCategoriesEvent(this.categories);
 
   @override
   List<Object> get props => [categories!]; 

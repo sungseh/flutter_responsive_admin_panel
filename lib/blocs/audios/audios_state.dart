@@ -7,17 +7,17 @@ abstract class AudiosState extends Equatable {
   List<Object> get props => [];
 }
 
-class AudiosInitial extends AudiosState {}
+class AudiosInitialState extends AudiosState {}
 
-class AudiosLoading extends AudiosState {
+class AudiosLoadingState extends AudiosState {
   @override
   List<Object> get props => [];
 }
 
-class AudiosLoaded extends AudiosState {  
+class AudiosLoadedState extends AudiosState {  
   final List<AudioModel?>? audios; 
 
-  const AudiosLoaded({this.audios});
+  const AudiosLoadedState({this.audios});
 
   @override
   List<Object> get props => [audios!];
@@ -26,12 +26,12 @@ class AudiosLoaded extends AudiosState {
   String toString() => 'AudiosLoaded  {audios: $audios}';
 }
  
-class AudiosNotLoaded extends AudiosState {
+class AudiosNotLoadedState extends AudiosState {
   @override
   List<Object> get props => [];
 }
 
-class AudiosIsEmpty extends AudiosState {
+class AudiosIsEmptyState extends AudiosState {
   @override
   List<Object> get props => [];
 }

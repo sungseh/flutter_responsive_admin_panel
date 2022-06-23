@@ -5,7 +5,7 @@ abstract class PageState extends Equatable {
   const PageState();
 }
 
-class PageInitial extends PageState {
+class PageInitialState extends PageState {
   @override
   List<Object> get props => [];
 }

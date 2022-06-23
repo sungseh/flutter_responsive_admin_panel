@@ -19,7 +19,7 @@ class _VideosListState extends State<VideosList> {
   @override
   void initState() {
     _videosBloc = BlocProvider.of<VideosBloc>(context);
-    _videosBloc.add(const LoadVideos()); 
+    // _videosBloc.add(const LoadVideos()); 
     super.initState();
   }
 
@@ -37,12 +37,21 @@ class _VideosListState extends State<VideosList> {
   Widget _buildVideos(){
     return BlocBuilder<VideosBloc, VideosState>(
       builder: (context, state) { 
-        if (state is VideosLoaded) {
-          List<VideoModel?>? videos = state.videos;  
+        if (state is! VideosLoaded) {
+          _videosBloc.add(const LoadVideos());
+        
+          return ListView.builder(
+            itemCount: 20,
+            itemBuilder: (_, int index){
+              return const AppVideoItem(item: null);
+            }
+          );
+        } else {
+          List<VideoModel?>? videos = state.videos; 
 
           if(videos!.isEmpty){
             return const AppEmptyContent(
-              title: "No Videos",
+              title: "No Video",
               subtitle: "No data available. Upload first!"
             );
           } else {
@@ -50,139 +59,25 @@ class _VideosListState extends State<VideosList> {
               shrinkWrap: true,
               padding: const EdgeInsets.only(top: 30, bottom: 20),
               physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: 10,
+              itemCount: videos.length,
               itemBuilder: (_, int index) {
                 return AppVideoItem( 
-                  // onPressed: _onTapVideo, 
                   item: videos[index]!,
-                  // type: VideoViewType.category,
                 );
-                // return Container(
-                //   margin: const EdgeInsets.all(2),
-                //   color: Colors.red,
-                //   height: 60,
-                //   width: 60,
-                // );
               }
             );
           }
         }
-
-        return Container();
       }
     ); 
-  }
- 
-  Widget _buildVideoss(){ 
-    return BlocBuilder<VideosBloc, VideosState>(
-      builder: (context, state) { 
-        if (state is VideosLoaded) {
-          List<VideoModel?>? videos = state.videos;  
-
-          if(videos!.isEmpty){
-            return const AppEmptyContent(
-              title: "No Videos",
-              subtitle: "No data available. Upload first!"
-            );
-          }
-        }
-
-        return Container();
-      }
-    );
-  }
-
-  Widget _buildVideo(){
-    return BlocBuilder<VideosBloc, VideosState>(
-      builder: (context, state) { 
-        if (state is VideosLoaded) { 
-          List<VideoModel?>? videos = state.videos; 
-
-          if(videos!.isEmpty){
-            return const AppEmptyContent(
-              title: "No Videos",
-              subtitle: "No data available.\nUpload first!"
-            );
-          }
+  }  
   
-          return Column(
-            children: videos.map((item) {
-              return Container( 
-                color: const Color.fromARGB(83, 196, 196, 196),
-                padding: const EdgeInsets.only(top: 2), 
-                // child: Container(
-                //   height: 30,
-                //   width: 30,
-                //   color: Colors.red,
-                //   margin: EdgeInsets.all(4),
-                // ),
-                child: AppVideoItem( 
-                  // onPressed: _onTapVideo, 
-                  item: item!,
-                  // type: VideoViewType.category,
-                ),
-              );
-            }).toList(),
-          );
- 
-          // return GridView.count(
-          //   padding: const EdgeInsets.only(
-          //     left: 8, 
-          //     right: 8, 
-          //     top: 8
-          //   ), 
-          //   mainAxisSpacing: 8,
-          //   crossAxisSpacing: 8,
-          //   crossAxisCount: 2,
-          //   // childAspectRatio: ratio,
-          //   shrinkWrap: true, 
-          //   children: videos.map((item) { 
-          //     return AppVideoItem(
-          //       onPressed: _onTapVideo,   
-          //       item: item,
-          //       type: VideoViewType.recent,
-          //     );
-          //   }).toList(),
-          // ); 
-        }
-
-        return GridView.builder(
-          padding: const EdgeInsets.only(
-            left: 8, 
-            right: 8, 
-            top: 8
-          ), 
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true, 
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-          ),
-          itemCount: 8,
-          itemBuilder: (context, index) { 
-            // return const AppVideoItem(
-            return const AppVideoItem(
-              item: null,
-              // type: VideoViewType.grid,
-            ); 
-          },
-        ); 
-      },
-    ); 
-  }
 
   @override
   Widget build(BuildContext context) {
     return AppSectionFrame(
       listSection: _buildVideos(),
-      addSection: const AddVideo()
-      // addSection: Container(
-      //   height: 200,
-      //   width: 200,
-      //   margin: EdgeInsets.symmetric(horizontal: 8),
-      //   color: Colors.red,
-      // ),
+      addSection: const AddVideo() 
     );
   }
 }
