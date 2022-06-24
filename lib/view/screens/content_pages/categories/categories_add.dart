@@ -229,55 +229,41 @@ class _AddCategoryState extends State<AddCategory> {
   Widget build(BuildContext context) {
     // final AdministratorBloc ab = Provider.of(context, listen: false);
 
-    return AppCoverWidget(
-      widget: Form( 
-        key: formKey,
-        child: ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 16),
-              child: Text(
-                "Add Category", 
-                style: TextStyle(
-                  fontSize: 25, 
-                  fontWeight: FontWeight.w700
-                ), 
-              ),
-            ),
-            AppDropZone(
-              onDroppedFile: (file) => setState(() => this.file = file) ,
-            ),
-            AppDroppedFile(
-              file: file, 
-            ),
-            AppTextFormField(
-              placeholder: 'Enter Category Name',
-              title: 'Category Name',
-              controller: nameCtrl,
-              validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
-              },
-            ),  
-            AppToggleButton(
-              label: "Active", 
-              value: false,
-              onChanged: (bool value) { 
-                setState(() {
-                  toggleValue = value; 
-                }); 
-              }, 
-            ), 
-            AppSubmitButton(
-              title: "Add Category",
-              uploadStarted: uploadStarted,
-              onPressed: () async{
-                handleSubmit();
-              }, 
-            ),
-          ],
-        )
-      ),
-    ); 
+    return AppAddForm(
+      formKey: formKey,
+      children: <Widget>[
+        const AppAddContentTitle("Add Category"),
+        AppDropZone(
+          onDroppedFile: (file) => setState(() => this.file = file) ,
+        ),
+        AppDroppedFile(
+          file: file, 
+        ),
+        AppTextFormField(
+          placeholder: 'Enter Category Name',
+          title: 'Category Name',
+          controller: nameCtrl,
+          validator: (value){
+            if(value!.isEmpty) return 'Value is empty'; return null;
+          },
+        ),  
+        AppToggleButton(
+          label: "Active", 
+          value: false,
+          onChanged: (bool value) { 
+            setState(() {
+              toggleValue = value; 
+            }); 
+          }, 
+        ), 
+        AppSubmitButton(
+          title: "Add Category",
+          uploadStarted: uploadStarted,
+          onPressed: () async{
+            handleSubmit();
+          }, 
+        ),
+      ],
+    );
   } 
 }

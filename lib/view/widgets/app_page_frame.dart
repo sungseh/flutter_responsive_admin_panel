@@ -61,6 +61,9 @@ class _AppPageFrameState extends State<AppPageFrame> {
                     case "Users":
                       return const UsersList(); 
 
+                    case "Subscriptions":
+                      return const SubscriptionList(); 
+
                     case "Settings":
                       return const Settings(); 
 

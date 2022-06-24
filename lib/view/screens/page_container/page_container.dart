@@ -61,6 +61,11 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
       icon: Icons.person,
       press: () {},
     ),
+    AppDrawerListTile(
+      title: "Subscriptions",
+      icon: Icons.money,
+      press: () {},
+    ),
   ];
 
 

@@ -235,109 +235,95 @@ class _AddAudioState extends State<AddAudio> {
   Widget build(BuildContext context) {
     final AdministratorBloc ab = Provider.of(context, listen: false);
 
-    return AppCoverWidget(
-      widget: Form( 
-        key: formKey,
-        child: ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(top: 16),
-              child: Text(
-                "Add Audio", 
-                style: TextStyle(
-                  fontSize: 25, 
-                  fontWeight: FontWeight.w700
-                ), 
+    return AppAddForm(
+      formKey: formKey,
+      children: <Widget>[
+        const AppAddContentTitle("Add Audio"),
+        AppDropZone( 
+          onDroppedFile: (file) => setState(() => this.file = file) ,
+        ),
+        AppDroppedFile(
+          file: file, 
+        ),
+        AppTextFormField(
+          placeholder: 'Enter Audio Title',
+          title: 'Audio Title',
+          controller: nameCtrl,
+          validator: (value){
+            if(value!.isEmpty) return 'Value is empty'; return null;
+          },
+        ),   
+        AppDropDown(
+          placeholder: 'Select Presenter',
+          items: ab.presenters.map((f) {
+            return DropdownMenuItem(
+              value: f,
+              child: Text(f),
+            );
+          }).toList()
+        ),
+        AppDropDown(
+          placeholder: 'Select Category',
+          items: ab.categories.map((f) {
+            return DropdownMenuItem(
+              value: f,
+              child: Text(f),
+            );
+          }).toList()
+        ), 
+        AppToggleButton(
+          label: "Premium", 
+          value: false,
+          onChanged: (bool value) { 
+            setState(() {
+              toggleValue = value; 
+            }); 
+          }, 
+        ),
+        AppToggleButton(
+          label: "Active", 
+          value: false,
+          onChanged: (bool value) { 
+            setState(() {
+              toggleValue = value; 
+            }); 
+          }, 
+        ), 
+        const AppRichTextField(),
+        AppTextFormArea(
+          placeholder: 'Enter description',
+          label: 'Audio Description',
+          controller: descriptionCtrl,
+          validator: (value){
+            if(value!.isEmpty) return 'Value is empty'; return null;
+          }, 
+        ),
+        Container(
+          color: Theme.of(context).primaryColor,
+          height: 45,
+          child: uploadStarted == true ?
+          const Center(
+            child: SizedBox(
+              height: 30, 
+              width: 30,
+              child: CircularProgressIndicator()
+            )
+          ) :
+          TextButton(
+            child: const Text(
+              'Update Place Data',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600
               ),
             ),
-            AppDropZone( 
-              onDroppedFile: (file) => setState(() => this.file = file) ,
-            ),
-            AppDroppedFile(
-              file: file, 
-            ),
-            AppTextFormField(
-              placeholder: 'Enter Audio Title',
-              title: 'Audio Title',
-              controller: nameCtrl,
-              validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
-              },
-            ),   
-            AppDropDown(
-              placeholder: 'Select Presenter',
-              items: ab.presenters.map((f) {
-                return DropdownMenuItem(
-                  value: f,
-                  child: Text(f),
-                );
-              }).toList()
-            ),
-            AppDropDown(
-              placeholder: 'Select Category',
-              items: ab.categories.map((f) {
-                return DropdownMenuItem(
-                  value: f,
-                  child: Text(f),
-                );
-              }).toList()
-            ), 
-            AppToggleButton(
-              label: "Premium", 
-              value: false,
-              onChanged: (bool value) { 
-                setState(() {
-                  toggleValue = value; 
-                }); 
-              }, 
-            ),
-            AppToggleButton(
-              label: "Active", 
-              value: false,
-              onChanged: (bool value) { 
-                setState(() {
-                  toggleValue = value; 
-                }); 
-              }, 
-            ), 
-            const AppRichTextField(),
-            AppTextFormArea(
-              placeholder: 'Enter description',
-              label: 'Audio Description',
-              controller: descriptionCtrl,
-              validator: (value){
-                if(value!.isEmpty) return 'Value is empty'; return null;
-              }, 
-            ),
-            Container(
-              color: Theme.of(context).primaryColor,
-              height: 45,
-              child: uploadStarted == true ?
-              const Center(
-                child: SizedBox(
-                  height: 30, 
-                  width: 30,
-                  child: CircularProgressIndicator()
-                )
-              ) :
-              TextButton(
-                child: const Text(
-                  'Update Place Data',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600
-                  ),
-                ),
-                onPressed: () async{
-                  handleSubmit();
-                }
-              )
-            ), 
-          ],
-        )
-      ),
-    ); 
+            onPressed: () async{
+              handleSubmit();
+            }
+          )
+        ), 
+      ],
+    );
   } 
 }

@@ -7,6 +7,7 @@ export 'videos/bloc.dart';
 export 'application/cubit.dart';
 export 'admin/bloc.dart';
 export 'users/bloc.dart';
+export 'subscriptions/bloc.dart';
 export 'administrator/administrator_bloc.dart';
 
 export 'test/bloc.dart';

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/config_colors.dart';
 
-class AppCoverWidget extends StatelessWidget {
-  final Widget widget;
+class AppAddForm extends StatelessWidget {
+  final List<Widget> children;
+  final Key formKey;
 
-  const AppCoverWidget({
+  const AppAddForm({
     Key? key, 
-    required this.widget
+    required this.children, 
+    required this.formKey
   }) : super(key: key);
 
   @override
@@ -28,7 +30,14 @@ class AppCoverWidget extends StatelessWidget {
         color: ConfigColors.secondaryColor,
         borderRadius: BorderRadius.circular(10), 
       ),
-      child: widget 
+      // child: widget 
+      child: Form( 
+        key: formKey,
+        child: ListView(
+          shrinkWrap: true,
+          children: children,
+        )
+      )
     );
   }
 }

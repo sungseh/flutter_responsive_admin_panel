@@ -6,3 +6,4 @@ export 'settings/settings.dart';
 export 'page_404/page_404.dart';
 export 'dashboard/dashboard.dart';
 export 'users/users_list.dart';
+export 'subscriptions/subscriptions_list.dart';

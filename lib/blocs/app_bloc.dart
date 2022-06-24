@@ -11,6 +11,9 @@ class AppBloc {
   static final usersBloc = UsersBloc(
     usersRepo: UsersFirestore()
   );
+  static final subscriptionsBloc = SubscriptionsBloc(
+    subscriptionsRepo: SubscriptionsFirestore()
+  );
   static final audiosBloc = AudiosBloc(
     audiosRepo: AudioFirestore()
   );
@@ -34,6 +37,9 @@ class AppBloc {
   static final List<BlocProvider> providers = [ 
     BlocProvider<UsersBloc>(
       create: (context) => usersBloc
+    ),
+    BlocProvider<SubscriptionsBloc>(
+      create: (context) => subscriptionsBloc
     ),
     BlocProvider<DashboardBloc>(
       create: (context) => dashboardBloc
@@ -67,6 +73,7 @@ class AppBloc {
   ];
 
   static void dispose(){
+    subscriptionsBloc.close();
     usersBloc.close();
     dashboardBloc.close();
     applicationCubit.close();

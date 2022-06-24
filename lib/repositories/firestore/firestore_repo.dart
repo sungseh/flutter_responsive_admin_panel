@@ -5,3 +5,4 @@ export 'video_firestore.dart';
 export 'category_firestore.dart';
 export 'presenter_firestore.dart';
 export 'users_firestore.dart';
+export 'subscriptions_firestore.dart';
