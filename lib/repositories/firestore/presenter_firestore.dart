@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_responsive_admin_panel/misc/misc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 
 import '../abstract/abstract_repo.dart';  
@@ -82,7 +81,9 @@ class PresenterFirestore implements PresenterRepo {
   } 
 
   @override
-  Future<List<PresenterModel>?> infiniteScroll({DocumentSnapshot? start, required int limit}) async { 
+  Future<List<PresenterModel>?> infiniteScroll({DocumentSnapshot? start, required int limit}) async {
+    return null;
+   
     // Query laporan = FirebaseFirestore.instance
     //   .collection('pantau _peradilan')
     //   .orderBy( 'createdAt', descending: true)
@@ -104,7 +105,7 @@ class PresenterFirestore implements PresenterRepo {
   
   @override
   Stream<List<PresenterModel>>? presentersList() {
-    QuerySnapshot data;
+    // QuerySnapshot data;
     // if (_lastVisible == null) {
     //   data = await audioCollection
     //     .orderBy(_orderBy, descending: _descending)

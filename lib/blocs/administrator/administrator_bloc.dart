@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_responsive_admin_panel/misc/misc.dart';
@@ -18,7 +20,7 @@ class AdministratorBloc extends ChangeNotifier {
   List get categories => _categories;
   List get presenters => _presenters;
    
-  AdminBloc() {
+  adminBloc() {
     checkSignIn();
     getAdminPass();
   }
@@ -42,7 +44,7 @@ class AdministratorBloc extends ChangeNotifier {
         });
       }
     });
-    print('ads : $_adsEnabled');
+    log('ads : $_adsEnabled');
     notifyListeners();
   }
 

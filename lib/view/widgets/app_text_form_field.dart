@@ -22,7 +22,7 @@ class AppTextFormField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         vertical: 8
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.red
       ),
       child: TextFormField( 

@@ -46,8 +46,8 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
   List<AnimationController> animationControllers = []; 
   ScrollPhysics pageScrollPhysics = const AlwaysScrollableScrollPhysics();
   PageController pageController = PageController();
-  int? _selectedIndex;
-  bool? _changePageByTapView;
+  // int? _selectedIndex;
+  // bool? _changePageByTapView;
   AnimationController? animationController;
   Animation<double>? animation;
   Animation<RelativeRect>? rectAnimation;

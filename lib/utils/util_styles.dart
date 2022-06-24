@@ -16,7 +16,7 @@ InputDecoration inputDecoration({hint, label, controller, EdgeInsetsGeometry? co
     iconColor: Colors.blueGrey,
     labelText: label,
     // fillColor: bgColor,
-    helperStyle: TextStyle(
+    helperStyle: const TextStyle(
       color: Colors.purple
     ),
     fillColor: ConfigColors.bgColor, 

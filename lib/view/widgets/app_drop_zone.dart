@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
@@ -25,11 +27,11 @@ class _AppDropZoneState extends State<AppDropZone> {
     final byte = await controller.getFileSize(event);
     final url = await controller.createFileUrl(event);
 
-    print('Name : $name');
-    print('Mime: $mime');
+    log('Name : $name');
+    log('Mime: $mime');
 
-    print('Size : ${byte / (1024 * 1024)}');
-    print('URL: $url');
+    log('Size : ${byte / (1024 * 1024)}');
+    log('URL: $url');
 
     final droppedFile = FileModel(
       name: name, 

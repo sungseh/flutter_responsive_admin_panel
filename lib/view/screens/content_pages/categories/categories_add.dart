@@ -27,8 +27,10 @@ class _AddCategoryState extends State<AddCategory> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
   final String collectionName = 'categories';
   List? paths = [];
-  String _helperText = 'Enter paths list to help users to go to the desired destination like : Dhaka to Sylhet by Bus - 200Tk.....';
+  // String _helperText = 'Enter paths list to help users to go to the desired destination like : Dhaka to Sylhet by Bus - 200Tk.....';
   bool uploadStarted = false;
+  bool toggleValue = false;
+
   var stateSelection;
   
   var nameCtrl = TextEditingController();
@@ -98,28 +100,28 @@ class _AddCategoryState extends State<AddCategory> {
     // final DocumentReference ref = firestore.collection(collectionName).doc(widget.audioData.timestamp);
     // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.audioData.timestamp).collection('travel guide').doc(widget.audioData.timestamp);
      
-    var audioData = {
-      'state' : stateSelection,
-      'place name' : nameCtrl.text,
-      'location' : locationCtrl.text,
-      'latitude' : double.parse(latCtrl.text),
-      'longitude' : double.parse(lngCtrl.text),
-      'description' : descriptionCtrl.text,
-      'image-1' : image1Ctrl.text,
-      'image-2' : image2Ctrl.text,
-      'image-3' : image3Ctrl.text,
-    };
+    // var audioData = {
+    //   'state' : stateSelection,
+    //   'place name' : nameCtrl.text,
+    //   'location' : locationCtrl.text,
+    //   'latitude' : double.parse(latCtrl.text),
+    //   'longitude' : double.parse(lngCtrl.text),
+    //   'description' : descriptionCtrl.text,
+    //   'image-1' : image1Ctrl.text,
+    //   'image-2' : image2Ctrl.text,
+    //   'image-3' : image3Ctrl.text,
+    // };
 
-    var guideData  = {
-      'startpoint name' : startpointNameCtrl.text,
-      'endpoint name' : endpointNameCtrl.text,
-      'startpoint lat' : double.parse(startpointLatCtrl.text),
-      'startpoint lng' : double.parse(startpointLngCtrl.text),
-      'endpoint lat' : double.parse(endpointLatCtrl.text),
-      'endpoint lng' : double.parse(endpointLngCtrl.text),
-      'price': priceCtrl.text,
-      'paths' : paths
-    };
+    // var guideData  = {
+    //   'startpoint name' : startpointNameCtrl.text,
+    //   'endpoint name' : endpointNameCtrl.text,
+    //   'startpoint lat' : double.parse(startpointLatCtrl.text),
+    //   'startpoint lng' : double.parse(startpointLngCtrl.text),
+    //   'endpoint lat' : double.parse(endpointLatCtrl.text),
+    //   'endpoint lng' : double.parse(endpointLngCtrl.text),
+    //   'price': priceCtrl.text,
+    //   'paths' : paths
+    // };
 
     // await ref.update(_audioData)
     // .then((value) => ref1.update(_guideData));
@@ -225,8 +227,7 @@ class _AddCategoryState extends State<AddCategory> {
  
   @override
   Widget build(BuildContext context) {
-    final AdministratorBloc ab = Provider.of(context, listen: false);
-    bool toggleValue = false;
+    // final AdministratorBloc ab = Provider.of(context, listen: false);
 
     return AppCoverWidget(
       widget: Form( 

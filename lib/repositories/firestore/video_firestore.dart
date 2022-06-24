@@ -29,7 +29,7 @@ class VideoFirestore implements VideoRepo {
 
   @override
   Stream<List<VideoModel>>? videosList() {
-    QuerySnapshot data;
+    // QuerySnapshot data;
     // if (_lastVisible == null) {
     //   data = await videoCollection
     //     .orderBy(_orderBy, descending: _descending)

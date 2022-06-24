@@ -6,8 +6,9 @@ class AppCard extends StatelessWidget {
 
   const AppCard(
     this.title, 
-    this.number
-  ) : super();
+    this.number, 
+    {Key? key}
+  ) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

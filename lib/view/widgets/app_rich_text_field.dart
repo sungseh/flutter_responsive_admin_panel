@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:html_editor_enhanced/html_editor.dart'; 
@@ -15,10 +17,9 @@ class AppRichTextField extends StatefulWidget {
 class _AppRichTextFieldState extends State<AppRichTextField> { 
   @override
   Widget build(BuildContext context) {
-    String result = '';
     final HtmlEditorController controller = HtmlEditorController();
 
-    return Container(
+    return SizedBox(
       height: 300,
       width: 300,
       child: HtmlEditor(
@@ -32,82 +33,82 @@ class _AppRichTextFieldState extends State<AppRichTextField> {
           toolbarPosition: ToolbarPosition.aboveEditor, //by default
           toolbarType: ToolbarType.nativeScrollable, //by default
           onButtonPressed: (ButtonType type, bool? status, Function? updateStatus) {
-            // print("button '${describeEnum(type)}' pressed, the current selected status is $status");
+            // log("button '${describeEnum(type)}' pressed, the current selected status is $status");
             return true;
           },
           onDropdownChanged: (DropdownType type, dynamic changed, Function(dynamic)? updateSelectedItem) {
-            // print("dropdown '${describeEnum(type)}' changed to $changed");
+            // log("dropdown '${describeEnum(type)}' changed to $changed");
             return true;
           },
           mediaLinkInsertInterceptor: (String url, InsertFileType type) {
-            print(url);
+            log(url);
             return true;
           },
           mediaUploadInterceptor: (PlatformFile file, InsertFileType type) async {
-            print(file.name); //filename
-            print(file.size); //size in bytes
-            print(file.extension); //file extension (eg jpeg or mp4)
+            log(file.name); //filename
+            log(file.size.toString()); //size in bytes
+            log(file.extension.toString()); //file extension (eg jpeg or mp4)
             return true;
           },
         ),
         otherOptions: const OtherOptions(height: 550),
         callbacks: Callbacks(onBeforeCommand: (String? currentHtml) {
-          print('html before change is $currentHtml');
+          log('html before change is $currentHtml');
         }, onChangeContent: (String? changed) {
-          print('content changed to $changed');
+          log('content changed to $changed');
         }, onChangeCodeview: (String? changed) {
-          print('code changed to $changed');
+          log('code changed to $changed');
         }, onChangeSelection: (EditorSettings settings) {
-          print('parent element is ${settings.parentElement}');
-          print('font name is ${settings.fontName}');
+          log('parent element is ${settings.parentElement}');
+          log('font name is ${settings.fontName}');
         }, onDialogShown: () {
-          print('dialog shown');
+          log('dialog shown');
         }, onEnter: () {
-          print('enter/return pressed');
+          log('enter/return pressed');
         }, onFocus: () {
-          print('editor focused');
+          log('editor focused');
         }, onBlur: () {
-          print('editor unfocused');
+          log('editor unfocused');
         }, onBlurCodeview: () {
-          print('codeview either focused or unfocused');
+          log('codeview either focused or unfocused');
         }, onInit: () {
-          print('init');
+          log('init');
         },
             //this is commented because it overrides the default Summernote handlers
             /*onImageLinkInsert: (String? url) {
-            print(url ?? "unknown url");
+            log(url ?? "unknown url");
           },
           onImageUpload: (FileUpload file) async {
-            print(file.name);
-            print(file.size);
-            print(file.type);
-            print(file.base64);
+            log(file.name);
+            log(file.size);
+            log(file.type);
+            log(file.base64);
           },*/
             onImageUploadError: (FileUpload? file, String? base64Str,
                 UploadError error) {
-          // print(describeEnum(error));
-          print(base64Str ?? '');
+          // log(describeEnum(error));
+          log(base64Str ?? '');
           if (file != null) {
-            print(file.name);
-            print(file.size);
-            print(file.type);
+            log(file.name!);
+            log(file.size.toString());
+            log(file.type!);
           }
         }, onKeyDown: (int? keyCode) {
-          print('$keyCode key downed');
-          // print('current character count: ${controller.characterCount}');
+          log('$keyCode key downed');
+          // log('current character count: ${controller.characterCount}');
         }, onKeyUp: (int? keyCode) {
-          print('$keyCode key released');
+          log('$keyCode key released');
         }, onMouseDown: () {
-          print('mouse downed');
+          log('mouse downed');
         }, onMouseUp: () {
-          print('mouse released');
+          log('mouse released');
         }, onNavigationRequestMobile: (String url) {
-          print(url);
+          log(url);
           return NavigationActionPolicy.ALLOW;
         }, onPaste: () {
-          print('pasted into editor');
+          log('pasted into editor');
         }, onScroll: () {
-          print('editor scrolled');
+          log('editor scrolled');
         }),
         plugins: [ SummernoteAtMention(
               getSuggestionsMobile: (String value) {
@@ -118,7 +119,7 @@ class _AppRichTextFieldState extends State<AppRichTextField> {
               },
               mentionsWeb: ['test1', 'test2', 'test3'],
               onSelect: (String value) {
-                print(value);
+                log(value);
               }),
         ],
       ),

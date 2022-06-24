@@ -69,7 +69,7 @@ class PresentersBloc extends Bloc<PresentersEvent, PresentersState> {
   // }
 
   void _onRefreshPresenters(RefreshPresentersEvent event, Emitter<PresentersState> emit) async {
-    emit(PresentersLoadedState(
+    emit(const PresentersLoadedState(
       // presenters: event.presenters,
     ));
   }

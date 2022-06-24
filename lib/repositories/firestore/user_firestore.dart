@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
@@ -20,7 +21,7 @@ class UserFirestore {
       });
       retVal = "success";
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return retVal;
   }
@@ -38,7 +39,7 @@ class UserFirestore {
         .then((snapshot) => UserModel.fromFirestore(snapshot));
       return user; 
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
     return null; 
   }

@@ -20,7 +20,7 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     ///Setup SharedPreferences
     await ConfigPreferences.setPreferences(); 
  
-    final oldLanguage = UtilPreferences.getString(ConfigPreferences.language); 
+    // final oldLanguage = UtilPreferences.getString(ConfigPreferences.language); 
    
     ///Setup Language
     // if (oldLanguage != null) {

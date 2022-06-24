@@ -22,7 +22,7 @@ class CategoryFirestore implements CategoryRepo {
   
   @override
   Stream<List<CategoryModel>>? categoriesList() {
-    QuerySnapshot data;
+    // QuerySnapshot data;
     // if (_lastVisible == null) {
     //   data = await audioCollection
     //     .orderBy(_orderBy, descending: _descending)

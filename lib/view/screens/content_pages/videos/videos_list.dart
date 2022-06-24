@@ -22,17 +22,7 @@ class _VideosListState extends State<VideosList> {
     // _videosBloc.add(const LoadVideos()); 
     super.initState();
   }
-
-  _onTapAdd(VideoModel? item) {
-  }
-
-  _onTapVideo(VideoModel? item) {
-    // Navigator.pushNamed(
-    //   context,
-    //   Routes.videoPlayer,
-    //   arguments: item
-    // );
-  }
+ 
 
   Widget _buildVideos(){
     return BlocBuilder<VideosBloc, VideosState>(

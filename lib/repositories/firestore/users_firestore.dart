@@ -30,7 +30,7 @@ class UsersFirestore implements UsersRepo {
 
   @override
   Stream<List<UserModel>>? usersList() {
-    QuerySnapshot data;
+    // QuerySnapshot data;
     // if (_lastVisible == null) {
     //   data = await userCollection
     //     .orderBy(_orderBy, descending: _descending)

@@ -4,7 +4,6 @@ import 'package:flutter_responsive_admin_panel/blocs/bloc.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/app_item_user.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
-import '../../../../blocs/audios/audios_bloc.dart'; 
 
 class UsersList extends StatefulWidget {
   const UsersList({Key? key}) : super(key: key);
@@ -22,17 +21,7 @@ class _UsersListState extends State<UsersList> {
     // _audiosBloc.add(const LoadUsers()); 
     super.initState();
   }
-
-  _onTapAdd(UserModel? item) {
-  }
-
-  _onTapUser(UserModel? item) {
-    // Navigator.pushNamed(
-    //   context,
-    //   Routes.audioPlayer,
-    //   arguments: item
-    // );
-  }
+ 
 
   Widget _buildUsers(){
     return BlocBuilder<UsersBloc, UsersState>(

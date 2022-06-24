@@ -6,8 +6,7 @@ part 'base_state.dart';
 
 class BaseBloc extends Bloc<BaseEvent, BaseState> {
   BaseBloc() : super(BaseInitialState()) {
-    on<BaseEvent>((event, emit) {
-      // TODO: implement event handler
+    on<BaseEvent>((event, emit) { 
     });
   }
 }

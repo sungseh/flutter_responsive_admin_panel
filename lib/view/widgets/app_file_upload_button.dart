@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart'; 
@@ -14,7 +16,7 @@ class AppFileUploadButton extends StatelessWidget {
         var picked = await FilePicker.platform.pickFiles();
 
         if (picked != null) {
-          print(picked.files.first.name);
+          log(picked.files.first.name);
         }
       },
     );
@@ -24,7 +26,7 @@ class AppFileUploadButton extends StatelessWidget {
     //     var picked = await FilePicker.platform.pickFiles();
 
     //     if (picked != null) {
-    //       print(picked.files.first.name);
+    //       log(picked.files.first.name);
     //     }
     //   },
     //   child: Text('UPLOAD FILE'),

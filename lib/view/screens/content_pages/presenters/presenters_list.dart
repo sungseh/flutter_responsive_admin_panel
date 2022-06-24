@@ -1,3 +1,4 @@
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -26,18 +27,7 @@ class _PresentersListState extends State<PresentersList> {
     controller = ScrollController()..addListener(_scrollListener); 
     super.initState();
   }
-
-  _onTapAdd(PresenterModel? item) {
-  }
-
-  _onTapPresenter(PresenterModel? item) {
-    // Navigator.pushNamed(
-    //   context,
-    //   Routes.presenterPlayer,
-    //   arguments: item
-    // );
-  }
-
+ 
   void _scrollListener(){
     double? maxScroll = controller?.position.maxScrollExtent;
     double? currentScroll = controller?.position.pixels;
@@ -92,7 +82,7 @@ class _PresentersListState extends State<PresentersList> {
           } else {
             return RefreshIndicator(
               onRefresh: () async {
-                print("You have reached the end");
+                log("You have reached the end");
                 // _presentersBloc.add(const RefreshPresentersEvent());
               },
               child: ListView.builder(
@@ -137,7 +127,7 @@ class _PresentersListState extends State<PresentersList> {
     );
   }
 
-
+/*
   Widget _buildPresenterss(){
     return BlocBuilder<PresentersBloc, PresentersState>(
       builder: (context, state) {
@@ -235,7 +225,7 @@ class _PresentersListState extends State<PresentersList> {
       }
     ); 
   } 
-  
+  */
  
 
   @override

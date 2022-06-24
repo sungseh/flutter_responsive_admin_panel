@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
-import 'package:shimmer/shimmer.dart'; 
 
 ////////////////////////
 //// RESPONSIVENESS ////

@@ -19,10 +19,6 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
       // on<UpdateAudios>(_onUpdateAudios);
     });
   }
-  
-
-  void _onLoadAds () {
-    
-  }  
+   
 }
   

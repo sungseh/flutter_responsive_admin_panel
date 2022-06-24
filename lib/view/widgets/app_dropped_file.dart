@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 
@@ -13,7 +15,7 @@ class AppDroppedFile extends StatelessWidget {
       return buildEmptyFile('No Selected File');
     }
 
-    print(file!.url);
+    log(file!.url);
 
     return Column(
       children: [

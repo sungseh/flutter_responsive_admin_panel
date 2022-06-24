@@ -23,16 +23,16 @@ class _AudiosListState extends State<AudiosList> {
     super.initState();
   }
 
-  _onTapAdd(AudioModel? item) {
-  }
+  // _onTapAdd(AudioModel? item) {
+  // }
 
-  _onTapAudio(AudioModel? item) {
-    // Navigator.pushNamed(
-    //   context,
-    //   Routes.audioPlayer,
-    //   arguments: item
-    // );
-  }
+  // _onTapAudio(AudioModel? item) {
+  //   // Navigator.pushNamed(
+  //   //   context,
+  //   //   Routes.audioPlayer,
+  //   //   arguments: item
+  //   // );
+  // }
 
   Widget _buildAudios(){
     return BlocBuilder<AudiosBloc, AudiosState>(

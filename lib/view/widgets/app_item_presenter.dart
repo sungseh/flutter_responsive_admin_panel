@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart'; 
 import 'package:flutter_responsive_admin_panel/models/model_presenter.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
-import 'package:line_icons/line_icons.dart';
 
 class AppPresenterItem extends StatelessWidget {
   final PresenterModel? item;

@@ -9,25 +9,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {   
-  Widget _buildDashboard1(){
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      color: Colors.red, 
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Page Name: Dashboard")
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildDashboard(){ 
     return Container(
       // padding: EdgeInsets.only(left: w * 0.05, right: w * 0.05, top: w * 0.05),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Row(
@@ -38,51 +23,10 @@ class _DashboardState extends State<Dashboard> {
               AppCard('TOTAL USERS', 10),
 
               AppCard('TOTAL USERS', 10), 
-              
+
               AppCard('TOTAL USERS', 10), 
             ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          // Row(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: <Widget>[
-          //     FutureBuilder(
-          //       future: notifications,
-          //       builder: (BuildContext context, AsyncSnapshot snap) {
-          //         if (!snap.hasData) return card('TOTAL NOTIFICATIONS', 0);
-          //         if (snap.hasError) return card('TOTAL NOTIFICATIONS', 0);
-          //         return card('TOTAL NOTIFICATIONS', snap.data);
-          //       },
-          //     ),
-
-          //     const SizedBox(
-          //       width: 20,
-          //     ),
-
-          //     StreamBuilder(
-          //       stream: FirebaseFirestore.instance.collection('featured').doc('featured_list').snapshots(),
-          //       builder: (context, AsyncSnapshot snap) {
-          //         if (!snap.hasData) return card('FEATURED ITEMS', 0);
-          //         if (snap.hasError) return card('FEATURED ITEMS', 0);
-          //         return card('FEATURED ITEMS', snap.data['places'].length);
-          //       },
-          //     ),
-
-          //     const SizedBox(
-          //       width: 20,
-          //     ),
-          //     FutureBuilder(
-          //       future: states,
-          //       builder: (BuildContext context, AsyncSnapshot snap) {
-          //         if (!snap.hasData) return card('TOTAL STATES', 0);
-          //         if (snap.hasError) return card('TOTAL STATES', 0);
-          //         return card('TOTAL STATES', snap.data);
-          //       },
-          //     ),
-          //   ],
-          // ),
+          ), 
         ],
       ),
     );

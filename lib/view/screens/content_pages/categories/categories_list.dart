@@ -22,18 +22,7 @@ class _CategoriesListState extends State<CategoriesList> {
     // _categoriesBloc.add(const LoadCategories()); 
     super.initState();
   }
-
-  _onTapAdd(CategoryModel? item) {
-  }
-
-  _onTapCategory(CategoryModel? item) {
-    // Navigator.pushNamed(
-    //   context,
-    //   Routes.categoryPlayer,
-    //   arguments: item
-    // );
-  }
-
+ 
   Widget _buildCategories(){
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       builder: (context, state) {

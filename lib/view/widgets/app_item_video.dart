@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_admin_panel/configs/configs.dart';
 import 'package:flutter_responsive_admin_panel/models/models.dart';
 import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';  
-import 'package:line_icons/line_icons.dart';
 
 class AppVideoItem extends StatelessWidget {
   final VideoModel? item;

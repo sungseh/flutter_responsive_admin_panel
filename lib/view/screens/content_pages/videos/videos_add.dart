@@ -32,6 +32,8 @@ class _AddVideoState extends State<AddVideo> {
   final String collectionName = 'categories';
   List? paths = [];
   bool uploadStarted = false;
+  bool toggleValue = false;
+
   var stateSelection;
   
   var nameCtrl = TextEditingController();
@@ -101,28 +103,28 @@ class _AddVideoState extends State<AddVideo> {
     // final DocumentReference ref = firestore.collection(collectionName).doc(widget.videoData.timestamp);
     // final DocumentReference ref1 = firestore.collection(collectionName).doc(widget.videoData.timestamp).collection('travel guide').doc(widget.videoData.timestamp);
      
-    var videoData = {
-      'state' : stateSelection,
-      'place name' : nameCtrl.text,
-      'location' : locationCtrl.text,
-      'latitude' : double.parse(latCtrl.text),
-      'longitude' : double.parse(lngCtrl.text),
-      'description' : descriptionCtrl.text,
-      'image-1' : image1Ctrl.text,
-      'image-2' : image2Ctrl.text,
-      'image-3' : image3Ctrl.text,
-    };
+    // var videoData = {
+    //   'state' : stateSelection,
+    //   'place name' : nameCtrl.text,
+    //   'location' : locationCtrl.text,
+    //   'latitude' : double.parse(latCtrl.text),
+    //   'longitude' : double.parse(lngCtrl.text),
+    //   'description' : descriptionCtrl.text,
+    //   'image-1' : image1Ctrl.text,
+    //   'image-2' : image2Ctrl.text,
+    //   'image-3' : image3Ctrl.text,
+    // };
 
-    var guideData  = {
-      'startpoint name' : startpointNameCtrl.text,
-      'endpoint name' : endpointNameCtrl.text,
-      'startpoint lat' : double.parse(startpointLatCtrl.text),
-      'startpoint lng' : double.parse(startpointLngCtrl.text),
-      'endpoint lat' : double.parse(endpointLatCtrl.text),
-      'endpoint lng' : double.parse(endpointLngCtrl.text),
-      'price': priceCtrl.text,
-      'paths' : paths
-    };
+    // var guideData  = {
+    //   'startpoint name' : startpointNameCtrl.text,
+    //   'endpoint name' : endpointNameCtrl.text,
+    //   'startpoint lat' : double.parse(startpointLatCtrl.text),
+    //   'startpoint lng' : double.parse(startpointLngCtrl.text),
+    //   'endpoint lat' : double.parse(endpointLatCtrl.text),
+    //   'endpoint lng' : double.parse(endpointLngCtrl.text),
+    //   'price': priceCtrl.text,
+    //   'paths' : paths
+    // };
 
     // await ref.update(_videoData)
     // .then((value) => ref1.update(_guideData));
@@ -229,7 +231,6 @@ class _AddVideoState extends State<AddVideo> {
   @override
   Widget build(BuildContext context) {
     final AdministratorBloc ab = Provider.of(context, listen: false);
-    bool toggleValue = false;
 
     return AppCoverWidget(
       widget: Form( 
@@ -300,7 +301,7 @@ class _AddVideoState extends State<AddVideo> {
                 }); 
               }, 
             ), 
-            AppRichTextField(),
+            const AppRichTextField(),
             AppTextFormArea(
               placeholder: 'Enter description',
               label: 'Video Description',

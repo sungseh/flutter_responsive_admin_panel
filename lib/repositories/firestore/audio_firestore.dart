@@ -29,7 +29,7 @@ class AudioFirestore implements AudioRepo {
 
   @override
   Stream<List<AudioModel>>? audiosList() {
-    QuerySnapshot data;
+    // QuerySnapshot data;
     // if (_lastVisible == null) {
     //   data = await audioCollection
     //     .orderBy(_orderBy, descending: _descending)
