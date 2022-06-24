@@ -8,6 +8,9 @@ import 'package:flutter_responsive_admin_panel/repositories/firestore/firestore_
 class AppBloc {
   static final adminBloc = AdminBloc();
   static final dashboardBloc = DashboardBloc();
+  static final usersBloc = UsersBloc(
+    usersRepo: UsersFirestore()
+  );
   static final audiosBloc = AudiosBloc(
     audiosRepo: AudioFirestore()
   );
@@ -29,6 +32,9 @@ class AppBloc {
   );
 
   static final List<BlocProvider> providers = [ 
+    BlocProvider<UsersBloc>(
+      create: (context) => usersBloc
+    ),
     BlocProvider<DashboardBloc>(
       create: (context) => dashboardBloc
     ),
@@ -61,6 +67,7 @@ class AppBloc {
   ];
 
   static void dispose(){
+    usersBloc.close();
     dashboardBloc.close();
     applicationCubit.close();
     pageBloc.close();

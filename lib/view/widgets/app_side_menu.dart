@@ -6,7 +6,7 @@ import 'package:flutter_responsive_admin_panel/view/widgets/widgets.dart';
 class AppSideMenu extends StatefulWidget {
   final int initialIndex;
   final double tabsWidth; 
-  final DrawerHeader? drawerHeader;
+  final Widget? drawerHeader;
   final List<AppDrawerListTile>? drawerTiles;
   final TextDirection direction;
   final Color indicatorColor;
@@ -94,7 +94,7 @@ class _AppSideMenuState extends State<AppSideMenu> with TickerProviderStateMixin
       shape: const BeveledRectangleBorder(),
       child: Column(
         children: [
-          widget.drawerHeader as Widget, 
+          widget.drawerHeader ?? Container(), 
           SizedBox(
             child: ListView.builder(
               shrinkWrap: true,

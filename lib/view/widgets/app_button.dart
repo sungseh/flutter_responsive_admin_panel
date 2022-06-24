@@ -14,22 +14,26 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-        horizontal: 16,
-      ),
-      height: 45,
-      child: Row(
-        children: [
-          Icon(
-            Icons.add,
-            color: color,
-          ), 
-          TextButton(
-            onPressed: onPressed,
-            child: Text(
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        padding: const EdgeInsets.symmetric(
+          vertical: 8,
+          horizontal: 16,
+        ),
+        height: 45,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(
+              Icons.add,
+              color: color,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
               title ?? "No title",
               style: TextStyle(
                 color: color,
@@ -37,9 +41,9 @@ class AppButton extends StatelessWidget {
                 fontWeight: FontWeight.w600
               ),
             )
-          )
-        ],
-      )
+          ],
+        )
+      ),
     ); 
   }
 }

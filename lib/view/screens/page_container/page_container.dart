@@ -35,32 +35,32 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
   final List<AppDrawerListTile> drawerListTiles = [
     AppDrawerListTile(
       title: "Dashboard",
-      svgSrc: "assets/icons/menu_tran.svg",
       icon: Icons.dashboard,
       press: () {}, 
     ),
     AppDrawerListTile(
       title: "Presenters",
-      svgSrc: "assets/icons/menu_tran.svg",
       icon: Icons.person,
       press: () {},
     ), 
     AppDrawerListTile(
       title: "Audio",
-      svgSrc: "assets/icons/menu_tran.svg",
       icon: Icons.audio_file,
       press: () {},
     ),
     AppDrawerListTile(
       title: "Videos",
-      svgSrc: "assets/icons/menu_tran.svg",
       icon: Icons.video_file,
       press: () {},
     ),
     AppDrawerListTile(
       title: "Categories",
-      svgSrc: "assets/icons/menu_tran.svg",
       icon: Icons.category,
+      press: () {},
+    ),
+    AppDrawerListTile(
+      title: "Users",
+      icon: Icons.person,
       press: () {},
     ),
   ];
@@ -225,9 +225,14 @@ class _PageControllerWidgetState extends State<PageControllerWidget> {
     );
   }
 
-  DrawerHeader appDrawerHeader(){
-    return DrawerHeader(
-      child: Image.asset("assets/images/logo.png"),
+  Widget appDrawerHeader(){
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 16
+      ),
+      child: DrawerHeader(
+        child: Image.asset("assets/images/logo.png"),
+      ),
     );
   }
 

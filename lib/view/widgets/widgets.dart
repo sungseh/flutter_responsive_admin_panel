@@ -30,3 +30,4 @@ export 'app_button.dart';
 export 'app_shimmer.dart';
 export 'app_icon_button.dart';
 export 'app_text_field_container.dart';
+export 'app_card.dart';

@@ -59,6 +59,9 @@ class _AppPageFrameState extends State<AppPageFrame> {
                     case "Presenters":
                       return const PresentersList(); 
 
+                    case "Users":
+                      return const UsersList(); 
+
                     case "Settings":
                       return const Settings(); 
 
