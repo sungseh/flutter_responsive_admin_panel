@@ -41,6 +41,20 @@ dependencies:
   shimmer: ^2.0.0
   showcaseview: 1.1.4
   search_page: ^2.0.0+1
+  firebase_storage: ^10.2.18
+  image_picker: ^0.8.5+3
+
+  # cupertino_icons: ^1.0.2
+  # firebase_core:
+  # cloud_firestore: ^1.0.0
+  # firebase_storage:
+  # image_picker: ^0.8.3+2
+  image: ^3.0.2
+  xfile: ^1.1.0
+  firebase: ^9.0.1
+  uuid: ^3.0.4
+  oktoast: ^3.1.5
+
 
   flutter_dropzone: ^3.0.5
   dotted_border: ^2.0.0

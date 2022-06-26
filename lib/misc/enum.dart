@@ -86,3 +86,9 @@ enum ResDeviceScreenType {
   tablet,
   desktop
 }
+
+enum UploadType {
+  string,
+  file,
+  clear,
+}
